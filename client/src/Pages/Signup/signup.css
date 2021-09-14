@@ -1,0 +1,43 @@
+@import url(../../Constants/colorVariables.css);
+@import url(../Styles/style.css);
+
+.signup .entry-button button {
+	width: 100%;
+	margin: 0;
+}
+
+.signup .entry-elements > :is(input[type='text'], input[type='password']),
+.signup .group-entry-element {
+	height: 40px;
+}
+
+.signup .group-entry-element input {
+	height: 38px;
+}
+
+@media (min-width: 780px) {
+	.entry-form.signup {
+		display: grid;
+		grid-template-columns: repeat(2, auto);
+		width: unset;
+		gap: 20px;
+	}
+
+	.entry-form.signup h2 {
+		grid-column: span 2;
+	}
+
+	.signup .entry-button {
+		grid-column: span 2;
+	}
+
+	.signup .entry-elements {
+		margin: 0;
+		width: 220px;
+	}
+
+	.signup .entry-button button {
+		width: 100%;
+		margin: 0;
+	}
+}

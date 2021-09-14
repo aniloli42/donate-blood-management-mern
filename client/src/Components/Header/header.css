@@ -1,0 +1,28 @@
+@import url(../../Constants/colorVariables.css);
+
+.header {
+	display: flex;
+	padding: 15px 20px;
+	align-items: center;
+	box-shadow: 1px 1px rgba(204, 170, 204, 0.664);
+	user-select: none;
+}
+
+.header img {
+	width: 15px;
+}
+
+.header a {
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	gap: 10px;
+	margin: 0 auto;
+}
+
+@media (min-width: 780px) {
+	.header a {
+		margin: 0;
+		margin-left: 10px;
+	}
+}

@@ -1,0 +1,57 @@
+@import url(../../Constants/colorVariables.css);
+
+.hamburger {
+	width: 30px;
+	height: 20px;
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+	justify-content: center;
+}
+
+.hamburger-lines {
+	width: 30px;
+	height: var(--line-height, 2px);
+	--line-height: 2px;
+	background-color: #000;
+	position: relative;
+	transition: 0.25s ease-in-out;
+	transform: translateX(0px);
+}
+
+.hamburger-lines::before,
+.hamburger-lines::after {
+	content: '';
+	position: absolute;
+	width: 30px;
+	height: var(--line-height);
+	background-color: #000;
+	transition: 0.25s ease-in-out;
+}
+
+.hamburger-lines::before {
+	transform: translateY(-8px);
+}
+
+.hamburger-lines::after {
+	transform: translateY(8px);
+}
+
+.hamburger-lines.active {
+	transform: translateX(-5px);
+	background-color: transparent;
+}
+
+.hamburger-lines.active::before {
+	transform: rotate(-45deg) translateX(5px) translateY(5px);
+}
+
+.hamburger-lines.active::after {
+	transform: rotate(45deg) translateX(5px) translateY(-5px);
+}
+
+@media (min-width: 780px) {
+	.hamburger {
+		display: none;
+	}
+}

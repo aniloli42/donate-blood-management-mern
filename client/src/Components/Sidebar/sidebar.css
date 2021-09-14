@@ -1,0 +1,59 @@
+@import url(../../Constants/colorVariables.css);
+
+.sidebar-div {
+	padding: 20px;
+	display: flex;
+	flex-direction: column;
+	width: 270px;
+	background-color: #eee;
+	margin-top: 1px;
+	user-select: none;
+}
+
+.sidebar-element {
+	display: flex;
+	gap: 20px;
+	padding: 10px;
+	align-items: center;
+	background-color: transparent;
+	margin: 2px 0px;
+	transition: 0.2s ease-in-out;
+}
+
+.sidebar-element.active {
+	background-color: #fff;
+	border-left: 3px solid rgb(91, 91, 138);
+}
+
+.sidebar-element:hover {
+	background-color: #fff;
+	border-left: 3px solid rgb(91, 91, 138);
+}
+
+.sidebar-element svg {
+	width: 20px !important;
+	height: 20px;
+}
+
+.sidebar-element svg path {
+	width: 20px;
+	height: 20px;
+	fill: rgb(91, 91, 138);
+}
+
+.sidebar-element p {
+	color: rgb(91, 91, 138);
+	font-size: 1.1em;
+}
+
+@media (max-width: 780px) {
+	.sidebar-div {
+		position: sticky;
+		transform: translateX(-100%);
+		transition: 0.3s ease;
+	}
+
+	.sidebar-div.active {
+		transform: translateX(0);
+	}
+}
