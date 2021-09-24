@@ -1,7 +1,5 @@
-@import url(../../Constants/colorVariables.css);
-
 .user-entry {
-	margin-top: 50px;
+	margin-block-start: min(10vw, 5em);
 	width: 100%;
 	padding: 20px;
 	flex-direction: column;
@@ -135,13 +133,13 @@
 	}
 }
 
-@media (min-width: 1024px) {
+@media (min-width: 1200px) {
 	.user-entry {
 		display: flex;
+		grid-column: 1/4;
 		flex-direction: row;
 		align-items: flex-start;
-		margin: auto;
-		justify-content: space-evenly;
+		justify-content: space-around;
 	}
 
 	.brand-logo {

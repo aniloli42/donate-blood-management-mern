@@ -1,0 +1,106 @@
+/* 
+    =======================
+    main-container-section
+    =======================
+*/
+
+.main-component > h2 {
+	color: var(--btncolor);
+	font-size: clamp(20px, 1em + 10vw, 2em);
+	margin-block-end: 1em;
+}
+
+.important-message {
+	display: flex;
+	justify-content: space-between;
+	align-items: center;
+	padding: min(1em, 8vw);
+	flex-grow: 1;
+	background-color: rgb(216, 215, 215);
+}
+
+.important-message p {
+	font-weight: 500;
+}
+
+.important-action {
+	padding: min(0.5em, 8vw) min(1.6em, 10vw);
+	font-size: 0.9em;
+	outline: none;
+	border: none;
+	transition: all 0.1s ease-in-out;
+}
+
+.important-action:hover,
+.important-action:focus {
+	background-color: rgb(190, 172, 172);
+	color: #fff;
+}
+
+.small-cards {
+	width: 100%;
+	margin-block: 2em;
+	gap: 10px;
+}
+
+.small-card {
+	display: grid;
+	margin-block: 10px;
+	grid-template-areas:
+		'badge heading'
+		'badge sub';
+
+	grid-template-columns: max-content auto;
+	background-color: rgb(216, 215, 215);
+	padding: 1.2em;
+}
+
+.small-card .badge {
+	grid-area: badge;
+	margin-inline-end: 1em;
+	width: 50px;
+	background-color: #ed6a5a;
+}
+
+.small-card p {
+	font-size: clamp(1.4em, 1.2em + 10vw, 2em);
+	font-weight: bold;
+}
+
+.small-card h3 {
+	grid-area: heading;
+}
+
+.small-card p {
+	grid-area: sub;
+}
+
+@media (min-width: 900px) {
+	.small-cards {
+		display: grid;
+		grid-template-columns: repeat(2, 1fr);
+	}
+}
+
+@media (min-width: 1500px) {
+	.small-cards {
+		display: grid;
+		grid-template-columns: repeat(4, 1fr);
+	}
+}
+
+/*
+    - Here margin about 20 px around all sides in desktop.
+    - 
+    
+
+    ==> important-message
+    This is for display any type of message in dashboard with can be do any action directed by developer.
+
+    ==> small-cards
+    This is for the show the quick information.
+
+    ==> recent container
+    This is for showing the recent blood requests by the pepole with address.
+    
+    */ ;

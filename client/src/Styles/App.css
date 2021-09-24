@@ -1,17 +1,27 @@
-@import url(../Constants/colorVariables.css);
+@import url(../Constants/commonCSS.css);
 
 #root {
 	display: flex;
 	position: absolute;
 	flex-direction: column;
-	width: 100%;
+	max-height: 100vh;
+	max-width: 100%;
+	overflow-y: scroll;
+	width: 100vw;
 	top: 0;
 	min-height: 100%;
 	background-color: var(--light);
 }
 
 main {
-	flex: 1;
-	display: flex;
-	flex-direction: column;
+	flex-grow: 1;
+	display: block;
+}
+
+@media (min-width: 1200px) {
+	main {
+		display: grid;
+		grid-template-columns: repeat(2, max-content);
+		grid-template-rows: auto 1fr;
+	}
 }

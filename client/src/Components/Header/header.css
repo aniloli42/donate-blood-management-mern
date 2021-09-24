@@ -1,7 +1,10 @@
-@import url(../../Constants/colorVariables.css);
-
 .header {
+	grid-column: span 3;
+	width: 100%;
 	display: flex;
+	position: sticky;
+	top: 0;
+	height: var(--header-height, 70px);
 	padding: 15px 20px;
 	align-items: center;
 	box-shadow: 1px 1px rgba(204, 170, 204, 0.664);
@@ -20,7 +23,9 @@
 	margin: 0 auto;
 }
 
-@media (min-width: 780px) {
+@media (min-width: 1200px) {
+
+
 	.header a {
 		margin: 0;
 		margin-left: 10px;

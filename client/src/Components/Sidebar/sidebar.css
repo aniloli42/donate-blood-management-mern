@@ -1,13 +1,19 @@
-@import url(../../Constants/colorVariables.css);
-
 .sidebar-div {
 	padding: 20px;
 	display: flex;
+	visibility: hidden;
 	flex-direction: column;
 	width: 270px;
 	background-color: #eee;
 	margin-top: 1px;
 	user-select: none;
+	border-right: 1px solid #ddd;
+	position: fixed;
+	bottom: 0;
+	top: var(--header-height);
+	transform: translateX(-100%);
+	transition: 0.3s ease;
+	opacity: 0;
 }
 
 .sidebar-element {
@@ -20,18 +26,13 @@
 	transition: 0.2s ease-in-out;
 }
 
-.sidebar-element.active {
+.sidebar-element.active,.sidebar-element:hover {
 	background-color: #fff;
 	border-left: 3px solid rgb(91, 91, 138);
 }
 
-.sidebar-element:hover {
-	background-color: #fff;
-	border-left: 3px solid rgb(91, 91, 138);
-}
-
-.sidebar-element svg {
-	width: 20px !important;
+.sidebar-element.sidebar-element svg {
+	width: 20px;
 	height: 20px;
 }
 
@@ -46,14 +47,22 @@
 	font-size: 1.1em;
 }
 
-@media (max-width: 780px) {
-	.sidebar-div {
-		position: sticky;
-		transform: translateX(-100%);
-		transition: 0.3s ease;
-	}
+.sidebar-div.active {
+	display: flex;
+	opacity: 1;
+	visibility: visible;
+	transform: translateX(0);
+}
 
-	.sidebar-div.active {
-		transform: translateX(0);
+@media (min-width: 1200px) {
+	.sidebar-div {
+		position: unset;
+		height: 100%;
+		display: flex;
+		visibility: visible;
+		align-self: flex-start;
+		opacity: 1;
+		transform: none;
+		top: 74.4px;
 	}
 }

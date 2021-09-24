@@ -1,0 +1,12 @@
+.main-component {
+	flex-grow: 1;
+	display: block;
+	margin: clamp(0.5em, calc(0.1em + 4vw), 1.5em);
+}
+
+@media (min-width: 1200px) {
+	.main-component {
+		flex-grow: 1;
+		grid-column: span 2;
+	}
+}

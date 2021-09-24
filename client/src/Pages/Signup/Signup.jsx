@@ -1,5 +1,4 @@
 import React, { useRef } from 'react'
-import "../Styles/style.css"
 import "./signup.css"
 import logo from "../../Assets/Images/blood.svg"
 import show from "../../Assets/Images/eye.svg"
@@ -40,7 +39,7 @@ const Login = () => {
                 </p>
             </div>
             <div className="entry-form-div">
-                <form className="entry-form signup">
+                <form className="entry-form signup" method="post">
                     <h2>Signup</h2>
                     <div className="entry-elements">
                         <label htmlFor="name">Name</label>

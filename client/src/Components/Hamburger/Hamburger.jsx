@@ -3,8 +3,9 @@ import './hamburger.css'
 
 const Hamburger = () => {
 
-    const handleClick = () =>{
-        document.querySelector('#sidebar').classList.toggle('active')
+    const handleClick = () => {
+        const sidebar = document.querySelector('#sidebar')
+        sidebar.classList.toggle('active')
         document.querySelector('.hamburger-lines').classList.toggle('active')
     }
 

@@ -3,6 +3,7 @@
 	--basecolor: #d9dbdd;
 	--textcolor: #333652;
 	--btncolor: #004683;
+	--header-height: 70px;
 	font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
 }
 
@@ -17,8 +18,9 @@
 }
 
 img {
-	display: block;
+	display: flow-root;
 	max-width: 100%;
+	height: auto;
 }
 
 a {
