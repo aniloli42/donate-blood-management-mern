@@ -1,10 +1,22 @@
-import React, { useRef } from 'react'
+import React, { useRef, useState } from 'react'
 import logo from "../../Assets/Images/blood.svg"
 import show from "../../Assets/Images/eye.svg"
 import hide from "../../Assets/Images/eye-off.svg"
 import { Link } from 'react-router-dom'
 
+let inputData = { email: "", password: "" }
+
 const Login = () => {
+
+
+    const [formData, setformData] = useState(inputData)
+
+    const updateFormData = (e) => {
+        setformData(prevformData => {
+            return { ...prevformData, [e.target.name]: e.target.value }
+        }
+        )
+    }
 
     const password = useRef(null)
 
@@ -42,12 +54,12 @@ const Login = () => {
                     <h2>Login</h2>
                     <div className="entry-elements">
                         <label htmlFor="email">Email</label>
-                        <input type="text" name="email" id="email" autoComplete='off' />
+                        <input type="text" name="email" onChange={updateFormData} value={formData.email} id="email" autoComplete='off' />
                     </div>
                     <div className="entry-elements">
                         <label htmlFor="password">Password</label>
                         <div className="group-entry-element">
-                            <input type="password" name="password" ref={password} id="password" autoComplete='off' />
+                            <input type="password" name="password" onChange={updateFormData} ref={password} id="password" value={formData.password} autoComplete='off' />
                             <img src={show} alt="show hide icon" onClick={changePasswordType} />
                         </div>
                     </div>

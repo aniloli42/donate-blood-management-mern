@@ -1,0 +1,53 @@
+.recent-content{
+  padding: min(1em,10vw);
+  display: grid;
+  grid-template-columns: max-content repeat(2,1fr);
+  grid-template-rows: repeat(2,1fr);
+  column-gap: .8em;
+  padding: min(.6em,6vw);
+  background-color: #ccc;
+}
+
+.recent-content + .recent-content{
+  margin-block-start:  min(.4em,1vw);
+}
+
+.text-badge{
+  grid-row: 1/3;
+  align-self: center;
+  background-color: gray;
+  color: #fff;
+  padding: .4em;
+  font-size: min(.8em + 1vw,10vw);
+  font-weight: bold;
+
+
+}
+
+.request-name{
+  align-self: center;
+  font-size: 1.2em;
+}
+
+.request-address{
+  grid-column: 2/3;
+  grid-row:2/3;
+  font-size: .95em;
+  color: rgb(134, 133, 133);
+}
+
+.request-view{
+  grid-row:1/3;
+  align-self: center;
+  display: flex;
+  flex-grow: 1;
+  width: auto;
+  margin-inline-start: auto;
+  padding: calc(.1em + .5vw) calc(1em + 1vw);
+  background-color: #222;
+  color: #fff;
+}
+
+.request-view:hover,.request-view:focus{
+  background-color: #666;
+}

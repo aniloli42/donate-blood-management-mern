@@ -14,7 +14,8 @@ const Sidebar = () => {
 	}, [])
 
 	return (
-		<div className="sidebar-div" id="sidebar">
+		<div className="sidebar-div backlayer" id="sidebar">
+			<div className="sidebar-content">
 			<Link to="/" className={`sidebar-element ${location === "" ? "active" : ""}`} onClick={handleSidebarElementClick}>
 				<i className="fas fa-home"></i>
 				<p>Dashboard</p>
@@ -34,7 +35,8 @@ const Sidebar = () => {
 			<Link to="/logout" className="sidebar-element" onClick={handleSidebarElementClick}>
 				<i className="fas fa-sign-out-alt"></i>
 				<p>Logout</p>
-			</Link>
+				</Link>
+			</div>
 		</div>
 	)
 }

@@ -1,0 +1,26 @@
+.important-message {
+	display: flex;
+	justify-content: space-between;
+	align-items: center;
+	padding: min(1em, 8vw);
+	flex-grow: 1;
+	background-color: rgb(216, 215, 215);
+}
+
+.important-message p {
+	font-weight: 500;
+}
+
+.important-action {
+	padding: min(0.5em, 8vw) min(1.6em, 10vw);
+	font-size: 0.9em;
+	outline: none;
+	border: none;
+	transition: all 0.1s ease-in-out;
+}
+
+.important-action:hover,
+.important-action:focus {
+	background-color: rgb(190, 172, 172);
+	color: #fff;
+}

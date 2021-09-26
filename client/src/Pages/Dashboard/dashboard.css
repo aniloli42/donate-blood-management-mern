@@ -10,69 +10,52 @@
 	margin-block-end: 1em;
 }
 
-.important-message {
-	display: flex;
-	justify-content: space-between;
-	align-items: center;
-	padding: min(1em, 8vw);
-	flex-grow: 1;
-	background-color: rgb(216, 215, 215);
-}
-
-.important-message p {
-	font-weight: 500;
-}
-
-.important-action {
-	padding: min(0.5em, 8vw) min(1.6em, 10vw);
-	font-size: 0.9em;
-	outline: none;
-	border: none;
-	transition: all 0.1s ease-in-out;
-}
-
-.important-action:hover,
-.important-action:focus {
-	background-color: rgb(190, 172, 172);
-	color: #fff;
-}
-
 .small-cards {
 	width: 100%;
 	margin-block: 2em;
 	gap: 10px;
 }
 
-.small-card {
-	display: grid;
-	margin-block: 10px;
-	grid-template-areas:
-		'badge heading'
-		'badge sub';
 
-	grid-template-columns: max-content auto;
-	background-color: rgb(216, 215, 215);
-	padding: 1.2em;
+
+/* 
+ 
+===================
+Recent Requests
+===================
+
+*/
+
+
+/* .recent-container{ */
+	/* padding: min(1.2em,10vw); */
+/* } */
+
+.recent-container {
+	background-color: rgb(238, 229, 229);
+	box-shadow: 0px 1px 3px rgba(17, 17, 17, 0.363);
 }
 
-.small-card .badge {
-	grid-area: badge;
-	margin-inline-end: 1em;
-	width: 50px;
-	background-color: #ed6a5a;
+.recent-container header{
+	padding: min(1em,10vw);
+	display: flex;
+	align-items: center;
+	justify-content: space-between;
+	background-color: var(--basecolor);
 }
 
-.small-card p {
-	font-size: clamp(1.4em, 1.2em + 10vw, 2em);
-	font-weight: bold;
+.recent-container header h2{
+	font-size: min(1em + 0.5vw,10vw);
 }
 
-.small-card h3 {
-	grid-area: heading;
+.recent-contents{
+	padding: min(.4em,1vw);
 }
 
-.small-card p {
-	grid-area: sub;
+.view-all-action-button:hover,
+.view-all-action-button:focus{
+
+	text-decoration: underline;
 }
 
 @media (min-width: 900px) {
@@ -89,18 +72,3 @@
 	}
 }
 
-/*
-    - Here margin about 20 px around all sides in desktop.
-    - 
-    
-
-    ==> important-message
-    This is for display any type of message in dashboard with can be do any action directed by developer.
-
-    ==> small-cards
-    This is for the show the quick information.
-
-    ==> recent container
-    This is for showing the recent blood requests by the pepole with address.
-    
-    */ ;

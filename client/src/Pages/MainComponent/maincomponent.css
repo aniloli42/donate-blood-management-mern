@@ -6,7 +6,8 @@
 
 @media (min-width: 1200px) {
 	.main-component {
-		flex-grow: 1;
+		justify-self: stretch;
+		align-self: start;
 		grid-column: span 2;
 	}
 }

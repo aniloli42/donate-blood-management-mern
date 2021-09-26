@@ -1,11 +1,24 @@
-import React, { useRef } from 'react'
+import React, { useRef, useState } from 'react'
 import "./signup.css"
 import logo from "../../Assets/Images/blood.svg"
 import show from "../../Assets/Images/eye.svg"
 import hide from "../../Assets/Images/eye-off.svg"
 import { Link } from 'react-router-dom'
 
+let inputData = { name: "", email: "", bloodtype: "O+", temporaryaddress: "", permanentaddress: "", password: "" }
+
 const Login = () => {
+
+
+    const [formData, setformData] = useState(inputData)
+
+    const updateFormData = (e) => {
+        setformData(prevformData => {
+            return { ...prevformData, [e.target.name]: e.target.value }
+        }
+        )
+    }
+
 
     const password = useRef(null)
 
@@ -22,6 +35,8 @@ const Login = () => {
         return
 
     }
+
+
 
     return (
         <div className="user-entry">
@@ -43,12 +58,12 @@ const Login = () => {
                     <h2>Signup</h2>
                     <div className="entry-elements">
                         <label htmlFor="name">Name</label>
-                        <input type="text" name="name" id="name" autoComplete='off' />
+                        <input type="text" name="name" id="name" onChange={updateFormData} autoComplete='off' value={formData.name} />
                     </div>
 
                     <div className="entry-elements">
                         <label htmlFor="bloodtype">Blood Type</label>
-                        <select name="bloodtype" id="bloodtype">
+                        <select name="bloodtype" id="bloodtype" value={formData.bloodtype} onChange={updateFormData}>
                             <option value="O+">O+</option>
                             <option value="O-">O-</option>
                             <option value="AB+">AB+</option>
@@ -62,22 +77,22 @@ const Login = () => {
 
                     <div className="entry-elements">
                         <label htmlFor="temporaryaddress">Temporary Address</label>
-                        <input type="text" name="temporaryaddress" id="temporaryaddress" autoComplete='off' />
+                        <input type="text" name="temporaryaddress" id="temporaryaddress" autoComplete='off' value={formData.temporaryaddress} onChange={updateFormData} />
                     </div>
 
                     <div className="entry-elements">
                         <label htmlFor="permanentaddress">Permanent Address</label>
-                        <input type="text" name="permanentaddress" id="permanentaddress" autoComplete='off' />
+                        <input type="text" name="permanentaddress" id="permanentaddress" autoComplete='off' value={formData.permanentaddress} onChange={updateFormData} />
                     </div>
 
                     <div className="entry-elements">
                         <label htmlFor="email">Email</label>
-                        <input type="text" name="email" id="email" autoComplete='off' />
+                        <input type="text" name="email" id="email" value={formData.email} autoComplete='off' onChange={updateFormData} />
                     </div>
                     <div className="entry-elements">
                         <label htmlFor="password">Password</label>
                         <div className="group-entry-element">
-                            <input type="password" name="password" ref={password} id="password" autoComplete='off' />
+                            <input type="password" name="password" ref={password} id="password" autoComplete='off' onChange={updateFormData} value={formData.password} />
                             <img src={show} alt="show hide icon" onClick={changePasswordType} />
                         </div>
                     </div>
