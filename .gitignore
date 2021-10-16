@@ -5,9 +5,8 @@ node_modules
 .pnp
 .pnp.js
 
-# application
+# application code
 .vscode
-!.vscode/tasks.json
 
 # testing
 coverage
