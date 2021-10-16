@@ -71,7 +71,7 @@ const Login = () => {
                 </form>
 
                 <div className="entry-message">
-                    <p>Don't have any account?</p>
+                    <p>Don't have an account?</p>
                     <Link to="/signup">Click Here</Link>
                 </div>
             </div>
