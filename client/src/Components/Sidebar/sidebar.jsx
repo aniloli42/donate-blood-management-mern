@@ -9,36 +9,71 @@ const Sidebar = () => {
 
 
 	const handleSidebarElementClick = useCallback((e) => {
-		document.querySelector('#sidebar').classList.remove('active')
-		document.querySelector('.hamburger-lines').classList.remove('active')
-	}, [])
+    // check if user click in sidebar content rather than sidebar options and prevent it
+    if (e.target.className === "sidebar-content") return
+    e.stopPropagation()
 
-	return (
-		<div className="sidebar-div backlayer" id="sidebar">
-			<div className="sidebar-content">
-			<Link to="/" className={`sidebar-element ${location === "" ? "active" : ""}`} onClick={handleSidebarElementClick}>
-				<i className="fas fa-home"></i>
-				<p>Dashboard</p>
-			</Link>
-			<Link to="/profile" className={`sidebar-element ${location === "profile" ? "active" : ""}`} onClick={handleSidebarElementClick}>
-				<i className="fas fa-id-badge"></i>
-				<p>Profile</p>
-			</Link>
-			<Link to="/donation-history" className={`sidebar-element ${location === "donation-history" ? "active" : ""}`} onClick={handleSidebarElementClick}>
-				<i className="fas fa-hands-helping"></i>
-				<p>Donation History</p>
-			</Link>
-			<Link to="/requests" className={`sidebar-element ${location === "requests" ? "active" : ""}`} onClick={handleSidebarElementClick}>
-				<i className="fas fa-hand-holding-medical"></i>
-				<p>Requests</p>
-			</Link>
-			<Link to="/logout" className="sidebar-element" onClick={handleSidebarElementClick}>
-				<i className="fas fa-sign-out-alt"></i>
-				<p>Logout</p>
-				</Link>
-			</div>
-		</div>
-	)
+    // remove the classname to hide the sidebar
+    document.querySelector("#sidebar").classList.remove("active")
+    document.querySelector(".hamburger-lines").classList.remove("active")
+  }, [])
+
+  return (
+    <div
+      className="sidebar-div backlayer"
+      id="sidebar"
+      onClick={handleSidebarElementClick}
+    >
+      <div className="sidebar-content">
+        <Link
+          to="/"
+          className={`sidebar-element ${location === "" ? "active" : ""}`}
+          onClick={handleSidebarElementClick}
+        >
+          <i className="fas fa-home"></i>
+          <p>Dashboard</p>
+        </Link>
+        <Link
+          to="/profile"
+          className={`sidebar-element ${
+            location === "profile" ? "active" : ""
+          }`}
+          onClick={handleSidebarElementClick}
+        >
+          <i className="fas fa-id-badge"></i>
+          <p>Profile</p>
+        </Link>
+        <Link
+          to="/donation-history"
+          className={`sidebar-element ${
+            location === "donation-history" ? "active" : ""
+          }`}
+          onClick={handleSidebarElementClick}
+        >
+          <i className="fas fa-hands-helping"></i>
+          <p>Donation History</p>
+        </Link>
+        <Link
+          to="/requests"
+          className={`sidebar-element ${
+            location === "requests" ? "active" : ""
+          }`}
+          onClick={handleSidebarElementClick}
+        >
+          <i className="fas fa-hand-holding-medical"></i>
+          <p>Requests</p>
+        </Link>
+        <Link
+          to="/logout"
+          className="sidebar-element"
+          onClick={handleSidebarElementClick}
+        >
+          <i className="fas fa-sign-out-alt"></i>
+          <p>Logout</p>
+        </Link>
+      </div>
+    </div>
+  )
 }
 
 export default Sidebar
