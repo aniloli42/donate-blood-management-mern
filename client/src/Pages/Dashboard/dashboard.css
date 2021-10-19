@@ -4,12 +4,6 @@
     =======================
 */
 
-.main-component > h2 {
-	color: var(--btncolor);
-	font-size: clamp(20px, 1em + 10vw, 2em);
-	margin-block-end: 1em;
-}
-
 .small-cards {
 	width: 100%;
 	margin-block: 2em;
