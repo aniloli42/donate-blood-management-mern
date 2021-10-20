@@ -1,21 +1,22 @@
 .main-component {
-	flex-grow: 1;
-	display: block;
-	margin: clamp(0.5em, calc(0.1em + 4vw), 1.5em);
+  flex-grow: 1;
+  display: block;
+  margin: clamp(0.5em, calc(0.1em + 4vw), 1.5em);
 }
 
 /* title of the section */
 .main-component > h2 {
-	color: var(--btncolor);
-	font-size: clamp(20px, 1em + 10vw, 2em);
-	margin-block-end: 1em;
+  color: var(--btncolor);
+  font-size: clamp(20px, 1em + 10vw, 2em);
+  margin-block-end: 1em;
 }
 
-
 @media (min-width: 1200px) {
-	.main-component {
-		justify-self: stretch;
-		align-self: start;
-		grid-column: span 2;
-	}
+  .main-component {
+    justify-self: stretch;
+    align-self: start;
+    grid-column: span 2;
+    margin-inline-start: 300px;
+    padding-inline-start: 20px;
+  }
 }

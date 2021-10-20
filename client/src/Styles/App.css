@@ -1,32 +1,29 @@
 @import url(../Constants/commonCSS.css);
 
-body{
-	overflow-y: auto;
+body {
+  background-color: var(--light);
 }
 
 #root {
-	display: flex;
-	position: absolute;
-	flex-direction: column;
-	max-height: 100vh;
-	max-width: 100%;
-	width: 100vw;
-	top: 0;
-	min-height: 100%;
+  display: flex;
+  position: absolute;
+  flex-direction: column;
+  width: 100%;
+  min-height: 100vh;
+  min-height: -webkit-fill-available;
 }
 
 main {
-	flex-grow: 1;
-	display: block;
-	background-color: var(--light);
-
+  flex-grow: 1;
+  display: block;
+  background-color: var(--light);
 }
 
 @media (min-width: 1200px) {
-	main {
-		display: grid;
-		grid-template-columns: repeat(2, max-content);
-		grid-template-rows: auto 1fr;
-		justify-items: start;
-	}
+  main {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    grid-template-rows: auto 1fr;
+    justify-items: start;
+  }
 }

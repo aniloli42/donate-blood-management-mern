@@ -1,83 +1,84 @@
 .sidebar-div {
-	display: flex;
-	visibility: hidden;
-	position: fixed;
-	bottom: 0;
-	top: var(--header-height);
-	opacity: 0;
-	width: 100%;
-	background-color: rgba(0,0,0,0.1);
+  display: inline-flex;
+  visibility: hidden;
+  position: fixed;
+  bottom: 0;
+  top: var(--header-height);
+  opacity: 0;
+  width: 100%;
+  background-color: rgba(0, 0, 0, 0.1);
 }
 
-.sidebar-content{
-	transform: translateX(-100%);
-	transition: 0.3s ease;
-	width: 300px;
-	padding: 20px;
-	flex-direction: column;
-	background-color: #eee;
-	margin-top: 1px;
-	user-select: none;
-	border-right: 1px solid #ddd;
+.sidebar-content {
+  transform: translateX(-100%);
+  transition: 0.3s ease;
+  width: 300px;
+  padding: 20px;
+  flex-direction: column;
+  background-color: #eee;
+  margin-top: 1px;
+  user-select: none;
+  border-right: 1px solid #ddd;
 }
 
 .sidebar-element {
-	display: flex;
-	gap: 20px;
-	padding: 10px;
-	align-items: center;
-	background-color: transparent;
-	margin: 2px 0px;
-	transition: 0.2s ease-in-out;
+  display: flex;
+  gap: 20px;
+  padding: 10px;
+  align-items: center;
+  background-color: transparent;
+  margin: 2px 0px;
+  transition: 0.2s ease-in-out;
 }
 
-.sidebar-element.active,.sidebar-element:hover,.sidebar-element:focus {
-	background-color: #fff;
-	border-left: 3px solid rgb(91, 91, 138);
+.sidebar-element.active,
+.sidebar-element:hover,
+.sidebar-element:focus {
+  background-color: #fff;
+  border-left: 3px solid rgb(91, 91, 138);
 }
 
 .sidebar-element.sidebar-element svg {
-	width: 20px;
-	height: 20px;
+  width: 20px;
+  height: 20px;
 }
 
 .sidebar-element svg path {
-	width: 20px;
-	height: 20px;
-	fill: rgb(91, 91, 138);
+  width: 20px;
+  height: 20px;
+  fill: rgb(91, 91, 138);
 }
 
 .sidebar-element p {
-	color: rgb(91, 91, 138);
-	font-size: 1.1em;
+  color: rgb(91, 91, 138);
+  font-size: 1.1em;
 }
 
 .sidebar-div.active {
-	display: flex;
-	opacity: 1;
-	visibility: visible;
-	overflow:hidden;
+  display: flex;
+  opacity: 1;
+  visibility: visible;
+  overflow: hidden;
 }
 
-
-.sidebar-div.active .sidebar-content{
-	transform: translateX(0);
+.sidebar-div.active .sidebar-content {
+  transform: translateX(0);
 }
 
 @media (min-width: 1200px) {
-	.sidebar-div {
-		position: sticky;
-		/* height: 100%; */
-		display: flex;
-		/* top: 74.4px; */
-		visibility: visible;
-		align-self: start;
-		justify-self: start;
-		opacity: 1;
-		transform: none;
-	}
+  .sidebar-div {
+    height: 100%;
+    width: max-content;
+    display: flex;
+    top: 70.4px;
+    visibility: visible;
+    align-self: start;
+    justify-self: start;
+    opacity: 1;
+    transform: none;
+  }
 
-	.sidebar-content{
-		transform: none;
-	}
+  .sidebar-content {
+    transform: none;
+  }
 }
