@@ -1,4 +1,42 @@
-@import url(../Constants/commonCSS.css);
+:root {
+  --light: #e9eaec;
+  --basecolor: #d9dbdd;
+  --textcolor: #333652;
+  --btncolor: #004683;
+  --header-height: 70px;
+  font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+}
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+:focus {
+  outline: none;
+}
+
+.container {
+  background-color: #eee;
+}
+
+img {
+  display: flow-root;
+  max-width: 100%;
+  height: auto;
+}
+
+a {
+  display: block;
+  color: #000;
+  text-decoration: none;
+  cursor: pointer;
+}
+
+button {
+  cursor: pointer;
+}
 
 body {
   background-color: var(--light);

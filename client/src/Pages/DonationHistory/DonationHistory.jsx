@@ -1,11 +1,11 @@
-import React from 'react'
+import React from "react"
 
 const DonationHistory = () => {
-    return (
-        <div>
-            Donation history
-        </div>
-    )
+  return (
+    <>
+      <h2>Donation history</h2>
+    </>
+  )
 }
 
 export default DonationHistory

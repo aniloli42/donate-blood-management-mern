@@ -1,0 +1,84 @@
+.profile-container {
+  display: grid;
+  grid-gap: 20px;
+}
+
+.profile-image {
+  width: 250px;
+  justify-self: center;
+  height: max-content;
+  position: relative;
+}
+
+.profile-image-updater {
+  position: absolute;
+  bottom: 0;
+  width: 100%;
+  padding: 0.6em 0.8em;
+  background-color: #3534349f;
+  color: #fff;
+  font-weight: bold;
+  font-size: 1.1rem;
+  outline: none;
+  border: none;
+  transition: all 0.2s linear;
+}
+
+.profile-image-updater:hover,
+.profile-image-updater:focus {
+  background-color: #333333dc;
+}
+
+.input-group p {
+  font-size: 1.4rem;
+  font-weight: 500;
+}
+
+.input-buttons {
+  margin-top: 1.7em;
+  display: grid;
+  column-gap: 0.5em;
+  grid-template-columns: repeat(2, max-content);
+}
+
+.profile-update,
+.profile-edit {
+  background-color: rgb(53, 158, 79);
+}
+
+.profile-update:hover,
+.profile-update:focus,
+.profile-edit:hover,
+.profile-edit:focus {
+  background-color: rgb(47, 145, 71);
+}
+
+.cancel-update {
+  background-color: transparent;
+  color: var(--btncolor);
+}
+
+.cancel-update:hover,
+.cancel-update:focus {
+  background: unset;
+  color: rgb(142, 142, 189);
+}
+
+@media (min-width: 900px) {
+  .profile-container {
+    grid-template-columns: minmax(200px, 350px) 1fr;
+  }
+
+  .profile-image {
+    width: 280px;
+  }
+
+  .input-group {
+    grid-column: span 2;
+  }
+
+  .profile-name,
+  .profile-blood-type {
+    grid-column: 2 / -1;
+  }
+}
