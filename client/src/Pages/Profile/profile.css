@@ -71,6 +71,8 @@
 
   .profile-image {
     width: 280px;
+    justify-self: start;
+    z-index: 0;
   }
 
   .input-group {
