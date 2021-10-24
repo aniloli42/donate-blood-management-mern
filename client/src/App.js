@@ -1,45 +1,56 @@
 import React from 'react'
-import { Route, Switch } from 'react-router-dom'
-import { Header } from './Components'
+import { Route, Switch , Redirect} from 'react-router-dom'
 import './Styles/App.css'
 import './Styles/Utility.css'
 import {
 	Signup,
 	Login,
 	Forget,
-	OTP,
-	ChangePassword,
 	MainComponent
 } from './Pages'
 
 // import { loginValidation } from './Validation'
+import NotFound from './Components/NotFound/NotFound';
 
 function App() {
 	/* 	const getLoginResult = loginValidation() // loginValidation Return an Object: {status: boolean} if(login) {status:true, profile} else { status: false } */
+	const isAuth = false
 
 	return (
+
+			
+			
 		<>
-			<main>
-				<Switch>
-					<Route exact path="/">
-						<Header />
-						<MainComponent />
+			<Switch>
+				<Route exact path='/'  >
+					{isAuth ? <MainComponent /> : <Login />}
+				</Route>
+				
+				<Route exact path='/login'>
+					<Redirect to='/' />
 					</Route>
 
-					<Route exact path="/login" component={Login} />
-					<Route exact path="/signup" component={Signup} />
-					<Route exact path="/forget-password" component={Forget} />
-					<Route exact path="/verify-otp" component={OTP} />
-					<Route exact path="/change-password" component={ChangePassword} />
+				<Route exact path='/signup' >
+				{isAuth ? <Redirect to='/' /> : <Signup/>}
+				</Route>
 
-					<Route exact path="/:pages">
-						<Header />
-						<MainComponent />
+
+				<Route exact path='/forget-password'>
+					{isAuth ? <Redirect to='/' /> : <Forget/>}
+				</Route>
+				
+				<Route exact path='/page-not-found'>
+					<NotFound/>
 					</Route>
+				
+				<Route exact path='/:slug' >
+				{ isAuth ? <MainComponent /> : <Redirect to='/page-not-found' /> }
+				</Route>
 
-					<Route>Error 404 Not Found</Route>
-				</Switch>
-			</main>
+				
+
+
+			</Switch>
 		</>
 	)
 }

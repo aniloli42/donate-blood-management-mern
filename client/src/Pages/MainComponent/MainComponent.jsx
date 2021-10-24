@@ -1,39 +1,38 @@
 import React from "react"
 import "./maincomponent.css"
-import { Switch, Route } from "react-router-dom"
-import {
-  Profile,
-  DonationHistory,
-  Logout,
-  Requests,
-  Dashboard,
-  Security,
-} from "../index"
+import { Route, Switch, Redirect, useParams } from "react-router-dom"
+import { Header } from "../../Components"
+import Dashboard from "./../Dashboard/Dashboard"
+import Profile from "./../Profile/Profile"
+import Security from "./../Security/Security"
+import DonationHistory from "./../DonationHistory/DonationHistory"
+import Requests from "./../Requests/Requests"
+import Pages from "../../Helper/Pages"
 
 const MainComponent = () => {
+  const { slug } = useParams()
+  const isAuth = false
+
   return (
-    <div className="main-component">
-      <Switch>
-        <Route exact path="/">
-          <Dashboard />
-        </Route>
-        <Route exact path="/profile">
-          <Profile />
-        </Route>
-        <Route exact path="/security">
-          <Security />
-        </Route>
-        <Route exact path="/donation-history">
-          <DonationHistory />
-        </Route>
-        <Route exact path="/Logout">
-          <Logout />
-        </Route>
-        <Route exact path="/requests">
-          <Requests />
-        </Route>
-      </Switch>
-    </div>
+    <>
+      {Pages(slug) === false && <Redirect to="/page-not-found" />}
+      {!isAuth && <Redirect to="/" />}
+      <Header />
+      <div className="main-component">
+        <Switch>
+          <Route exact path="/" component={Dashboard} />
+          <Route exact key="profile" path="/profile" component={Profile} />
+          <Route exact key="security" path="/security" component={Security} />
+          <Route
+            exact
+            key="donation-history"
+            path="/donation-history"
+            component={DonationHistory}
+          />
+          <Route exact key="requests" path="/requests" component={Requests} />
+        </Switch>
+      </div>
+    </>
   )
 }
 

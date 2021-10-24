@@ -49,16 +49,11 @@ body {
   width: 100%;
   min-height: 100vh;
   min-height: -webkit-fill-available;
-}
-
-main {
-  flex-grow: 1;
-  display: block;
   background-color: var(--light);
 }
 
 @media (min-width: 1200px) {
-  main {
+  #root {
     display: grid;
     grid-template-columns: repeat(2, 1fr);
     grid-template-rows: auto 1fr;
