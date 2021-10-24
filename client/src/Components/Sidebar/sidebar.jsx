@@ -1,14 +1,12 @@
-import React, { useCallback } from 'react'
-import { useLocation } from 'react-router'
-import { Link } from 'react-router-dom'
-import './sidebar.css'
+import React, { useCallback } from "react"
+import { useLocation } from "react-router"
+import { Link } from "react-router-dom"
+import "./sidebar.css"
 
 const Sidebar = () => {
+  const location = useLocation().pathname.split("/")[1]
 
-	const location = useLocation().pathname.split("/")[1]
-
-
-	const handleSidebarElementClick = useCallback((e) => {
+  const handleSidebarElementClick = useCallback((e) => {
     // check if user click in sidebar content rather than sidebar options and prevent it
     if (e.target.className === "sidebar-content") return
     e.stopPropagation()
@@ -42,6 +40,16 @@ const Sidebar = () => {
         >
           <i className="fas fa-id-badge"></i>
           <p>Profile</p>
+        </Link>
+        <Link
+          to="/security"
+          className={`sidebar-element ${
+            location === "security" ? "active" : ""
+          }`}
+          onClick={handleSidebarElementClick}
+        >
+          <i className="fas fa-shield-alt"></i>
+          <p>Security</p>
         </Link>
         <Link
           to="/donation-history"

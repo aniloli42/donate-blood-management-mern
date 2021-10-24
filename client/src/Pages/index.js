@@ -9,6 +9,7 @@ import ChangePassword from './ChangePassword/ChangePassword'
 import MainComponent from './MainComponent/MainComponent'
 import Dashboard from './Dashboard/Dashboard'
 import Profile from './Profile/Profile'
+import Security from './Security/Security'
 import Requests from './Requests/Requests'
 import DonationHistory from './DonationHistory/DonationHistory'
 import Logout from './Logout/Logout'
@@ -22,6 +23,7 @@ export {
 	MainComponent,
 	Dashboard,
 	Profile,
+	Security,
 	Requests,
 	DonationHistory,
 	Logout
