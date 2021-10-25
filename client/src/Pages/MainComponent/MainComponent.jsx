@@ -11,7 +11,7 @@ import Pages from "../../Helper/Pages"
 
 const MainComponent = () => {
   const { slug } = useParams()
-  const isAuth = false
+  const isAuth = true
 
   return (
     <>
