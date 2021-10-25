@@ -1,10 +1,13 @@
+@import url("https://fonts.googleapis.com/css2?family=Poppins&display=swap");
+
 :root {
   --light: #e9eaec;
   --basecolor: #d9dbdd;
   --textcolor: #333652;
   --btncolor: #004683;
   --header-height: 70px;
-  font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+  /* font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif; */
+  font-family: "Poppins", sans-serif;
 }
 
 * {
