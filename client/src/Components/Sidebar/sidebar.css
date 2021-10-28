@@ -16,10 +16,9 @@
   width: 300px;
   padding: 20px;
   flex-direction: column;
-  background-color: #eee;
+  background-color: var(--sidebar-background);
   margin-top: 1px;
   user-select: none;
-  border-right: 1px solid #ddd;
 }
 
 .sidebar-element {
@@ -29,14 +28,15 @@
   align-items: center;
   background-color: transparent;
   margin: 2px 0px;
-  transition: 0.2s ease-in-out;
+  transition: 0.25s linear;
+  border-left: 3px solid var(--sidebar-background);
 }
 
 .sidebar-element.active,
 .sidebar-element:hover,
 .sidebar-element:focus {
-  background-color: #fff;
-  border-left: 3px solid rgb(91, 91, 138);
+  background-color: var(--dark-blue);
+  border-left: 3px solid var(--sidebar-elements);
 }
 
 .sidebar-element.sidebar-element svg {
@@ -47,11 +47,11 @@
 .sidebar-element svg path {
   width: 20px;
   height: 20px;
-  fill: rgb(91, 91, 138);
+  fill: var(--sidebar-elements);
 }
 
 .sidebar-element p {
-  color: rgb(91, 91, 138);
+  color: var(--sidebar-elements);
   font-size: 1.1em;
 }
 

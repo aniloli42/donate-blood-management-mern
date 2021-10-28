@@ -1,31 +1,33 @@
 .card {
-	display: grid;
-	margin-block: 10px;
-	grid-template-areas:
-		'badge heading'
-		'badge sub';
+  display: grid;
+  margin-block: 10px;
+  grid-template-areas:
+    "badge heading"
+    "badge sub";
 
-	grid-template-columns: max-content auto;
-	background-color: rgb(216, 215, 215);
-	padding: 1.2em;
+  grid-template-columns: max-content auto;
+  background-color: var(--card-background);
+  padding: 1.2em;
 }
 
 .card .badge {
-	grid-area: badge;
-	margin-inline-end: 1em;
-	width: 50px;
-	background-color: #ed6a5a;
+  grid-area: badge;
+  margin-inline-end: 1em;
+  width: 50px;
+  background-color: var(--light-red);
 }
 
 .card p {
-	font-size: clamp(1.4em, 1.2em + 10vw, 2em);
-	font-weight: bold;
+  font-size: clamp(1.4em, 1.2em + 10vw, 2em);
+  font-weight: bold;
+  color: var(--text-light);
 }
 
 .card h3 {
-	grid-area: heading;
+  grid-area: heading;
+  color: var(--text-gray);
 }
 
 .card p {
-	grid-area: sub;
+  grid-area: sub;
 }

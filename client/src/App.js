@@ -1,12 +1,13 @@
 import React from "react"
 import { Route, Switch, Redirect } from "react-router-dom"
 import "./Styles/App.css"
-import "./Styles/Utility.css"
 import { Signup, Login, Forget, MainComponent } from "./Pages"
 
 // import { loginValidation } from './Validation'
 import NotFound from "./Components/NotFound/NotFound"
 import { useSelector } from "react-redux"
+import OTP from "./Pages/OTP/OTP"
+import ChangePassword from "./Pages/ChangePassword/ChangePassword"
 
 function App() {
   /* 	const getLoginResult = loginValidation() // loginValidation Return an Object: {status: boolean} if(login) {status:true, profile} else { status: false } */
@@ -29,6 +30,14 @@ function App() {
 
         <Route exact path="/signup">
           {isAuth ? <Redirect to="/" /> : <Signup />}
+        </Route>
+
+        <Route exact path="/verify-otp">
+          {isAuth ? <Redirect to="/" /> : <OTP />}
+        </Route>
+
+        <Route exact path="/change-password">
+          {isAuth ? <Redirect to="/" /> : <ChangePassword />}
         </Route>
 
         <Route exact path="/forget-password">

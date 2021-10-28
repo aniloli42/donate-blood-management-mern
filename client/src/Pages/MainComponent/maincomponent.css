@@ -6,7 +6,8 @@
 
 /* title of the section */
 .main-component > h2 {
-  color: var(--btncolor);
+  color: var(--light);
+  font-weight: bold;
   font-size: clamp(20px, 1em + 10vw, 2em);
   margin-block-end: 1em;
 }

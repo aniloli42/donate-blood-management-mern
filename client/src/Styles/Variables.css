@@ -1,0 +1,33 @@
+:root {
+  --header-height: 70px;
+
+  /* project colors */
+  --light-dark-blue: #333544;
+  --dark-blue: #1f1f2b;
+  --light-blue: #46485c;
+  --light-gray: #92a8bb;
+  --light-red: #ff7979;
+  --red: F10000;
+  --light: #fff;
+
+  /* specific ui colors */
+  --background: var(--light-dark-blue);
+
+  /* text */
+  --text-light: var(--light);
+  --text-gray: var(--light-gray);
+  --text-dark: var(--light-blue);
+
+  /* sidebar */
+  --sidebar-background: var(--light-blue);
+  --sidebar-elements: var(--light-gray);
+  --sidebar-element-hover: var(--dark-blue);
+
+  /* cards */
+  --card-background: var(--light-blue);
+  --card-button-background: var(--dark-blue);
+  --card-button-hover: var(--light-dark-blue);
+
+  /* recent requests */
+  --card-special-background: #414356;
+}

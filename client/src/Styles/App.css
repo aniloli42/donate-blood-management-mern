@@ -1,27 +1,17 @@
 @import url("https://fonts.googleapis.com/css2?family=Poppins&display=swap");
 
-:root {
-  --light: #e9eaec;
-  --basecolor: #d9dbdd;
-  --textcolor: #333652;
-  --btncolor: #004683;
-  --header-height: 70px;
-  /* font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif; */
-  font-family: "Poppins", sans-serif;
-}
+@import url("./Variables.css");
+@import url("./Utility.css");
 
 * {
   margin: 0;
   padding: 0;
   box-sizing: border-box;
+  font-family: "Poppins", sans-serif;
 }
 
 :focus {
   outline: none;
-}
-
-.container {
-  background-color: #eee;
 }
 
 img {
@@ -41,10 +31,6 @@ button {
   cursor: pointer;
 }
 
-body {
-  background-color: var(--light);
-}
-
 #root {
   display: flex;
   position: absolute;
@@ -52,7 +38,8 @@ body {
   width: 100%;
   min-height: 100vh;
   min-height: -webkit-fill-available;
-  background-color: var(--light);
+
+  background-color: var(--background);
 }
 
 @media (min-width: 1200px) {

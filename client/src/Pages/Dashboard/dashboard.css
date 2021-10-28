@@ -5,12 +5,10 @@
 */
 
 .small-cards {
-	width: 100%;
-	margin-block: 2em;
-	gap: 10px;
+  width: 100%;
+  margin-block: 2em;
+  gap: 10px;
 }
-
-
 
 /* 
  
@@ -20,49 +18,51 @@ Recent Requests
 
 */
 
-
 /* .recent-container{ */
-	/* padding: min(1.2em,10vw); */
+/* padding: min(1.2em,10vw); */
 /* } */
 
 .recent-container {
-	background-color: rgb(238, 229, 229);
-	box-shadow: 0px 1px 3px rgba(17, 17, 17, 0.363);
+  background-color: var(--card-background);
+  box-shadow: 0px 1px 3px rgba(17, 17, 17, 0.363);
 }
 
-.recent-container header{
-	padding: min(1em,10vw);
-	display: flex;
-	align-items: center;
-	justify-content: space-between;
-	background-color: var(--basecolor);
+.recent-container header {
+  padding: min(1em, 10vw);
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  background-color: var(--dark-blue);
 }
 
-.recent-container header h2{
-	font-size: min(1em + 0.5vw,10vw);
+.recent-container header h2 {
+  font-size: min(1em + 0.5vw, 10vw);
+  color: var(--text-light);
 }
 
-.recent-contents{
-	padding: min(.4em,1vw);
+.recent-contents {
+  padding: min(0.4em, 1vw);
+}
+
+.view-all-action-button {
+  color: var(--text-light);
 }
 
 .view-all-action-button:hover,
-.view-all-action-button:focus{
-
-	text-decoration: underline;
+.view-all-action-button:focus {
+  text-decoration: underline;
 }
 
 @media (min-width: 900px) {
-	.small-cards {
-		display: grid;
-		grid-template-columns: repeat(2, 1fr);
-	}
+  .small-cards {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+  }
 }
 
 @media (min-width: 1500px) {
-	.small-cards {
-		display: grid;
-		grid-template-columns: repeat(4, 1fr);
-	}
+  .small-cards {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+  }
 }
-
