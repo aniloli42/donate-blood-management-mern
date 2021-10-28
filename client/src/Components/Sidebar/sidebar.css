@@ -55,6 +55,12 @@
   font-size: 1.1em;
 }
 
+.sidebar-element.active p,
+.sidebar-element:hover p,
+.sidebar-element:focus p {
+  color: var(--text-light);
+}
+
 .sidebar-div.active {
   display: flex;
   opacity: 1;

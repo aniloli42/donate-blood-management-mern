@@ -13,7 +13,7 @@
 }
 
 .input-group label {
-  color: #999;
+  color: var(--text-gray);
 }
 
 .input-group input,

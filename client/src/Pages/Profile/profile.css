@@ -15,7 +15,7 @@
   bottom: 0;
   width: 100%;
   padding: 0.6em 0.8em;
-  background-color: #3534349f;
+  background-color: var(--image-button);
   color: #fff;
   font-weight: bold;
   font-size: 1.1rem;
@@ -26,12 +26,13 @@
 
 .profile-image-updater:hover,
 .profile-image-updater:focus {
-  background-color: #333333dc;
+  background-color: var(--image-button-hover);
 }
 
 .input-group p {
   font-size: 1.4rem;
   font-weight: 500;
+  color: var(--text-light);
 }
 
 .input-buttons {
@@ -43,25 +44,25 @@
 
 .profile-update,
 .profile-edit {
-  background-color: rgb(53, 158, 79);
+  background-color: var(--button-background);
 }
 
 .profile-update:hover,
 .profile-update:focus,
 .profile-edit:hover,
 .profile-edit:focus {
-  background-color: rgb(47, 145, 71);
+  background-color: var(--button-hover);
 }
 
 .cancel-update {
   background-color: transparent;
-  color: var(--btncolor);
+  color: var(--text-gray);
 }
 
 .cancel-update:hover,
 .cancel-update:focus {
   background: unset;
-  color: rgb(142, 142, 189);
+  color: var(--light-red);
 }
 
 @media (min-width: 900px) {

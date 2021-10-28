@@ -18,6 +18,11 @@
   --text-gray: var(--light-gray);
   --text-dark: var(--light-blue);
 
+  /* button */
+  --button-background: var(--light-blue);
+  --button-red-background: var(--light-red);
+  --button-hover: var(--dark-blue);
+
   /* sidebar */
   --sidebar-background: var(--light-blue);
   --sidebar-elements: var(--light-gray);
@@ -30,4 +35,8 @@
 
   /* recent requests */
   --card-special-background: #414356;
+
+  /* image update button */
+  --image-button: #3534349f;
+  --image-button-hover: #333333dc;
 }
