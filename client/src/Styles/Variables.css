@@ -7,6 +7,7 @@
   --light-blue: #46485c;
   --light-gray: #92a8bb;
   --light-red: #ff7979;
+  --dark-red: #dc4f4f;
   --red: F10000;
   --light: #fff;
 
@@ -39,4 +40,12 @@
   /* image update button */
   --image-button: #3534349f;
   --image-button-hover: #333333dc;
+
+  /* heading font sizes */
+  --heading1: 2.3rem;
+  --heading2: 2rem;
+  --heading3: 1.4rem;
+  --heading4: 1.1rem;
+  --heading5: 1rem;
+  --heading6: 0.9rem;
 }

@@ -4,6 +4,12 @@
   max-width: 650px;
 }
 
+hr {
+  border: none;
+  background-color: var(--text-gray);
+  height: 1px;
+}
+
 .input-group + .input-group {
   margin-block: 0.8em;
 }
