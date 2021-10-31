@@ -1,0 +1,7 @@
+.popup-content .input-group {
+	margin-block: 0.8rem;
+}
+
+.popup-content input {
+	width: revert;
+}
