@@ -1,0 +1,72 @@
+.main-component header {
+	display: flex;
+	flex-direction: row;
+	width: 100%;
+	margin-bottom: 0.5em;
+	align-items: center;
+}
+
+.main-component header button {
+	margin-left: auto;
+	justify-self: flex-start;
+	align-items: flex-start;
+	border-radius: 0.5rem;
+}
+
+.main-component header > h2 {
+	margin: 0;
+}
+
+.history-container {
+	overflow-x: auto;
+	padding-bottom: 1rem;
+	width: 100%;
+	display: grid;
+	grid-template-columns: repeat(4, 1fr);
+}
+
+.history-table {
+	width: max-content;
+}
+
+.history-header {
+	font-weight: bold;
+	font-size: var(--heading4);
+	--heading4: 1rem;
+}
+
+.history-headers,
+.history-data {
+	grid-column: 1/-1;
+	display: grid;
+	grid-template-columns: repeat(4, 1fr);
+	color: var(--text-light);
+	border-bottom: 1px solid var(--text-gray);
+	padding-block: 0.5em;
+	justify-items: center;
+	text-align: center;
+	justify-content: center;
+	grid-gap: 1rem;
+	position: relative;
+}
+
+.history-data > :first-child,
+.history-headers > :first-child {
+	position: sticky;
+	min-width: 180px;
+	left: 0;
+	background-color: var(--background);
+}
+
+@media (min-width: 600px) {
+	.history-header {
+		--heading4: revert;
+	}
+}
+
+@media (min-width: 820px) {
+	.history-table {
+		width: 100%;
+		grid-column: 1/-1;
+	}
+}
