@@ -12,12 +12,12 @@ import App from "./App"
 const store = createStore(reducers, composeWithDevTools(applyMiddleware(thunk)))
 
 ReactDOM.render(
-  <React.StrictMode>
-    <Provider store={store}>
-      <Router>
-        <App />
-      </Router>
-    </Provider>
-  </React.StrictMode>,
-  document.getElementById("root")
+	<React.StrictMode>
+		<Router>
+			<Provider store={store}>
+				<App />
+			</Provider>
+		</Router>
+	</React.StrictMode>,
+	document.getElementById("root")
 )

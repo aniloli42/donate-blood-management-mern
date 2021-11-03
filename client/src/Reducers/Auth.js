@@ -1,13 +1,14 @@
-const reducer = (state = {}, action) => {
+const Auth = (state = null, action) => {
 	switch (action.type) {
 		case "LOGIN":
-			return state
-		case "VERIFY_LOGIN":
-			return state
+			return { ...state, ...action.payload }
+
+		case "LOGOUT":
+			return (state = null)
 
 		default:
 			return state
 	}
 }
 
-export default reducer
+export default Auth

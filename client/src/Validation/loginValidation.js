@@ -1,12 +1,12 @@
 const loginValidation = () => {
-	const getProfile = localStorage.getItem('profile')
+	const getProfile = localStorage.getItem("profile")
 
-	if (getProfile != null) {
-		const profile = JSON.parse(getProfile)
-		return { status: true, profile }
-	}
+	if (getProfile == null) return
+	if (typeof getProfile !== Object) return localStorage.removeItem("profile")
 
-	return { status: false }
+	const profile = JSON.parse(getProfile)
+
+	return profile
 }
 
 export default loginValidation
