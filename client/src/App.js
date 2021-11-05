@@ -26,35 +26,35 @@ function App() {
 	return (
 		<>
 			<Switch>
-				<Route exact path="/">
+				<Route exact path='/'>
 					<MainComponent />
 				</Route>
 
-				<Route exact path="/login">
+				<Route exact path='/login'>
 					<Login />
 				</Route>
 
-				<Route exact path="/signup">
+				<Route exact path='/signup'>
 					<Signup />
 				</Route>
 
-				<Route exact path="/verify-otp">
+				<Route exact path='/verify-otp'>
 					<OTP />
 				</Route>
 
-				<Route exact path="/change-password">
+				<Route exact path='/change-password'>
 					<ChangePassword />
 				</Route>
 
-				<Route exact path="/forget-password">
+				<Route exact path='/forget-password'>
 					<Forget />
 				</Route>
 
-				<Route exact path="/page-not-found">
+				<Route exact path='/page-not-found'>
 					<NotFound />
 				</Route>
 
-				<Route exact path="/:slug">
+				<Route exact path='/:slug'>
 					<MainComponent />
 				</Route>
 			</Switch>
