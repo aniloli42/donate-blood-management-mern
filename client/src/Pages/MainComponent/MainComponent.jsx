@@ -1,37 +1,47 @@
-import React from "react"
+import React, { useEffect } from "react"
 import "./maincomponent.css"
-import { Route, Switch, Redirect /* useParams */ } from "react-router-dom"
+import { Route, Switch, useHistory } from "react-router-dom"
 import { Header } from "../../Components"
 import Dashboard from "./../Dashboard/Dashboard"
 import Profile from "./../Profile/Profile"
 import Security from "./../Security/Security"
 import DonationHistory from "./../DonationHistory/DonationHistory"
 import Requests from "./../Requests/Requests"
-// import Pages from "../../Helper/Pages"
 
-import { useSelector } from "react-redux"
+import { useDispatch } from "react-redux"
+import { logout } from "./../../Actions/Auth"
 
 const MainComponent = () => {
-	const isAuth = useSelector((state) => state.Auth)
-	// const { slug } = useParams()
+	const dispatch = useDispatch()
+	const history = useHistory()
+
+	useEffect(() => {
+		const profile = localStorage.getItem("profile")
+
+		if (!profile) {
+			return dispatch(logout(history))
+		}
+
+		if (typeof profile !== "string") {
+			return dispatch(logout(history))
+		}
+	}, [dispatch, history])
 
 	return (
 		<>
-			{/* {Pages(slug) === false && <Redirect to="/page-not-found" />} */}
-			{!isAuth && <Redirect to="/" />}
 			<Header />
-			<div className="main-component">
+			<div className='main-component'>
 				<Switch>
-					<Route exact path="/" component={Dashboard} />
-					<Route exact key="profile" path="/profile" component={Profile} />
-					<Route exact key="security" path="/security" component={Security} />
+					<Route exact path='/' component={Dashboard} />
+					<Route exact key='profile' path='/profile' component={Profile} />
+					<Route exact key='security' path='/security' component={Security} />
 					<Route
 						exact
-						key="donation-history"
-						path="/donation-history"
+						key='donation-history'
+						path='/donation-history'
 						component={DonationHistory}
 					/>
-					<Route exact key="requests" path="/requests" component={Requests} />
+					<Route exact key='requests' path='/requests' component={Requests} />
 				</Switch>
 			</div>
 		</>

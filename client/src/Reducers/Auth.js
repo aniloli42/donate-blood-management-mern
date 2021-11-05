@@ -1,10 +1,10 @@
-const Auth = (state = null, action) => {
+const Auth = (state = { Auth: false }, action) => {
 	switch (action.type) {
 		case "LOGIN":
-			return { ...state, ...action.payload }
+			return { ...state, Auth: true, profile: action.payload }
 
 		case "LOGOUT":
-			return (state = null)
+			return { Auth: false, profile: null }
 
 		default:
 			return state

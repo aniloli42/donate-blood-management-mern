@@ -9,16 +9,14 @@
 ::-webkit-scrollbar-track {
 	background: var(--text-light);
 	margin-block: 0.3rem;
-	border-top-left-radius: 10px;
-	border-bottom-right-radius: 10px;
+	border-radius: 4px;
 	margin-inline: 1rem;
 }
 
 /* Handle */
 ::-webkit-scrollbar-thumb {
 	margin-inline: 1rem;
-	border-top-left-radius: 10px;
-	border-bottom-right-radius: 10px;
+	border-radius: 4px;
 
 	background: var(--text-gray);
 }

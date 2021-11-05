@@ -4,11 +4,14 @@ import show from "../../Assets/Images/eye.svg"
 import hide from "../../Assets/Images/eye-off.svg"
 import { Link } from "react-router-dom"
 import { login } from "./../../Actions/Auth"
+
 import { useDispatch } from "react-redux"
+import { useHistory } from "react-router-dom"
 
 let inputData = { email: "", password: "" }
 
 const Login = () => {
+	const history = useHistory()
 	const dispatch = useDispatch()
 	const [formData, setformData] = useState(inputData)
 
@@ -35,68 +38,68 @@ const Login = () => {
 	const handleLogin = (e) => {
 		e.preventDefault()
 		console.log("cl")
-		dispatch(login())
+		dispatch(login(history))
 	}
 
 	return (
-		<div className="user-entry">
+		<div className='user-entry'>
 			{/* Brand Showcase */}
 
-			<div className="brand-showcase">
+			<div className='brand-showcase'>
 				{/* Brand Logo */}
-				<div className="brand-logo">
-					<img src={logo} alt="" />
+				<div className='brand-logo'>
+					<img src={logo} alt='' />
 					<h1>DONATE</h1>
 				</div>
-				<p className="brand-slogon">
+				<p className='brand-slogon'>
 					Every drop of blood matters, if you can save life
 				</p>
 			</div>
-			<div className="entry-form-div">
-				<form className="entry-form">
+			<div className='entry-form-div'>
+				<form className='entry-form'>
 					<h2>Login</h2>
-					<div className="entry-elements">
-						<label htmlFor="email">Email</label>
+					<div className='entry-elements'>
+						<label htmlFor='email'>Email</label>
 						<input
-							type="text"
-							name="email"
+							type='text'
+							name='email'
 							onChange={updateFormData}
 							value={formData.email}
-							id="email"
-							autoComplete="off"
+							id='email'
+							autoComplete='off'
 						/>
 					</div>
-					<div className="entry-elements">
-						<label htmlFor="password">Password</label>
-						<div className="group-entry-element">
+					<div className='entry-elements'>
+						<label htmlFor='password'>Password</label>
+						<div className='group-entry-element'>
 							<input
-								type="password"
-								name="password"
+								type='password'
+								name='password'
 								onChange={updateFormData}
 								ref={password}
-								id="password"
+								id='password'
 								value={formData.password}
-								autoComplete="off"
+								autoComplete='off'
 							/>
 							<img
 								src={show}
-								alt="show hide icon"
+								alt='show hide icon'
 								onClick={changePasswordType}
 							/>
 						</div>
 					</div>
 
-					<div className="entry-button">
-						<button type="submit" onClick={handleLogin}>
+					<div className='entry-button'>
+						<button type='submit' onClick={handleLogin}>
 							LOGIN
 						</button>
-						<Link to="/forget-password">Forget Password?</Link>
+						<Link to='/forget-password'>Forget Password?</Link>
 					</div>
 				</form>
 
-				<div className="entry-message">
+				<div className='entry-message'>
 					<p>Don't have an account?</p>
-					<Link to="/signup">Click Here</Link>
+					<Link to='/signup'>Click Here</Link>
 				</div>
 			</div>
 		</div>

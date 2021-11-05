@@ -1,28 +1,13 @@
-import React, { useEffect, useState } from "react"
-import { Route, Switch, useHistory } from "react-router-dom"
-import { useDispatch } from "react-redux"
+import React from "react"
+import { Route, Switch } from "react-router-dom"
 import "./Styles/App.css"
 
 import { Signup, Login, Forget, MainComponent } from "./Pages"
 import NotFound from "./Components/NotFound/NotFound"
 import OTP from "./Pages/OTP/OTP"
 import ChangePassword from "./Pages/ChangePassword/ChangePassword"
-import { login } from "./Actions/Auth"
 
 function App() {
-	const dispatch = useDispatch()
-	const history = useHistory()
-	const [isAuth, setIsAuth] = useState(localStorage.getItem("profile"))
-
-	useEffect(() => {
-		console.log(isAuth)
-		if (isAuth === null) return history.push("/login")
-
-		dispatch(login(history))
-
-		// eslint-disable-next-line
-	}, [dispatch, isAuth])
-
 	return (
 		<>
 			<Switch>
