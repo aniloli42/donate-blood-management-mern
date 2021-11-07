@@ -22,7 +22,8 @@
 }
 
 .brand-logo h1 {
-	color: red;
+	color: var(--text-light);
+	font-weight: bold;
 	font-size: 2.5em;
 }
 
@@ -30,6 +31,7 @@
 	margin-top: 20px;
 	font-size: 18px;
 	text-align: center;
+	color: var(--text-gray);
 }
 
 .entry-form-div {
@@ -43,7 +45,7 @@
 	margin-top: 40px;
 	display: block;
 	width: 100%;
-	background-color: var(--basecolor);
+	background-color: var(--dark-blue);
 	padding: 40px 20px;
 	border-radius: 10px;
 	box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.4);
@@ -51,7 +53,7 @@
 
 .entry-form h2 {
 	text-align: center;
-	color: var(--textcolor);
+	color: var(--text-light);
 	margin-bottom: 20px;
 }
 
@@ -62,26 +64,30 @@
 	margin: 15px 0;
 }
 
-.entry-elements :is(input[type='text'], input[type='password'], select) {
+.entry-elements label {
+	color: var(--text-light);
+}
+
+.entry-elements :is(input[type="text"], input[type="password"], select) {
 	height: 40px;
 	outline: none;
-	border: 1px solid #666;
-	background-color: #fff;
+	background-color: var(--light-blue);
 	border-radius: 5px;
 	font-size: 0.91em;
 	padding: 0px 10px;
+	border: none;
+	color: var(--text-light);
 }
 
 .group-entry-element {
 	display: flex;
 	align-items: center;
-	background-color: #fff;
+	background-color: var(--light-blue);
 	border-radius: 5px;
 	padding-right: 10px;
-	border: 1px solid #666;
 }
 
-.group-entry-element :is(input[type='text'], input[type='password']) {
+.group-entry-element :is(input[type="text"], input[type="password"]) {
 	width: 100%;
 	border: none;
 }
@@ -105,12 +111,17 @@
 	border-radius: 5px;
 	border: none;
 	margin-right: 20px;
-	background-color: var(--btncolor);
-	color: #fff;
+	background-color: var(--text-light);
+	color: var(--dark-blue);
+}
+
+.entry-button button:hover {
+	background-color: var(--button-background);
+	color: var(--text-light);
 }
 
 .entry-button a {
-	color: var(--btncolor);
+	color: var(--text-gray);
 	font-size: 14px;
 }
 
@@ -118,13 +129,19 @@
 	margin-top: 20px;
 	display: flex;
 	font-size: 15px;
+	color: var(--text-light);
 	justify-content: center;
 	flex-wrap: wrap;
 }
 
 .entry-message a {
 	margin-left: 5px;
-	color: var(--btncolor);
+	color: var(--text-gray);
+}
+
+.entry-message a:hover,
+.entry-button a:hover {
+	color: var(--text-light);
 }
 
 @media (min-width: 480px) {

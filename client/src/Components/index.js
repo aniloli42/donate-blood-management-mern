@@ -1,8 +1,7 @@
-import Header from './Header/Header'
-import Sidebar from './Sidebar/sidebar'
-import Hamburger from './Hamburger/Hamburger'
-import RecentRequest from "./RecentRequests/RecentRequest"
-import Badge from "./Badge/Badge"
-import ImportantMessage from "./ImportantMessage/ImportantMessage"
-
-export { Header, Sidebar, Hamburger, RecentRequest, Badge, ImportantMessage }
+export { default as Header } from "./Header/Header"
+export { default as Sidebar } from "./Sidebar/sidebar"
+export { default as Hamburger } from "./Hamburger/Hamburger"
+export { default as RecentRequest } from "./RecentRequests/RecentRequest"
+export { default as Badge } from "./Badge/Badge"
+export { default as ImportantMessage } from "./ImportantMessage/ImportantMessage"
+export { default as MessageCard } from "./MessageCard/MessageCard"

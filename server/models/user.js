@@ -9,6 +9,10 @@ const Schema = moongoose.Schema({
 		type: String,
 		required: true,
 	},
+	bloodType: {
+		type: String,
+		required: true,
+	},
 	temporaryAddress: {
 		type: String,
 		required: true,

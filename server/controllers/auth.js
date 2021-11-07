@@ -32,7 +32,14 @@ const login = async (req, res) => {
 }
 
 const signup = async (req, res) => {
-	const { name, email, temporaryAddress, permanentAddress, password } = req.body
+	const {
+		name,
+		email,
+		bloodType,
+		temporaryAddress,
+		permanentAddress,
+		password,
+	} = req.body
 
 	try {
 		const user = await User.findOne({ email })
@@ -46,6 +53,7 @@ const signup = async (req, res) => {
 		const newUser = new User({
 			name,
 			email,
+			bloodType,
 			temporaryAddress,
 			permanentAddress,
 			password: hashedPassword,
