@@ -1,4 +1,4 @@
-import React, { useEffect, useRef } from "react"
+import React, { useEffect, useRef, useCallback } from "react"
 import "./messagecard.css"
 
 import { useDispatch, useSelector } from "react-redux"
@@ -9,18 +9,25 @@ const MessageCard = () => {
 	const dispatch = useDispatch()
 	const { message, status } = useSelector((state) => state.Message)
 
+	const fadeOut = useCallback(() => {
+		messageDiv.current.style.bottom = `0px`
+		messageDiv.current.style.opacity = "0"
+		setTimeout(() => {
+			messageDiv.current.style.display = `none`
+			dispatch(clearMessage())
+		}, 600)
+	}, [dispatch])
+
 	useEffect(() => {
 		if (message === null) return
 		fadein()
 
-		if (status === true) {
+		if (status) {
 			setTimeout(() => {
 				fadeOut()
-			}, 1500)
+			}, 2000)
 		}
-
-		// eslint-disable-next-line
-	}, [status, dispatch, message])
+	}, [status, dispatch, message, fadeOut])
 
 	const fadein = () => {
 		messageDiv.current.style.display = "grid"
@@ -31,22 +38,14 @@ const MessageCard = () => {
 		}, 600)
 	}
 
-	const fadeOut = () => {
-		messageDiv.current.style.bottom = `0px`
-		messageDiv.current.style.opacity = "0"
-		setTimeout(() => {
-			messageDiv.current.style.display = `none`
-
-			dispatch(clearMessage())
-		}, 600)
-	}
-
 	return (
 		<div className='message-container' ref={messageDiv}>
 			<p className='message-div-text'>{message}</p>
-			<button className='message-button-dismiss' onClick={fadeOut}>
-				<i className='fas fa-times-circle fa-lg'></i>
-			</button>
+			{!status && (
+				<button className='message-button-dismiss' onClick={fadeOut}>
+					<i className='fas fa-times-circle fa-lg'></i>
+				</button>
+			)}
 		</div>
 	)
 }

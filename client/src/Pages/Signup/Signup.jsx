@@ -7,8 +7,16 @@ import { Link, useHistory } from "react-router-dom"
 import { useDispatch } from "react-redux"
 
 import { signup } from "./../../Actions/Auth"
+import {
+	emailValidation,
+	nameValidation,
+	passwordValidation,
+	stringValidation,
+} from "../../Validation"
 
-let inputData = {
+import { displayMessage } from "../../Actions/Message"
+
+const inputData = {
 	name: "",
 	email: "",
 	bloodType: "O+",
@@ -45,7 +53,36 @@ const Signup = () => {
 	const handleSignup = (e) => {
 		e?.preventDefault()
 
-		dispatch(signup(formData, history))
+		if (
+			formData.name === "" ||
+			formData.email === "" ||
+			formData.password === "" ||
+			formData.temporaryAddress === "" ||
+			formData.permanentAddress === ""
+		) {
+			return dispatch(displayMessage("All fields are required", true))
+		}
+
+		if (!nameValidation(formData.name)) {
+			return dispatch(displayMessage("Name is not valid", true))
+		}
+
+		if (!stringValidation(formData.temporaryAddress))
+			return dispatch(displayMessage("Invalid Temporary Address", true))
+
+		if (!stringValidation(formData.permanentAddress))
+			return dispatch(displayMessage("Invalid Permanent Address", true))
+
+		if (!emailValidation(formData.email)) {
+			return dispatch(displayMessage("Invalid Email", true))
+		}
+
+		const isValidPassword = passwordValidation(formData.password)
+
+		if (!isValidPassword.status)
+			return dispatch(displayMessage(isValidPassword.message, true))
+
+		return dispatch(signup(formData, history))
 	}
 
 	return (

@@ -38,9 +38,11 @@ export const signup = (formdata, history) => async (dispatch) => {
 			history.push("/")
 		}, 2000)
 	} catch (error) {
-		const message = error.response.data.message
+		const message = error?.response?.data?.message
 
-		dispatch(displayMessage(message))
+		message === undefined
+			? dispatch(displayMessage("Error Not Identify"))
+			: dispatch(displayMessage(message))
 	}
 }
 

@@ -1,4 +1,5 @@
-import emailValidation from './emailValidation'
-import loginValidation from './loginValidation'
-
-export { emailValidation, loginValidation }
+export { default as emailValidation } from "./emailValidation"
+export { default as loginValidation } from "./loginValidation"
+export { default as nameValidation } from "./nameValidation"
+export { default as passwordValidation } from "./passwordValidation"
+export { default as stringValidation } from "./stringValidation"
