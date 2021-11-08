@@ -1,20 +1,25 @@
-import React, { useRef, useState, useEffect } from "react"
+import React, { useRef, useState } from "react"
 import "./signup.css"
 import logo from "../../Assets/Images/blood.svg"
 import show from "../../Assets/Images/eye.svg"
 import hide from "../../Assets/Images/eye-off.svg"
-import { Link } from "react-router-dom"
+import { Link, useHistory } from "react-router-dom"
+import { useDispatch } from "react-redux"
+
+import { signup } from "./../../Actions/Auth"
 
 let inputData = {
 	name: "",
 	email: "",
-	bloodtype: "O+",
-	temporaryaddress: "",
-	permanentaddress: "",
+	bloodType: "O+",
+	temporaryAddress: "",
+	permanentAddress: "",
 	password: "",
 }
 
-const Login = () => {
+const Signup = () => {
+	const dispatch = useDispatch()
+	const history = useHistory()
 	const [formData, setformData] = useState(inputData)
 
 	const updateFormData = (e) => {
@@ -22,10 +27,6 @@ const Login = () => {
 			return { ...prevformData, [e.target.name]: e.target.value }
 		})
 	}
-
-	useEffect(() => {
-		console.log(formData)
-	}, [formData])
 
 	const password = useRef(null)
 
@@ -39,6 +40,12 @@ const Login = () => {
 		e.target.src = show
 		password.current.type = "password"
 		return
+	}
+
+	const handleSignup = (e) => {
+		e?.preventDefault()
+
+		dispatch(signup(formData, history))
 	}
 
 	return (
@@ -71,11 +78,11 @@ const Login = () => {
 					</div>
 
 					<div className='entry-elements'>
-						<label htmlFor='bloodtype'>Blood Type</label>
+						<label htmlFor='bloodType'>Blood Type</label>
 						<select
-							name='bloodtype'
-							id='bloodtype'
-							value={formData.bloodtype}
+							name='bloodType'
+							id='bloodType'
+							value={formData.bloodType}
 							onChange={updateFormData}
 						>
 							<option value='O+'>O+</option>
@@ -90,25 +97,25 @@ const Login = () => {
 					</div>
 
 					<div className='entry-elements'>
-						<label htmlFor='temporaryaddress'>Temporary Address</label>
+						<label htmlFor='temporaryAddress'>Temporary Address</label>
 						<input
 							type='text'
-							name='temporaryaddress'
-							id='temporaryaddress'
+							name='temporaryAddress'
+							id='temporaryAddress'
 							autoComplete='off'
-							value={formData.temporaryaddress}
+							value={formData.temporaryAddress}
 							onChange={updateFormData}
 						/>
 					</div>
 
 					<div className='entry-elements'>
-						<label htmlFor='permanentaddress'>Permanent Address</label>
+						<label htmlFor='permanentAddress'>Permanent Address</label>
 						<input
 							type='text'
-							name='permanentaddress'
-							id='permanentaddress'
+							name='permanentAddress'
+							id='permanentAddress'
 							autoComplete='off'
-							value={formData.permanentaddress}
+							value={formData.permanentAddress}
 							onChange={updateFormData}
 						/>
 					</div>
@@ -145,7 +152,9 @@ const Login = () => {
 					</div>
 
 					<div className='entry-button'>
-						<button type='submit'>REGISTER</button>
+						<button type='submit' onClick={handleSignup}>
+							REGISTER
+						</button>
 					</div>
 				</form>
 
@@ -158,4 +167,4 @@ const Login = () => {
 	)
 }
 
-export default Login
+export default Signup

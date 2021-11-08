@@ -22,67 +22,66 @@ const Sidebar = () => {
 	}, [])
 
 	const handleLogout = () => {
-		handleSidebarElementClick()
 		dispatch(logout(history))
 	}
 
 	return (
 		<div
-			className="sidebar-div backlayer"
-			id="sidebar"
+			className='sidebar-div backlayer'
+			id='sidebar'
 			onClick={handleSidebarElementClick}
 		>
-			<div className="sidebar-content">
+			<div className='sidebar-content'>
 				<Link
-					to="/"
+					to='/'
 					className={`sidebar-element ${location === "" ? "active" : ""}`}
 					onClick={handleSidebarElementClick}
 				>
-					<i className="fas fa-home"></i>
+					<i className='fas fa-home'></i>
 					<p>Dashboard</p>
 				</Link>
 				<Link
-					to="/profile"
+					to='/profile'
 					className={`sidebar-element ${
 						location === "profile" ? "active" : ""
 					}`}
 					onClick={handleSidebarElementClick}
 				>
-					<i className="fas fa-id-badge"></i>
+					<i className='fas fa-id-badge'></i>
 					<p>Profile</p>
 				</Link>
 				<Link
-					to="/security"
+					to='/security'
 					className={`sidebar-element ${
 						location === "security" ? "active" : ""
 					}`}
 					onClick={handleSidebarElementClick}
 				>
-					<i className="fas fa-shield-alt"></i>
+					<i className='fas fa-shield-alt'></i>
 					<p>Security</p>
 				</Link>
 				<Link
-					to="/donation-history"
+					to='/donation-history'
 					className={`sidebar-element ${
 						location === "donation-history" ? "active" : ""
 					}`}
 					onClick={handleSidebarElementClick}
 				>
-					<i className="fas fa-hands-helping"></i>
+					<i className='fas fa-hands-helping'></i>
 					<p>Donation History</p>
 				</Link>
 				<Link
-					to="/requests"
+					to='/requests'
 					className={`sidebar-element ${
 						location === "requests" ? "active" : ""
 					}`}
 					onClick={handleSidebarElementClick}
 				>
-					<i className="fas fa-hand-holding-medical"></i>
+					<i className='fas fa-hand-holding-medical'></i>
 					<p>Requests</p>
 				</Link>
-				<div className="sidebar-element" onClick={handleLogout}>
-					<i className="fas fa-sign-out-alt"></i>
+				<div className='sidebar-element' onClick={handleLogout}>
+					<i className='fas fa-sign-out-alt'></i>
 					<p>Logout</p>
 				</div>
 			</div>

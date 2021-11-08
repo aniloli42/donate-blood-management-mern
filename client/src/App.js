@@ -1,4 +1,4 @@
-import React, { useState } from "react"
+import React from "react"
 import { Route, Switch } from "react-router-dom"
 import "./Styles/App.css"
 
@@ -9,16 +9,9 @@ import ChangePassword from "./Pages/ChangePassword/ChangePassword"
 import { MessageCard } from "./Components"
 
 function App() {
-	const [isShowMessage, setIsShowMessage] = useState(true)
-
-	const toggleMessage = (e) => {
-		e?.preventDefault()
-		setIsShowMessage((prevShowMessage) => !prevShowMessage)
-	}
-
 	return (
 		<>
-			{isShowMessage && <MessageCard toggleMessage={toggleMessage} />}
+			<MessageCard />
 			<Switch>
 				<Route exact path='/'>
 					<MainComponent />
