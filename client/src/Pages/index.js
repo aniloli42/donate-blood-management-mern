@@ -1,30 +1,14 @@
 // Before Login
-import Signup from './Signup/Signup'
-import Login from './Login/Login'
-import Forget from './ForgetPassword/Forget.jsx'
-import OTP from './OTP/OTP'
-import ChangePassword from './ChangePassword/ChangePassword'
+export { default as Signup } from "./Signup/Signup"
+export { default as Login } from "./Login/Login"
+export { default as Forget } from "./ForgetPassword/Forget.jsx"
+export { default as OTP } from "./OTP/OTP"
+export { default as ChangePassword } from "./ChangePassword/ChangePassword"
 
 // After Login
-import MainComponent from './MainComponent/MainComponent'
-import Dashboard from './Dashboard/Dashboard'
-import Profile from './Profile/Profile'
-import Security from './Security/Security'
-import Requests from './Requests/Requests'
-import DonationHistory from './DonationHistory/DonationHistory'
-import Logout from './Logout/Logout'
-
-export {
-	Login,
-	Signup,
-	Forget,
-	OTP,
-	ChangePassword,
-	MainComponent,
-	Dashboard,
-	Profile,
-	Security,
-	Requests,
-	DonationHistory,
-	Logout
-}
+export { default as MainComponent } from "./MainComponent/MainComponent"
+export { default as Dashboard } from "./Dashboard/Dashboard"
+export { default as Profile } from "./Profile/Profile"
+export { default as Security } from "./Security/Security"
+export { default as Requests } from "./Requests/Requests"
+export { default as DonationHistory } from "./DonationHistory/DonationHistory"
