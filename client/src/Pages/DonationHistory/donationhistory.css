@@ -22,11 +22,11 @@
 	padding-bottom: 1rem;
 	width: 100%;
 	display: grid;
-	grid-template-columns: repeat(4, 1fr);
 }
 
 .history-table {
-	width: max-content;
+	grid-column: 1/-1;
+	min-width: max-content;
 }
 
 .history-header {
@@ -39,7 +39,7 @@
 .history-data {
 	grid-column: 1/-1;
 	display: grid;
-	grid-template-columns: repeat(4, 1fr);
+	grid-template-columns: max-content repeat(2, 1fr) max-content;
 	color: var(--text-light);
 	border-bottom: 1px solid var(--text-gray);
 	padding-block: 0.5em;
