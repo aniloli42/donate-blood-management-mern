@@ -9,6 +9,6 @@
 }
 
 .action-delete:hover,
-.action-delete:focus {
+.action-delete:focus-visible {
 	background-color: var(--dark-red);
 }
