@@ -34,7 +34,7 @@
 
 .sidebar-element.active,
 .sidebar-element:hover,
-.sidebar-element:foucs-visible {
+.sidebar-element:focus {
   background-color: var(--dark-blue);
   border-left: 3px solid var(--sidebar-elements);
 }
@@ -57,7 +57,7 @@
 
 .sidebar-element.active p,
 .sidebar-element:hover p,
-.sidebar-element:foucs-visible p {
+.sidebar-element:focus p {
   color: var(--text-light);
 }
 

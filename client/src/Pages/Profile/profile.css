@@ -25,7 +25,7 @@
 }
 
 .profile-image-updater:hover,
-.profile-image-updater:foucs-visible {
+.profile-image-updater:focus {
   background-color: var(--image-button-hover);
 }
 
@@ -48,9 +48,9 @@
 }
 
 .profile-update:hover,
-.profile-update:foucs-visible,
+.profile-update:focus,
 .profile-edit:hover,
-.profile-edit:foucs-visible {
+.profile-edit:focus {
   background-color: var(--button-hover);
 }
 
@@ -60,7 +60,7 @@
 }
 
 .cancel-update:hover,
-.cancel-update:foucs-visible {
+.cancel-update:focus {
   background: unset;
   color: var(--light-red);
 }

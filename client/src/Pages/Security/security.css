@@ -30,7 +30,7 @@ section button {
 }
 
 section button:hover,
-section button:foucs-visible {
+section button:focus {
 	background-color: var(--button-hover);
 }
 
@@ -59,7 +59,7 @@ section .input-buttons > :last-child {
 }
 
 section .input-buttons > :last-child:hover,
-section .input-buttons > :last-child:foucs-visible {
+section .input-buttons > :last-child:focus {
 	color: var(--light-red);
 }
 

@@ -23,6 +23,6 @@
 }
 
 .important-action:hover,
-.important-action:foucs-visible {
+.important-action:focus {
   background-color: var(--card-button-hover);
 }
