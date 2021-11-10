@@ -7,6 +7,8 @@ import { login } from "./../../Actions/Auth"
 
 import { useDispatch } from "react-redux"
 import { useHistory } from "react-router-dom"
+import { emailValidation, passwordValidation } from "../../Validation"
+import { displayMessage } from "../../Actions/Message"
 
 let inputData = { email: "", password: "" }
 
@@ -37,8 +39,29 @@ const Login = () => {
 
 	const handleLogin = (e) => {
 		e.preventDefault()
-		console.log("cl")
-		dispatch(login(history))
+
+		e?.preventDefault()
+
+		if (
+			formData.name === "" ||
+			formData.email === "" ||
+			formData.password === "" ||
+			formData.temporaryAddress === "" ||
+			formData.permanentAddress === ""
+		) {
+			return dispatch(displayMessage("All fields are required", true))
+		}
+
+		if (!emailValidation(formData.email)) {
+			return dispatch(displayMessage("Invalid Email", true))
+		}
+
+		const isValidPassword = passwordValidation(formData.password)
+
+		if (!isValidPassword.status)
+			return dispatch(displayMessage(isValidPassword.message, true))
+
+		dispatch(login(formData, history))
 	}
 
 	return (

@@ -25,6 +25,14 @@ const MainComponent = () => {
 		if (typeof profile !== "string") {
 			return dispatch(logout(history))
 		}
+
+		dispatch({
+			type: "LOGIN",
+			payload: {
+				profile: JSON.parse(profile),
+				token: localStorage.getItem("token"),
+			},
+		})
 	}, [dispatch, history])
 
 	return (

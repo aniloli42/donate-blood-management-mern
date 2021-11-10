@@ -1,38 +1,20 @@
 import * as api from "./../API/API"
 import { displayMessage } from "./Message"
 
-export const login = (history) => async (dispatch) => {
-	const profile = { name: "Anil Oli" }
-	const token = "aaaa"
-	localStorage.setItem("profile", JSON.stringify(profile))
-	localStorage.setItem("token", token)
-
-	setTimeout(() => {
-		history.push("/")
-	}, 2000)
-
-	dispatch(displayMessage("Login", true))
-
-	return {
-		type: "LOGIN",
-		payload: { profile, token },
-	}
-}
-
-export const signup = (formdata, history) => async (dispatch) => {
+export const login = (formData, history) => async (dispatch) => {
 	try {
-		const { data } = await api.signup(formdata)
-		const { message, token, user } = data
+		const { data } = await api.login(formData)
+		const { message, token, user } = await data
 
 		localStorage.setItem("token", token)
 		localStorage.setItem("profile", JSON.stringify(user))
 
+		dispatch(displayMessage(message, true))
+
 		dispatch({
-			type: "SIGNUP",
+			type: "LOGIN",
 			payload: { user, token },
 		})
-
-		dispatch(displayMessage(message, true))
 
 		setTimeout(() => {
 			history.push("/")
@@ -41,8 +23,35 @@ export const signup = (formdata, history) => async (dispatch) => {
 		const message = error?.response?.data?.message
 
 		message === undefined
-			? dispatch(displayMessage("Error Not Identify"))
-			: dispatch(displayMessage(message))
+			? dispatch(displayMessage("Error Not Handled!"), true)
+			: dispatch(displayMessage(message), true)
+	}
+}
+
+export const signup = (formdata, history) => async (dispatch) => {
+	try {
+		const { data } = await api.signup(formdata)
+		const { message, token, user } = await data
+
+		localStorage.setItem("token", token)
+		localStorage.setItem("profile", JSON.stringify(user))
+
+		dispatch(displayMessage(message, true))
+
+		dispatch({
+			type: "SIGNUP",
+			payload: { user, token },
+		})
+
+		setTimeout(() => {
+			history.push("/")
+		}, 2000)
+	} catch (error) {
+		const message = error?.response?.data?.message
+
+		message === undefined
+			? dispatch(displayMessage("Error Not Handled!"), true)
+			: dispatch(displayMessage(message), true)
 	}
 }
 
