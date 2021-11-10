@@ -41,6 +41,6 @@ hr {
 }
 
 .button:hover,
-.button:focus {
+.button:foucs-visible {
 	background-color: var(--button-hover);
 }

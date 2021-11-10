@@ -52,7 +52,7 @@
 }
 
 .request-view:hover,
-.request-view:focus {
+.request-view:foucs-visible {
   background-color: var(--card-button-hover);
 }
 
