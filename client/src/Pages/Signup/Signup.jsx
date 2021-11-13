@@ -197,7 +197,7 @@ const Signup = () => {
 
 				<div className='entry-message'>
 					<p>Already have account?</p>
-					<Link to='/'>Click Here</Link>
+					<Link to='/login'>Click Here</Link>
 				</div>
 			</div>
 		</div>

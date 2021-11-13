@@ -6,7 +6,7 @@
 
 /* title of the section */
 .main-component > h2,
-.main-component header h2 {
+.main-component > header h2 {
 	color: var(--light);
 	font-weight: bold;
 	margin-block-end: 1em;

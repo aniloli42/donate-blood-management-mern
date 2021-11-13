@@ -1,5 +1,5 @@
 import React from "react"
-import HistoryAction from "../../Components/HistoryAction/HistoryAction"
+import { InputData } from "../../Components"
 import "./donationhistory.css"
 
 const DonationHistory = () => {
@@ -7,149 +7,22 @@ const DonationHistory = () => {
 		<>
 			<header>
 				<h2>Donation history</h2>
-				<button className="button">Add New</button>
+				<button className='button'>Add New</button>
 			</header>
 			<hr />
 
-			<div className="history-container">
-				<div className="history-table">
+			<div className='history-container'>
+				<div className='history-table'>
 					{/* History Headers */}
-					<div className="history-headers">
-						<div className="history-header">Date</div>
-						<div className="history-header">Place</div>
-						<div className="history-header">Remarks</div>
-						<div className="history-header">Actions</div>
+					<div className='history-headers'>
+						<div className='history-header'>Date</div>
+						<div className='history-header'>Place</div>
+						<div className='history-header'>Remarks</div>
+						<div className='history-header'>Actions</div>
 					</div>
 
 					{/* History Data */}
-					<div className="history-data">
-						<div>2078/04/08</div>
-						<div>Lamahi Blood Center</div>
-						<div>-</div>
-						<div>
-							<HistoryAction />
-						</div>
-					</div>
-					<div className="history-data">
-						<div>2078/04/08</div>
-						<div>Lamahi Blood Center</div>
-						<div>-</div>
-						<div>
-							<HistoryAction />
-						</div>
-					</div>
-					<div className="history-data">
-						<div>2078/04/08</div>
-						<div>Lamahi Blood Center</div>
-						<div>-</div>
-						<div>
-							<HistoryAction />
-						</div>
-					</div>
-					<div className="history-data">
-						<div>2078/04/08</div>
-						<div>Lamahi Blood Center</div>
-						<div>-</div>
-						<div>
-							<HistoryAction />
-						</div>
-					</div>
-					<div className="history-data">
-						<div>2078/04/08</div>
-						<div>Lamahi Blood Center</div>
-						<div>-</div>
-						<div>
-							<HistoryAction />
-						</div>
-					</div>
-					<div className="history-data">
-						<div>2078/04/08</div>
-						<div>Lamahi Blood Center</div>
-						<div>-</div>
-						<div>
-							<HistoryAction />
-						</div>
-					</div>
-					<div className="history-data">
-						<div>2078/04/08</div>
-						<div>Lamahi Blood Center</div>
-						<div>-</div>
-						<div>
-							<HistoryAction />
-						</div>
-					</div>
-					<div className="history-data">
-						<div>2078/04/08</div>
-						<div>Lamahi Blood Center</div>
-						<div>-</div>
-						<div>
-							<HistoryAction />
-						</div>
-					</div>
-					<div className="history-data">
-						<div>2078/04/08</div>
-						<div>Lamahi Blood Center</div>
-						<div>-</div>
-						<div>
-							<HistoryAction />
-						</div>
-					</div>
-					<div className="history-data">
-						<div>2078/04/08</div>
-						<div>Lamahi Blood Center</div>
-						<div>-</div>
-						<div>
-							<HistoryAction />
-						</div>
-					</div>
-					<div className="history-data">
-						<div>2078/04/08</div>
-						<div>Lamahi Blood Center</div>
-						<div>-</div>
-						<div>
-							<HistoryAction />
-						</div>
-					</div>
-					<div className="history-data">
-						<div>2078/04/08</div>
-						<div>Lamahi Blood Center</div>
-						<div>-</div>
-						<div>
-							<HistoryAction />
-						</div>
-					</div>
-					<div className="history-data">
-						<div>2078/04/08</div>
-						<div>Lamahi Blood Center</div>
-						<div>-</div>
-						<div>
-							<HistoryAction />
-						</div>
-					</div>
-					<div className="history-data">
-						<div>2078/04/08</div>
-						<div>Lamahi Blood Center</div>
-						<div>-</div>
-						<div>
-							<HistoryAction />
-						</div>
-					</div>
-					<div className="history-data">
-						<div>2078/04/08</div>
-						<div>Lamahi Blood Center</div>
-						<div>-</div>
-						<div>
-							<HistoryAction />
-						</div>
-					</div>
-					<div className="history-data">
-						<div>2078/04/08</div>
-						<div>Lamahi Blood Center</div>
-						<div>-</div>
-						<div>
-							<HistoryAction />
-						</div>
-					</div>
+					<InputData date='2078/2/5' location='gadhawa' remarks='-' id='-' />
 				</div>
 			</div>
 		</>
