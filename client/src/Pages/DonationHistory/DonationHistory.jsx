@@ -1,10 +1,11 @@
 import React from "react"
+import { MainComponent } from ".."
 import { InputData } from "../../Components"
 import "./donationhistory.css"
 
 const DonationHistory = () => {
 	return (
-		<>
+		<MainComponent>
 			<header>
 				<h2>Donation history</h2>
 				<button className='button'>Add New</button>
@@ -25,7 +26,7 @@ const DonationHistory = () => {
 					<InputData date='2078/2/5' location='gadhawa' remarks='-' id='-' />
 				</div>
 			</div>
-		</>
+		</MainComponent>
 	)
 }
 

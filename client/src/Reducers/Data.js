@@ -1,7 +1,7 @@
-const reducer = (state = [], action) => {
+const reducer = (state = {}, action) => {
 	switch (action.type) {
-		case "GET_REQUESTS":
-			return state
+		case "FETCH_DATA":
+			return { ...state, ...action.payload }
 
 		case "GET_OWN_REQUESTS":
 			return state

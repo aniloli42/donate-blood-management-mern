@@ -3,6 +3,7 @@ import defaultProfileImage from "./../../Assets/Images/profile-image.png"
 import "./profile.css"
 
 import { useSelector } from "react-redux"
+import { MainComponent } from ".."
 
 const Profile = () => {
 	const profile = useSelector((state) => state.Auth.profile)
@@ -14,7 +15,7 @@ const Profile = () => {
 	}
 
 	return (
-		<>
+		<MainComponent>
 			{/* section title */}
 			<h2>Profile</h2>
 
@@ -134,7 +135,7 @@ const Profile = () => {
 					</button>
 				)}
 			</div>
-		</>
+		</MainComponent>
 	)
 }
 

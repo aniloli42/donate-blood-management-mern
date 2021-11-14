@@ -1,21 +1,22 @@
 import React, { useEffect } from "react"
 import "./maincomponent.css"
-import { Route, Switch, useHistory } from "react-router-dom"
+import { useHistory } from "react-router-dom"
 import { Header } from "../../Components"
-import Dashboard from "./../Dashboard/Dashboard"
-import Profile from "./../Profile/Profile"
-import Security from "./../Security/Security"
-import DonationHistory from "./../DonationHistory/DonationHistory"
-import Requests from "./../Requests/Requests"
 
 import { useDispatch } from "react-redux"
 import { logout } from "./../../Actions/Auth"
 
-const MainComponent = () => {
+const MainComponent = ({ children }) => {
 	const dispatch = useDispatch()
 	const history = useHistory()
 
 	useEffect(() => {
+		const token = localStorage.getItem("token")
+
+		if (!token) {
+			return dispatch(logout(history))
+		}
+
 		const profile = localStorage.getItem("profile")
 
 		if (!profile) {
@@ -39,18 +40,14 @@ const MainComponent = () => {
 		<>
 			<Header />
 			<div className='main-component'>
-				<Switch>
+				{children}
+				{/* <Switch>
 					<Route exact path='/' component={Dashboard} />
-					<Route exact key='profile' path='/profile' component={Profile} />
-					<Route exact key='security' path='/security' component={Security} />
-					<Route
-						exact
-						key='donation-history'
-						path='/donation-history'
-						component={DonationHistory}
-					/>
-					<Route exact key='requests' path='/requests' component={Requests} />
-				</Switch>
+					<Route exact path='/profile' component={Profile} />
+					<Route exact path='/security' component={Security} />
+					<Route exact path='/donation-history' component={DonationHistory} />
+					<Route exact path='/requests' component={Requests} />
+				</Switch> */}
 			</div>
 		</>
 	)

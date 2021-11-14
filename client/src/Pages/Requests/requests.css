@@ -1,0 +1,13 @@
+section header h2 {
+	font-size: 1.4rem;
+	color: var(--text-light);
+}
+
+section:is(.other-requests, .own-requests) {
+	margin-block: 50px;
+}
+
+.requests-content {
+	height: 255px;
+	overflow: auto;
+}

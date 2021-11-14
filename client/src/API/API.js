@@ -20,3 +20,4 @@ export const updateUser = (formdata, id) =>
 export const deleteUser = (id) => API.delete(`/delete/:${id}`)
 
 // blood management endpoints requests
+export const fetchData = (id) => API.post("/data/fetchData", id)

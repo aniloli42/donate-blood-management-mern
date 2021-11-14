@@ -1,10 +1,11 @@
 import React from "react"
+import { MainComponent } from ".."
 import { RecentRequest } from "../../Components"
 import "./requests.css"
 
 const Requests = () => {
 	return (
-		<>
+		<MainComponent>
 			<h2>Requests</h2>
 			<section className='own-requests'>
 				<header>
@@ -73,7 +74,7 @@ const Requests = () => {
 					/>
 				</div>
 			</section>
-		</>
+		</MainComponent>
 	)
 }
 

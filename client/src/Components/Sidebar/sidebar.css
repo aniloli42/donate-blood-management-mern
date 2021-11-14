@@ -30,6 +30,7 @@
 	margin: 2px 0px;
 	transition: 0.25s linear;
 	border-left: 3px solid var(--sidebar-background);
+	cursor: pointer;
 }
 
 .sidebar-element.active,

@@ -2,7 +2,17 @@ import React from "react"
 import { Route, Switch } from "react-router-dom"
 import "./Styles/App.css"
 
-import { Signup, Login, Forget, MainComponent } from "./Pages"
+import {
+	Signup,
+	Login,
+	Forget,
+	Dashboard,
+	Profile,
+	Security,
+	Requests,
+	DonationHistory,
+} from "./Pages"
+
 import NotFound from "./Components/NotFound/NotFound"
 import OTP from "./Pages/OTP/OTP"
 import ChangePassword from "./Pages/ChangePassword/ChangePassword"
@@ -13,37 +23,19 @@ function App() {
 		<>
 			<MessageCard />
 			<Switch>
-				<Route exact path='/'>
-					<MainComponent />
-				</Route>
+				<Route exact path='/' component={Dashboard} />
+				<Route exact path='/profile' component={Profile} />
+				<Route exact path='/security' component={Security} />
+				<Route exact path='/requests' component={Requests} />
+				<Route exact path='/donation-history' component={DonationHistory} />
 
-				<Route exact path='/login'>
-					<Login />
-				</Route>
+				<Route exact path='/login' component={Login} />
+				<Route exact path='/signup' component={Signup} />
+				<Route exact path='/verify-otp' component={OTP} />
+				<Route exact path='/change-password' component={ChangePassword} />
 
-				<Route exact path='/signup'>
-					<Signup />
-				</Route>
-
-				<Route exact path='/verify-otp'>
-					<OTP />
-				</Route>
-
-				<Route exact path='/change-password'>
-					<ChangePassword />
-				</Route>
-
-				<Route exact path='/forget-password'>
-					<Forget />
-				</Route>
-
-				<Route exact path='/page-not-found'>
-					<NotFound />
-				</Route>
-
-				<Route exact path='/:slug'>
-					<MainComponent />
-				</Route>
+				<Route exact path='/forget-password' component={Forget} />
+				<Route exact path='/page-not-found' component={NotFound} />
 			</Switch>
 		</>
 	)
