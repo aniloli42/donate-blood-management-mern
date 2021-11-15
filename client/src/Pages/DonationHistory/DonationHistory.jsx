@@ -1,6 +1,6 @@
 import React from "react"
 import { MainComponent } from ".."
-import { InputData } from "../../Components"
+import { HistoryCard } from "../../Components"
 import "./donationhistory.css"
 
 const DonationHistory = () => {
@@ -23,7 +23,7 @@ const DonationHistory = () => {
 					</div>
 
 					{/* History Data */}
-					<InputData date='2078/2/5' location='gadhawa' remarks='-' id='-' />
+					<HistoryCard date='2078/2/5' location='gadhawa' remarks='-' id='-' />
 				</div>
 			</div>
 		</MainComponent>

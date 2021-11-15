@@ -1,7 +1,7 @@
 import React from "react"
 import { ButtonGroup } from ".."
 
-const InputData = ({ date, location, remarks, id }) => {
+const HistoryCard = ({ date, location, remarks, id }) => {
 	return (
 		<div className='history-data' id={id ? id : ""}>
 			<div>{date ? date : ""}</div>
@@ -14,4 +14,4 @@ const InputData = ({ date, location, remarks, id }) => {
 	)
 }
 
-export default InputData
+export default HistoryCard
