@@ -1,6 +1,6 @@
 import React from "react"
 import { MainComponent } from ".."
-import { RecentRequest } from "../../Components"
+import { RequestCard } from "../../Components"
 import "./requests.css"
 
 const Requests = () => {
@@ -14,17 +14,19 @@ const Requests = () => {
 				</header>
 				<hr />
 				<div className='requests-content own-requests-content'>
-					<RecentRequest
+					<RequestCard
 						bloodtype={"B+"}
 						address={"Dang"}
 						requestname='Shovit Banjade'
 						id={3}
+						edit
 					/>
-					<RecentRequest
+					<RequestCard
 						bloodtype={"O+"}
 						address={"butwal"}
 						requestname='Sanjay'
 						id={1}
+						edit
 					/>
 				</div>
 			</section>
@@ -36,37 +38,37 @@ const Requests = () => {
 				</header>
 				<hr />
 				<div className='requests-content other-requests-content'>
-					<RecentRequest
+					<RequestCard
 						bloodtype={"O+"}
 						address={"butwal"}
 						requestname='Sanjay'
 						id={1}
 					/>
-					<RecentRequest
+					<RequestCard
 						bloodtype={"B+"}
 						address={"Dang"}
 						requestname='Anil Oli'
 						id={2}
 					/>
-					<RecentRequest
+					<RequestCard
 						bloodtype={"O+"}
 						address={"butwal"}
 						requestname='Sanjay'
 						id={1}
 					/>
-					<RecentRequest
+					<RequestCard
 						bloodtype={"B+"}
 						address={"Dang"}
 						requestname='Anil Oli'
 						id={2}
 					/>
-					<RecentRequest
+					<RequestCard
 						bloodtype={"O+"}
 						address={"butwal"}
 						requestname='Sanjay'
 						id={1}
 					/>
-					<RecentRequest
+					<RequestCard
 						bloodtype={"B+"}
 						address={"Dang"}
 						requestname='Anil Oli'

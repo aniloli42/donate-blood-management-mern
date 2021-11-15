@@ -1,6 +1,6 @@
 import React /* useEffect, useState  */ from "react"
 import { Link } from "react-router-dom"
-import { Badge, RecentRequest } from "../../Components"
+import { Badge, RequestCard } from "../../Components"
 import "./dashboard.css"
 import MainComponent from "../MainComponent/MainComponent"
 
@@ -37,19 +37,19 @@ const Dashboard = () => {
 				</header>
 
 				<div className='recent-contents'>
-					<RecentRequest
+					<RequestCard
 						bloodtype={"O+"}
 						address={"butwal"}
 						requestname='Sanjay'
 						id={1}
 					/>
-					<RecentRequest
+					<RequestCard
 						bloodtype={"B+"}
 						address={"Dang"}
 						requestname='Anil Oli'
 						id={2}
 					/>
-					<RecentRequest
+					<RequestCard
 						bloodtype={"B+"}
 						address={"Dang"}
 						requestname='Shovit Banjade'

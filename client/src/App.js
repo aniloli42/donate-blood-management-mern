@@ -25,6 +25,7 @@ function App() {
 			<Switch>
 				<Route exact path='/' component={Dashboard} />
 				<Route exact path='/profile' component={Profile} />
+				<Route exact path='/profile/:id' component={Profile} />
 				<Route exact path='/security' component={Security} />
 				<Route exact path='/requests' component={Requests} />
 				<Route exact path='/donation-history' component={DonationHistory} />
@@ -35,7 +36,7 @@ function App() {
 				<Route exact path='/change-password' component={ChangePassword} />
 
 				<Route exact path='/forget-password' component={Forget} />
-				<Route exact path='/page-not-found' component={NotFound} />
+				<Route path='*' component={NotFound} />
 			</Switch>
 		</>
 	)

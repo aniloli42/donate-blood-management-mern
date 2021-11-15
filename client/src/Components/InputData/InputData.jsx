@@ -1,5 +1,5 @@
 import React from "react"
-import HistoryAction from "../HistoryAction/HistoryAction"
+import { ButtonGroup } from ".."
 
 const InputData = ({ date, location, remarks, id }) => {
 	return (
@@ -8,7 +8,7 @@ const InputData = ({ date, location, remarks, id }) => {
 			<div>{location ? location : ""}</div>
 			<div>{remarks ? remarks : ""}</div>
 			<div>
-				<HistoryAction />
+				<ButtonGroup />
 			</div>
 		</div>
 	)
