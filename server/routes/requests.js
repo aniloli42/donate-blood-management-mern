@@ -5,6 +5,7 @@ const {
 	createRequests,
 	fetchOwnRequests,
 	fetchOthersRequests,
+	deleteRequests,
 } = require("../controllers/requests")
 
 const tokenVerify = require("../middleware/tokenVerify")

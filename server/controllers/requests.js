@@ -13,6 +13,8 @@ const fetchOthersRequests = (req, res) => {}
 const updateProfile = (req, res) => {}
 const updateOwnRequest = (req, res) => {}
 
+const deleteRequests = (req, res) => {}
+
 module.exports = {
 	fetchData,
 	fetchOwnProfile,
@@ -23,4 +25,5 @@ module.exports = {
 	updateProfile,
 	updateOwnRequest,
 	createRequests,
+	deleteRequests,
 }

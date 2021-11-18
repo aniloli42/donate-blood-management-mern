@@ -73,22 +73,50 @@ const signup = async (req, res) => {
 	}
 }
 
-const resetPassword = async (req, res) => {}
+const changePassword = async (req, res) => {
+	try {
+		const { email, password } = req.body
+		const user = await User.findOne({ email })
 
-const deleteAccount = async (req, res) => {}
+		const hashedPassword = await bcrypt.hash(password, 12)
 
-const verifyEmail = async (req, res) => {}
+		user.password = hashedPassword
 
-const sendOTP = async (req, res) => {}
+		await user.save()
 
-const verifyOTP = async (req, res) => {}
+		return res.status(200).json({ message: "Password Successfully Changed" })
+	} catch (err) {
+		return res.status(500).json({ message: err.message })
+	}
+}
+
+const deleteAccount = async (req, res) => {
+	try {
+		const { password } = req.body
+
+		const user = await User.findOne({ id: req.user.id })
+
+		if (!user)
+			return res.status(400).json({
+				message: "User does not exists",
+			})
+
+		const isMatched = await bcrypt.compare(password, user.password)
+
+		if (!isMatched)
+			return res.status(400).json({ message: "Invaild Credentials" })
+
+		await user.remove()
+
+		return res.status(200).json({ message: "Account Successfully Deleted" })
+	} catch (err) {
+		return res.status(500).json({ message: err.message })
+	}
+}
 
 module.exports = {
 	login,
 	signup,
-	resetPassword,
+	changePassword,
 	deleteAccount,
-	sendOTP,
-	verifyEmail,
-	verifyOTP,
 }

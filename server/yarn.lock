@@ -1175,13 +1175,13 @@ __metadata:
   languageName: node
   linkType: hard
 
-"googleapis@npm:^85.0.0":
-  version: 85.0.0
-  resolution: "googleapis@npm:85.0.0"
+"googleapis@npm:^91.0.0":
+  version: 91.0.0
+  resolution: "googleapis@npm:91.0.0"
   dependencies:
     google-auth-library: ^7.0.2
     googleapis-common: ^5.0.2
-  checksum: 50fe483b603fa3c7c42bd063015e025a0b4c448a49563ef7be21b6b76aa73bbb93433a9d79b09d0633a1320f4bd77b696c64dc5362976d0f4c3e9c54046b3e1d
+  checksum: 2a618e797d00fb641f79c8431d61594a63f0c88fc0ef6aa5310e002d5915753ceab821fd9b91215d1d036894e8abc19b97ac381d500621ffdee08a5414443a1d
   languageName: node
   linkType: hard
 
@@ -2088,10 +2088,10 @@ __metadata:
   languageName: node
   linkType: hard
 
-"nodemailer@npm:^6.6.3":
-  version: 6.7.0
-  resolution: "nodemailer@npm:6.7.0"
-  checksum: eebd6e5ac96bc77bd544eec939ef4a88dc60cbd5ef062995cb951141c41cf66db838cfbd7fe8ad2b1c8f8d23c839efb5519fa70e2be5d8e79c14b2459ebe4485
+"nodemailer@npm:^6.7.1":
+  version: 6.7.1
+  resolution: "nodemailer@npm:6.7.1"
+  checksum: eee52610fa2836e6ca2338cc2e3e0dc551b58b9675abf993c33ede668075ef8fa3ad295e913384c37efaaeb4576bb8619883fa31439c55a9d2ab1b332f9bde13
   languageName: node
   linkType: hard
 
@@ -2606,10 +2606,10 @@ __metadata:
     cors: ^2.8.5
     dotenv: ^10.0.0
     express: ^4.17.1
-    googleapis: ^85.0.0
+    googleapis: ^91.0.0
     jsonwebtoken: ^8.5.1
     mongoose: ^6.0.5
-    nodemailer: ^6.6.3
+    nodemailer: ^6.7.1
     nodemon: ^2.0.12
   languageName: unknown
   linkType: soft
