@@ -24,16 +24,18 @@ moongoose.connection.once("open", () => {
 })
 
 //  imports
-const history = require("./routes/history")
-const auth = require("./routes/auth")
-const requests = require("./routes/requests")
 const otp = require("./routes/otp")
+const auth = require("./routes/auth")
+const profile = require("./routes/profile")
+const history = require("./routes/history")
+const requests = require("./routes/requests")
 
 // routes
+app.use("/otp", otp)
 app.use("/auth", auth)
+app.use("/profile", profile)
 app.use("/history", history)
 app.use("/requests", requests)
-app.use("/otp", otp)
 
 app.listen(port, () => {
 	console.log(`Server running on port ${port}`)
