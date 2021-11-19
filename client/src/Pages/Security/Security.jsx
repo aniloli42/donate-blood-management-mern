@@ -29,7 +29,7 @@ const Security = () => {
 			{isEmailChangePopup && (
 				<>
 					<Popup title='Change Email' func={popupEmail}>
-						<ChangeEmail />
+						<ChangeEmail func={popupEmail} />
 					</Popup>
 				</>
 			)}
@@ -39,7 +39,7 @@ const Security = () => {
 			{isDeleteAccountPopup && (
 				<>
 					<Popup title='Delete Account' func={popupAccount}>
-						<DeleteAccount />
+						<DeleteAccount func={popupAccount} />
 					</Popup>
 				</>
 			)}

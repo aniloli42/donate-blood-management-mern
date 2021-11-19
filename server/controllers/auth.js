@@ -71,7 +71,54 @@ const signup = async (req, res) => {
 	}
 }
 
-const changePassword = async (req, res) => {}
+const changePassword = async (req, res) => {
+	const { id } = req.user
+	const { password, newpassword } = req.body
+
+	try {
+		const user = await User.findById(id)
+		if (!user) return res.status(400).json({ message: "User does not Exists" })
+
+		const isMatched = await bcrypt.compare(password, user.password)
+
+		if (!isMatched)
+			return res.status(400).json({ message: "Invalid Credentials" })
+
+		const hashedPassword = await bcrypt.hash(newpassword, 12)
+
+		user.password = hashedPassword
+
+		await user.save()
+
+		return res.status(200).json({ message: "Password Changed Successfully" })
+	} catch (error) {
+		return res.status(500).json({ message: error.message })
+	}
+}
+
+const changeEmail = async (req, res) => {
+	const { id } = req.user
+	const { email, password } = req.body
+
+	try {
+		const user = await User.findById(id)
+
+		if (!user) return res.status(400).json({ message: "User not Exists" })
+
+		const isMatched = await bcrypt.compare(password, user.password)
+
+		if (!isMatched)
+			return res.status(400).json({ message: "Invalid Credentials" })
+
+		user.email = email
+
+		await user.save()
+
+		return res.status(200).json({ message: "Email Successfully Changed" })
+	} catch (error) {
+		return res.status(500).json({ message: error.message })
+	}
+}
 
 const changeForgetPassword = async (req, res) => {
 	try {
@@ -94,7 +141,7 @@ const deleteAccount = async (req, res) => {
 	try {
 		const { password } = req.body
 
-		const user = await User.findOne({ id: req.user.id })
+		const user = await User.findById(req.user.id)
 
 		if (!user)
 			return res.status(400).json({
@@ -120,4 +167,5 @@ module.exports = {
 	changePassword,
 	changeForgetPassword,
 	deleteAccount,
+	changeEmail,
 }

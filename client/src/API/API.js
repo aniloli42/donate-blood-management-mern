@@ -16,10 +16,15 @@ export const signup = (formdata) => API.post("/auth/signup", formdata)
 export const logout = () => API.delete("/auth/delete-token")
 
 // Modify
+export const updateEmail = (formData) =>
+	API.patch("/auth/change-email", formData)
+
 export const changePassword = (formData) =>
 	API.patch("/auth/change-password", formData)
+
 export const changeForgetPassword = (formdata) =>
 	API.patch("/auth/change-forget-password", formdata)
+
 export const deleteAccount = (id) => API.delete(`/auth/delete-account`)
 
 // otp
@@ -28,7 +33,8 @@ export const verifyOTP = (formData) => API.post("/otp/verify", formData)
 
 // Profile
 export const getProfile = () => API.post("/profile")
-export const getAnotherProfile = (id) => API.post(`/profile/${id}`)
+export const updateProfile = (formData) =>
+	API.patch("/profile/update", formData)
 
 // blood management endpoints requests
 export const fetchData = (id) => API.post("/data/fetchData", id)

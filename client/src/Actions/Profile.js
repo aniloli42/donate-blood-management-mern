@@ -10,6 +10,24 @@ export const setProfile = () => async (dispatch) => {
 			payload: profile,
 		})
 	} catch (err) {
-		dispatch(displayMessage(err.displayMessage))
+		dispatch(displayMessage(err.message))
+	}
+}
+
+export const updateProfile = (formData, toggleEdit) => async (dispatch) => {
+	try {
+		const { data } = await api.updateProfile(formData)
+		const { message, profile } = await data
+
+		dispatch(displayMessage(message))
+
+		dispatch({
+			type: "SET_PROFILE",
+			payload: profile,
+		})
+
+		toggleEdit()
+	} catch (err) {
+		dispatch(displayMessage(err.message))
 	}
 }

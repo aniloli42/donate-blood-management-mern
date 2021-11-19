@@ -1,15 +1,50 @@
-import React, { useState } from "react"
+import React, { useState, useEffect } from "react"
 import "./profile.css"
-import { useSelector } from "react-redux"
+import { useDispatch, useSelector } from "react-redux"
 import { MainComponent } from ".."
 
+import { updateProfile } from "../../Actions/Profile"
+import { displayMessage } from "../../Actions/Message"
+import { nameValidation, stringValidation } from "../../Validation"
+
 const Profile = () => {
+	const dispatch = useDispatch()
 	const profile = useSelector((state) => state.Profile)
 
 	const [isEditing, setIsEditing] = useState(false)
+	const [formData, setFormData] = useState(profile)
 
 	const toggleEdit = () => {
 		setIsEditing((prev) => !prev)
+	}
+
+	useEffect(() => {
+		setFormData(profile)
+	}, [profile])
+
+	const handleProfileChange = async (e) => {
+		e.preventDefault()
+
+		if (!nameValidation(formData.name))
+			return dispatch(displayMessage("Invalid Name"))
+
+		if (!stringValidation(formData.temporaryAddress))
+			return dispatch(displayMessage("Invalid Temporary Address"))
+
+		if (!stringValidation(formData.permanentAddress))
+			return dispatch(displayMessage("Invalid Permanent Address"))
+
+		try {
+			dispatch(updateProfile(formData, toggleEdit))
+		} catch (error) {
+			dispatch(displayMessage(error.message))
+		}
+	}
+
+	const handleChange = (e) => {
+		setFormData((prev) => {
+			return { ...prev, [e.target.name]: e.target.value }
+		})
 	}
 
 	return (
@@ -26,8 +61,9 @@ const Profile = () => {
 							<input
 								type='text'
 								id='profileName'
-								name='profileName'
-								defaultValue={profile?.name ? profile.name : ""}
+								name='name'
+								value={formData?.name}
+								onChange={handleChange}
 							/>
 						) : (
 							<p>{profile?.name ? profile.name : "-"}</p>
@@ -39,9 +75,9 @@ const Profile = () => {
 						<label htmlFor='profileBloodType'>Blood Type</label>
 						{isEditing ? (
 							<select
-								name='profileBloodType'
-								id='profileBloodType'
-								defaultValue={profile?.bloodType ? profile.bloodType : "O+"}
+								name='bloodType'
+								value={formData?.bloodType}
+								onChange={handleChange}
 							>
 								<option value='O+'>O+</option>
 								<option value='O-'>O-</option>
@@ -63,11 +99,9 @@ const Profile = () => {
 						{isEditing ? (
 							<input
 								type='text'
-								name='profileTemporaryAddress'
-								id='profileTemporaryAddress'
-								defaultValue={
-									profile?.temporaryAddress ? profile.temporaryAddress : ""
-								}
+								name='temporaryAddress'
+								value={formData?.temporaryAddress}
+								onChange={handleChange}
 							/>
 						) : (
 							<p>
@@ -82,11 +116,9 @@ const Profile = () => {
 						{isEditing ? (
 							<input
 								type='text'
-								name='profilePermanentAddress'
-								id='profilePermanentAddress'
-								defaultValue={
-									profile?.permanentAddress ? profile.permanentAddress : ""
-								}
+								name='permanentAddress'
+								value={formData?.permanentAddress}
+								onChange={handleChange}
 							/>
 						) : (
 							<p>
@@ -100,7 +132,7 @@ const Profile = () => {
 				{isEditing ? (
 					<>
 						<button
-							onClick={toggleEdit}
+							onClick={handleProfileChange}
 							type='submit'
 							className='button profile-update'
 							id='profileUpdate'
