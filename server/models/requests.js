@@ -25,6 +25,10 @@ const Schema = moongoose.Schema({
 		type: moongoose.Schema.Types.ObjectId,
 		ref: "users",
 	},
+	status: {
+		type: Boolean,
+		default: false,
+	},
 })
 
 module.exports = moongoose.model("requests", Schema)

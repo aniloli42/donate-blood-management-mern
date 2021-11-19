@@ -4,14 +4,13 @@ import { displayMessage } from "./Message"
 export const login = (formData, history) => async (dispatch) => {
 	try {
 		const { data } = await api.login(formData)
-		const { token, user } = await data
+		const { token } = await data
 
 		localStorage.setItem("token", token)
-		localStorage.setItem("profile", JSON.stringify(user))
 
 		dispatch({
 			type: "LOGIN",
-			payload: { user, token },
+			payload: token,
 		})
 
 		history.push("/")
@@ -19,22 +18,21 @@ export const login = (formData, history) => async (dispatch) => {
 		const message = error?.response?.data?.message
 
 		message === undefined
-			? dispatch(displayMessage(error.message), true)
-			: dispatch(displayMessage(message), true)
+			? dispatch(displayMessage(error.message))
+			: dispatch(displayMessage(message))
 	}
 }
 
 export const signup = (formdata, history) => async (dispatch) => {
 	try {
 		const { data } = await api.signup(formdata)
-		const { token, user } = await data
+		const { token } = await data
 
 		localStorage.setItem("token", token)
-		localStorage.setItem("profile", JSON.stringify(user))
 
 		dispatch({
-			type: "SIGNUP",
-			payload: { user, token },
+			type: "LOGIN",
+			payload: token,
 		})
 
 		history.push("/")
@@ -42,8 +40,8 @@ export const signup = (formdata, history) => async (dispatch) => {
 		const message = error?.response?.data?.message
 
 		message === undefined
-			? dispatch(displayMessage(error.message), true)
-			: dispatch(displayMessage(message), true)
+			? dispatch(displayMessage(error.message))
+			: dispatch(displayMessage(message))
 	}
 }
 

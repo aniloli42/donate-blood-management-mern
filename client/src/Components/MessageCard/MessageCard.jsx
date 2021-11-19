@@ -22,7 +22,7 @@ const MessageCard = () => {
 		if (message === null) return
 		fadein()
 
-		if (status) {
+		if (!status) {
 			setTimeout(() => {
 				fadeOut()
 			}, 2000)
@@ -41,7 +41,7 @@ const MessageCard = () => {
 	return (
 		<div className='message-container' ref={messageDiv}>
 			<p className='message-div-text'>{message}</p>
-			{!status && (
+			{status && (
 				<button className='message-button-dismiss' onClick={fadeOut}>
 					<i className='fas fa-times-circle fa-lg'></i>
 				</button>

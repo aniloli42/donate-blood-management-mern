@@ -3,16 +3,10 @@ import { Link } from "react-router-dom"
 import { Badge, RequestCard } from "../../Components"
 import "./dashboard.css"
 import MainComponent from "../MainComponent/MainComponent"
-
-// import { useDispatch, useSelector } from "react-redux"
-// import { fetchData } from "../../Actions/Data"
+import { useSelector } from "react-redux"
 
 const Dashboard = () => {
-	// const dispatch = useDispatch()
-
-	// useEffect(() => {
-	// 	dispatch(fetchData(profile._id))
-	// }, [dispatch, profile._id])
+	const profile = useSelector((state) => state.Profile)
 
 	return (
 		<MainComponent>
@@ -21,7 +15,7 @@ const Dashboard = () => {
 			<div className='small-cards'>
 				<Badge
 					badgetitle='Blood Group'
-					badgetext='B+' /* {profile && profile.bloodType} */
+					badgetext={profile?.bloodType} /* {profile && profile.bloodType} */
 				/>
 				<Badge badgetitle='Total Donation' badgetext='8' />
 				<Badge badgetitle='Total Requests' badgetext='8' />
@@ -42,18 +36,6 @@ const Dashboard = () => {
 						address={"butwal"}
 						requestname='Sanjay'
 						id={1}
-					/>
-					<RequestCard
-						bloodtype={"B+"}
-						address={"Dang"}
-						requestname='Anil Oli'
-						id={2}
-					/>
-					<RequestCard
-						bloodtype={"B+"}
-						address={"Dang"}
-						requestname='Shovit Banjade'
-						id={3}
 					/>
 				</div>
 			</article>

@@ -5,7 +5,7 @@ import "./Styles/App.css"
 import {
 	Signup,
 	Login,
-	Forget,
+	ForgetPassword,
 	Dashboard,
 	Profile,
 	Security,
@@ -14,8 +14,6 @@ import {
 } from "./Pages"
 
 import NotFound from "./Components/NotFound/NotFound"
-import OTP from "./Pages/OTP/OTP"
-import ChangePassword from "./Pages/ChangePassword/ChangePassword"
 import { MessageCard } from "./Components"
 
 function App() {
@@ -32,10 +30,8 @@ function App() {
 
 				<Route exact path='/login' component={Login} />
 				<Route exact path='/signup' component={Signup} />
-				<Route exact path='/verify-otp' component={OTP} />
-				<Route exact path='/change-password' component={ChangePassword} />
 
-				<Route exact path='/forget-password' component={Forget} />
+				<Route exact path='/forget-password' component={ForgetPassword} />
 				<Route path='*' component={NotFound} />
 			</Switch>
 		</>

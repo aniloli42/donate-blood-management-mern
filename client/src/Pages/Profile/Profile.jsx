@@ -1,12 +1,10 @@
 import React, { useState } from "react"
-import defaultProfileImage from "./../../Assets/Images/profile-image.png"
 import "./profile.css"
-
 import { useSelector } from "react-redux"
 import { MainComponent } from ".."
 
 const Profile = () => {
-	const profile = useSelector((state) => state.Auth.profile)
+	const profile = useSelector((state) => state.Profile)
 
 	const [isEditing, setIsEditing] = useState(false)
 
@@ -20,14 +18,6 @@ const Profile = () => {
 			<h2>Profile</h2>
 
 			<div className='profile-container'>
-				<div className='profile-image'>
-					<img src={defaultProfileImage} alt='' />
-					{isEditing && (
-						<button id='profileImageUpdater' className='profile-image-updater'>
-							Update Image
-						</button>
-					)}
-				</div>
 				<div className='profile-info'>
 					{/* Profile Name */}
 					<div className='profile-name input-group'>

@@ -24,7 +24,6 @@ const login = async (req, res) => {
 		return res.status(200).json({
 			message: "Login Successful",
 			token,
-			user: { ...user._doc, password: null },
 		})
 	} catch (err) {
 		res.status(500).json({ message: err.message })
@@ -66,14 +65,15 @@ const signup = async (req, res) => {
 		return res.status(200).json({
 			message: "Login Successful",
 			token,
-			user: { ...createdUser._doc, password: null },
 		})
 	} catch (err) {
 		res.status(500).json({ message: err.message })
 	}
 }
 
-const changePassword = async (req, res) => {
+const changePassword = async (req, res) => {}
+
+const changeForgetPassword = async (req, res) => {
 	try {
 		const { email, password } = req.body
 		const user = await User.findOne({ email })
@@ -118,5 +118,6 @@ module.exports = {
 	login,
 	signup,
 	changePassword,
+	changeForgetPassword,
 	deleteAccount,
 }

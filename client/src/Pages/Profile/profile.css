@@ -3,33 +3,7 @@
 	grid-gap: 20px;
 }
 
-.profile-image {
-	width: 250px;
-	justify-self: center;
-	height: max-content;
-	position: relative;
-}
-
-.profile-image-updater {
-	position: absolute;
-	bottom: 0;
-	width: 100%;
-	padding: 0.6em 0.8em;
-	background-color: var(--image-button);
-	color: #fff;
-	font-weight: bold;
-	font-size: 1.1rem;
-	outline: none;
-	border: none;
-	transition: all 0.2s linear;
-}
-
-.profile-image-updater:hover,
-.profile-image-updater:focus-visible {
-	background-color: var(--image-button-hover);
-}
-
-.input-group p {
+.input-group > p {
 	font-size: 1.4rem;
 	font-weight: 500;
 	color: var(--text-light);
@@ -63,25 +37,4 @@
 .cancel-update:focus-visible {
 	background: unset;
 	color: var(--light-red);
-}
-
-@media (min-width: 900px) {
-	.profile-container {
-		grid-template-columns: minmax(200px, 350px) 1fr;
-	}
-
-	.profile-image {
-		width: 280px;
-		justify-self: start;
-		z-index: 0;
-	}
-
-	.input-group {
-		grid-column: span 2;
-	}
-
-	.profile-name,
-	.profile-blood-type {
-		grid-column: 2 / -1;
-	}
 }

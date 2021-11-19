@@ -1,9 +1,7 @@
 // Before Login
 export { default as Signup } from "./Signup/Signup"
 export { default as Login } from "./Login/Login"
-export { default as Forget } from "./ForgetPassword/Forget.jsx"
-export { default as OTP } from "./OTP/OTP"
-export { default as ChangePassword } from "./ChangePassword/ChangePassword"
+export { default as ForgetPassword } from "./ForgetPassword/ForgetPassword.jsx"
 
 // After Login
 export { default as MainComponent } from "./MainComponent/MainComponent"

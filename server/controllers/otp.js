@@ -33,8 +33,6 @@ const verifyOTP = async (req, res) => {
 
 		const getOTP = await OTP.findOne({ email, otp })
 
-		console.log(getOTP)
-
 		if (!getOTP) return res.status(400).json({ message: "Invaild OTP" })
 
 		const currentTime = new Date().getTime()

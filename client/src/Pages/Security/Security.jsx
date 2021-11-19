@@ -1,10 +1,16 @@
 import React, { useState } from "react"
-import Popup from "../../Components/Popup/Popup"
+import { useSelector } from "react-redux"
+
 import "./security.css"
+
+import Popup from "../../Components/Popup/Popup"
 import ChangeEmail from "./../../Components/ChangeEmail/ChangeEmail"
 import DeleteAccount from "./../../Components/DeleteAccount/DeleteAccount"
 import { MainComponent } from ".."
+
 const Security = () => {
+	const profile = useSelector((state) => state.Profile)
+
 	const [isEmailChangePopup, setEmailChangePopup] = useState(false)
 	const [isDeleteAccountPopup, setDeleteAccountPopup] = useState(false)
 
@@ -45,7 +51,7 @@ const Security = () => {
 				<hr />
 				<div className='email-content'>
 					<p>Your Email</p>
-					<p>aniloli42@gmail.com</p>
+					<p>{profile?.email}</p>
 					<button onClick={popupEmail}>
 						<i className='fas fa-pen'></i>
 					</button>

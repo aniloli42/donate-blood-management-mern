@@ -25,9 +25,6 @@ const Schema = moongoose.Schema({
 		type: String,
 		required: true,
 	},
-	image: {
-		type: String,
-	},
 })
 
 module.exports = moongoose.model("users", Schema)
