@@ -24,7 +24,7 @@ const MainComponent = ({ children }) => {
 				token: localStorage.getItem("token"),
 			},
 		})
-		dispatch(setProfile())
+		dispatch(setProfile(history))
 	}, [dispatch, history])
 
 	return (

@@ -149,6 +149,8 @@ const deleteAccount = async (req, res) => {
 	try {
 		const { password } = req.body
 
+		console.log(password)
+
 		const user = await User.findById(req.user.id)
 
 		if (!user)

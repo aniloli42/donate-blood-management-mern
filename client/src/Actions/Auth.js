@@ -96,3 +96,20 @@ export const changePassword =
 				: dispatch(displayMessage(message))
 		}
 	}
+
+export const deleteAccount = (formData, history) => async (dispatch) => {
+	try {
+		const { data } = await api.deleteAccount(formData)
+		const { message } = await data
+
+		dispatch(displayMessage(message))
+
+		dispatch(logout(history))
+	} catch (error) {
+		const message = error?.response?.data?.message
+
+		message === undefined
+			? dispatch(displayMessage(error.message))
+			: dispatch(displayMessage(message))
+	}
+}

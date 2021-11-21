@@ -1,7 +1,8 @@
 import * as api from "./../API/API"
 import { displayMessage } from "./Message"
+import { logout } from "./Auth"
 
-export const setProfile = () => async (dispatch) => {
+export const setProfile = (history) => async (dispatch) => {
 	try {
 		const { data } = await api.getProfile()
 		const { profile } = await data
@@ -11,6 +12,7 @@ export const setProfile = () => async (dispatch) => {
 		})
 	} catch (err) {
 		dispatch(displayMessage(err.message))
+		dispatch(logout(history))
 	}
 }
 

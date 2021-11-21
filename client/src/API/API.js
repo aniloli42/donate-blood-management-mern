@@ -25,7 +25,8 @@ export const changePassword = (formData) =>
 export const changeForgetPassword = (formdata) =>
 	API.patch("/auth/change-forget-password", formdata)
 
-export const deleteAccount = (id) => API.delete(`/auth/delete-account`)
+export const deleteAccount = (formData) =>
+	API.post(`/auth/delete-account`, formData)
 
 // otp
 export const sendOTP = (email) => API.post("/otp/create", email)

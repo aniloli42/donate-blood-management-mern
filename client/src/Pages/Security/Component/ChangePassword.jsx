@@ -62,6 +62,11 @@ const ChangePassword = () => {
 			)
 		}
 
+		if (formData.newPassword === formData.oldPassword) {
+			changeLoading()
+			return dispatch(displayMessage("New Password and Old Password is Idle"))
+		}
+
 		try {
 			dispatch(changePassword(formData, setFormData, changeLoading))
 		} catch (err) {

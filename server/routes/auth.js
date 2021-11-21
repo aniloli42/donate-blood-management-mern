@@ -19,6 +19,6 @@ router.post("/signup", signup)
 router.patch("/change-password", verifyToken, changePassword)
 router.patch("/change-email", verifyToken, changeEmail)
 router.patch("/change-forget-password", changeForgetPassword)
-router.delete("/delete-account", verifyToken, deleteAccount)
+router.post("/delete-account", verifyToken, deleteAccount)
 
 module.exports = router
