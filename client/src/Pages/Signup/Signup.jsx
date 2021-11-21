@@ -1,4 +1,4 @@
-import React, { useRef, useState } from "react"
+import React, { useRef, useState, useEffect } from "react"
 import "./signup.css"
 import logo from "../../Assets/Images/blood.svg"
 import show from "../../Assets/Images/eye.svg"
@@ -29,6 +29,12 @@ const Signup = () => {
 	const dispatch = useDispatch()
 	const history = useHistory()
 	const [formData, setformData] = useState(inputData)
+
+	useEffect(() => {
+		const token = localStorage.getItem("token")
+		if (!token || token === "" || token === null || token === undefined) return
+		history.push("/")
+	})
 
 	const updateFormData = (e) => {
 		setformData((prevformData) => {

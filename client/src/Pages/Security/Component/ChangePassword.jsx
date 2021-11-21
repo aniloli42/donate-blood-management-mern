@@ -1,5 +1,6 @@
 import React, { useState } from "react"
 import { useDispatch } from "react-redux"
+import { useHistory } from "react-router"
 
 import { displayMessage } from "./../../../Actions/Message"
 import { changePassword } from "./../../../Actions/Auth"
@@ -8,6 +9,7 @@ import { Loader } from "../../../Components"
 
 const ChangePassword = () => {
 	const dispatch = useDispatch()
+	const history = useHistory()
 
 	const [isLoading, setIsLoading] = useState(false)
 
@@ -114,7 +116,9 @@ const ChangePassword = () => {
 						{isLoading && <Loader />}
 						Change Password
 					</button>
-					<button>Forget Password?</button>
+					<button onClick={() => history.push("/forget-password")}>
+						Forget Password?
+					</button>
 				</div>
 			</form>
 		</section>

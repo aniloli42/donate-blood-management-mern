@@ -1,4 +1,4 @@
-import React, { useRef, useState } from "react"
+import React, { useRef, useState, useEffect } from "react"
 import logo from "../../Assets/Images/blood.svg"
 import show from "../../Assets/Images/eye.svg"
 import hide from "../../Assets/Images/eye-off.svg"
@@ -16,6 +16,12 @@ const Login = () => {
 	const history = useHistory()
 	const dispatch = useDispatch()
 	const [formData, setformData] = useState(inputData)
+
+	useEffect(() => {
+		const token = localStorage.getItem("token")
+		if (!token || token === "" || token === null || token === undefined) return
+		history.push("/")
+	})
 
 	const updateFormData = (e) => {
 		setformData((prevformData) => {
