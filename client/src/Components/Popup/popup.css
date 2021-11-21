@@ -18,7 +18,27 @@
 	width: 92%;
 }
 
-.popup-content > h2 {
+.popup-header {
+	display: flex;
+	justify-content: space-between;
+	padding-block: 5px;
+	align-items: center;
+}
+
+.popup-dismiss {
+	cursor: pointer;
+	padding: 0.1em 0.5em;
+	border-radius: 4px;
+	background-color: var(--button-background);
+	transition: transform 0.3s ease-in;
+}
+
+.popup-dismiss:hover,
+.popup-dismiss:focus-visible {
+	transform: scale(1.05);
+}
+
+.popup-header h2 {
 	font-size: 1rem;
 }
 

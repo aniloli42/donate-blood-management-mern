@@ -7,6 +7,7 @@ import Popup from "../../Components/Popup/Popup"
 import ChangeEmail from "./../../Components/ChangeEmail/ChangeEmail"
 import DeleteAccount from "./../../Components/DeleteAccount/DeleteAccount"
 import { MainComponent } from ".."
+import ChangePassword from "./Component/ChangePassword"
 
 const Security = () => {
 	const profile = useSelector((state) => state.Profile)
@@ -25,7 +26,6 @@ const Security = () => {
 	return (
 		<MainComponent>
 			{/* Popup Email Change */}
-
 			{isEmailChangePopup && (
 				<>
 					<Popup title='Change Email' func={popupEmail}>
@@ -33,9 +33,7 @@ const Security = () => {
 					</Popup>
 				</>
 			)}
-
 			{/* Popup Delete Account */}
-
 			{isDeleteAccountPopup && (
 				<>
 					<Popup title='Delete Account' func={popupAccount}>
@@ -43,9 +41,7 @@ const Security = () => {
 					</Popup>
 				</>
 			)}
-
 			<h2>Security</h2>
-
 			<section>
 				<h3>Email</h3>
 				<hr />
@@ -58,30 +54,8 @@ const Security = () => {
 				</div>
 			</section>
 
-			<section>
-				<h3>Change Password</h3>
-				<hr />
-				<form>
-					<div className='input-group'>
-						<label htmlFor='oldPassword'>Old Password</label>
-						<input type='password' id='oldPassword' name='oldPassword' />
-					</div>
-
-					<div className='input-group'>
-						<label htmlFor='newPassword'>New Password</label>
-						<input type='password' id='newPassword' name='newPassword' />
-					</div>
-
-					<div className='input-group'>
-						<label htmlFor='retypePassword'>Retype Password</label>
-						<input type='password' id='retypePassword' name='retypePassword' />
-					</div>
-					<div className='input-buttons'>
-						<button type='submit'>Change Password</button>
-						<button>Forget Password?</button>
-					</div>
-				</form>
-			</section>
+			{/* Change Password */}
+			<ChangePassword />
 
 			{/* delete account */}
 			<section className='delete-account-section'>

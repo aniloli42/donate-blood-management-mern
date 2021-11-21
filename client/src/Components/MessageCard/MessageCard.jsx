@@ -15,7 +15,7 @@ const MessageCard = () => {
 		setTimeout(() => {
 			messageDiv.current.style.display = `none`
 			dispatch(clearMessage())
-		}, 600)
+		}, 200)
 	}, [dispatch])
 
 	useEffect(() => {
@@ -35,7 +35,7 @@ const MessageCard = () => {
 		setTimeout(() => {
 			messageDiv.current.style.bottom = `10px`
 			messageDiv.current.style.opacity = "1"
-		}, 600)
+		}, 200)
 	}
 
 	return (

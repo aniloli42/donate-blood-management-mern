@@ -51,6 +51,8 @@ section .input-group label {
 	color: var(--text-light);
 	padding: 0.6em 1.5em;
 	margin-right: 1em;
+	display: flex;
+	align-items: center;
 }
 
 section .input-buttons > :last-child {

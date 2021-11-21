@@ -73,18 +73,18 @@ const signup = async (req, res) => {
 
 const changePassword = async (req, res) => {
 	const { id } = req.user
-	const { password, newpassword } = req.body
+	const { oldPassword, newPassword } = req.body
 
 	try {
 		const user = await User.findById(id)
 		if (!user) return res.status(400).json({ message: "User does not Exists" })
 
-		const isMatched = await bcrypt.compare(password, user.password)
+		const isMatched = await bcrypt.compare(oldPassword, user?.password)
 
 		if (!isMatched)
 			return res.status(400).json({ message: "Invalid Credentials" })
 
-		const hashedPassword = await bcrypt.hash(newpassword, 12)
+		const hashedPassword = await bcrypt.hash(newPassword, 12)
 
 		user.password = hashedPassword
 
@@ -105,10 +105,18 @@ const changeEmail = async (req, res) => {
 
 		if (!user) return res.status(400).json({ message: "User not Exists" })
 
+		if (email === user.email)
+			return res.status(400).json({ message: "Enter New Email" })
+
 		const isMatched = await bcrypt.compare(password, user.password)
 
 		if (!isMatched)
 			return res.status(400).json({ message: "Invalid Credentials" })
+
+		const isEmailIsUsed = await User.findOne({ email })
+
+		if (isEmailIsUsed)
+			return res.status(400).json({ message: "Email Already Used" })
 
 		user.email = email
 

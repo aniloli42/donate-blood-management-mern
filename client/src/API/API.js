@@ -16,7 +16,7 @@ export const signup = (formdata) => API.post("/auth/signup", formdata)
 export const logout = () => API.delete("/auth/delete-token")
 
 // Modify
-export const updateEmail = (formData) =>
+export const changeEmail = (formData) =>
 	API.patch("/auth/change-email", formData)
 
 export const changePassword = (formData) =>

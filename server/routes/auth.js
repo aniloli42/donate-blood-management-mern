@@ -16,8 +16,8 @@ const {
 // routes
 router.post("/login", login)
 router.post("/signup", signup)
-router.patch("/change-password", changePassword)
-router.patch("/change-email", changeEmail)
+router.patch("/change-password", verifyToken, changePassword)
+router.patch("/change-email", verifyToken, changeEmail)
 router.patch("/change-forget-password", changeForgetPassword)
 router.delete("/delete-account", verifyToken, deleteAccount)
 
