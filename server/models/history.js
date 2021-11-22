@@ -11,10 +11,17 @@ const Schema = moongoose.Schema({
 	},
 	remarks: {
 		type: String,
+		required: true,
+		default: "",
 	},
 	createdBy: {
 		type: moongoose.Schema.Types.ObjectId,
 		ref: "users",
+	},
+	status: {
+		type: Boolean,
+		required: true,
+		default: false,
 	},
 })
 
