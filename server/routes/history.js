@@ -6,14 +6,16 @@ const fetchUser = require("../middleware/fetchUser")
 
 const {
 	getHistory,
+	getHistorys,
 	createHistory,
 	updateHistory,
 	deleteHistory,
 } = require("./../controllers/history")
 
-router.post("/", verifyToken, fetchUser, getHistory)
+router.get("/:id", verifyToken, fetchUser, getHistory)
+router.post("/", verifyToken, fetchUser, getHistorys)
 router.post("/create", verifyToken, fetchUser, createHistory)
-router.patch("/update", verifyToken, fetchUser, updateHistory)
-router.post("/delete", verifyToken, fetchUser, deleteHistory)
+router.patch("/update/:id", verifyToken, fetchUser, updateHistory)
+router.delete("/delete/:id", verifyToken, fetchUser, deleteHistory)
 
 module.exports = router

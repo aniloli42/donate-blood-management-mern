@@ -1,6 +1,6 @@
 const moongoose = require("mongoose")
 
-const Schema = moongoose.Schema({
+const schema = moongoose.Schema({
 	name: {
 		type: String,
 		required: true,
@@ -28,4 +28,4 @@ const Schema = moongoose.Schema({
 	},
 })
 
-module.exports = moongoose.model("users", Schema)
+module.exports = moongoose.model("users", schema)

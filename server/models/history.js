@@ -1,9 +1,10 @@
-const moongoose = require("mongoose")
+const mongoose = require("mongoose")
 
-const Schema = moongoose.Schema({
+const schema = mongoose.Schema({
 	donatedAt: {
 		type: Date,
 		required: true,
+		default: Date.now,
 	},
 	location: {
 		type: String,
@@ -11,11 +12,9 @@ const Schema = moongoose.Schema({
 	},
 	remarks: {
 		type: String,
-		required: true,
-		default: "",
 	},
 	createdBy: {
-		type: moongoose.Schema.Types.ObjectId,
+		type: mongoose.Schema.Types.ObjectId,
 		ref: "users",
 	},
 	status: {
@@ -25,4 +24,4 @@ const Schema = moongoose.Schema({
 	},
 })
 
-module.exports = moongoose.model("requests", Schema)
+module.exports = mongoose.model("histories", schema)

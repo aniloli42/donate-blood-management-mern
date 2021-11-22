@@ -4,10 +4,11 @@ const router = express.Router()
 const {
 	createRequests,
 	fetchOwnRequests,
-	fetchOthersRequests,
+	fetchRequests,
 	deleteRequests,
 } = require("../controllers/requests")
 
+const fetchUser = require("../middleware/fetchUser")
 const tokenVerify = require("../middleware/tokenVerify")
 
 /*========
@@ -15,13 +16,18 @@ const tokenVerify = require("../middleware/tokenVerify")
 ========*/
 
 // create
-router.post("/own-requests/create", tokenVerify, createRequests)
+router.post("/own-requests/create", tokenVerify, fetchUser, createRequests)
 
 // Fetching
-router.post("/own-requests", tokenVerify, fetchOwnRequests)
-router.post("/other-requests", tokenVerify, fetchOthersRequests)
+router.post("/own-requests", tokenVerify, fetchUser, fetchOwnRequests)
+router.post("/other-requests", tokenVerify, fetchRequests)
 
 // delete
-router.delete("/own-requests/:requestId", tokenVerify, deleteRequests)
+router.delete(
+	"/own-requests/:requestId",
+	tokenVerify,
+	fetchUser,
+	deleteRequests
+)
 
 module.exports = router

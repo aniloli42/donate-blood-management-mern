@@ -1,14 +1,17 @@
 import React from "react"
 import "./buttongroup.css"
 
-const ButtonGroup = () => {
+const ButtonGroup = ({ editFunc, deleteFunc }) => {
 	return (
 		<>
-			<button className='button action-button action-edit'>
+			<button className='button action-button action-edit' onClick={editFunc}>
 				<i className='fas fa-pen'></i>
 			</button>
 
-			<button className='button action-button action-delete'>
+			<button
+				className='button action-button action-delete'
+				onClick={deleteFunc}
+			>
 				<i className='fas fa-trash-alt'></i>
 			</button>
 		</>

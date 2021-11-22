@@ -8,7 +8,7 @@ const fetchOwnProfile = (req, res) => {}
 const fetchProfile = (req, res) => {}
 const fetchDonationHistory = (req, res) => {}
 const fetchOwnRequests = (req, res) => {}
-const fetchOthersRequests = (req, res) => {}
+const fetchRequests = (req, res) => {}
 
 const updateProfile = (req, res) => {}
 const updateOwnRequest = (req, res) => {}
@@ -21,7 +21,7 @@ module.exports = {
 	fetchProfile,
 	fetchDonationHistory,
 	fetchOwnRequests,
-	fetchOthersRequests,
+	fetchRequests,
 	updateProfile,
 	updateOwnRequest,
 	createRequests,

@@ -14,14 +14,14 @@ const Schema = moongoose.Schema({
 		required: true,
 	},
 	phone: {
-		type: number,
+		type: Number,
 		required: true,
 	},
 	requestedAt: {
 		type: Date,
 		default: Date.now,
 	},
-	requestedBy: {
+	createdBy: {
 		type: moongoose.Schema.Types.ObjectId,
 		ref: "users",
 	},

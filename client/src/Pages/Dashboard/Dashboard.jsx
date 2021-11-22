@@ -1,12 +1,19 @@
-import React /* useEffect, useState  */ from "react"
+import React, { useEffect /* useEffect, useState  */ } from "react"
 import { Link } from "react-router-dom"
 import { Badge, RequestCard } from "../../Components"
 import "./dashboard.css"
 import MainComponent from "../MainComponent/MainComponent"
-import { useSelector } from "react-redux"
+import { useDispatch, useSelector } from "react-redux"
+import { getStatus } from "../../Actions/Status"
 
 const Dashboard = () => {
+	const dispatch = useDispatch()
 	const profile = useSelector((state) => state.Profile)
+	const status = useSelector((state) => state.Status)
+
+	useEffect(() => {
+		dispatch(getStatus())
+	}, [dispatch])
 
 	return (
 		<MainComponent>
@@ -17,9 +24,9 @@ const Dashboard = () => {
 					badgetitle='Blood Group'
 					badgetext={profile?.bloodType} /* {profile && profile.bloodType} */
 				/>
-				<Badge badgetitle='Total Donation' badgetext='8' />
-				<Badge badgetitle='Total Requests' badgetext='8' />
-				<Badge badgetitle='Pending Requests' badgetext='3' />
+				<Badge badgetitle='Total Donation' badgetext={status?.historyCount} />
+				<Badge badgetitle='Total Requests' badgetext={status?.requestCount} />
+				<Badge badgetitle='Pending Requests' badgetext={status?.pendingCount} />
 			</div>
 
 			<article className='recent-container'>

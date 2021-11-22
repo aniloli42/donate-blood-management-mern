@@ -1,5 +1,8 @@
 require("dotenv").config()
 const User = require("../models/user")
+const History = require("./../models/history.js")
+const Requests = require("./../models/requests.js")
+
 const getProfile = async (req, res) => {
 	try {
 		const { id } = req.user
@@ -42,4 +45,24 @@ const updateProfile = async (req, res) => {
 	}
 }
 
-module.exports = { getProfile, updateProfile }
+const getStatus = async (req, res) => {
+	try {
+		const { id } = req.user
+
+		const historyCount = await History.find({ createdBy: id })
+
+		const requestCount = await Requests.find({ createdBy: id })
+
+		const pendingCount = await Requests.find({ createdBy: id, status: false })
+
+		res.json({
+			historyCount: historyCount.length,
+			requestCount: requestCount.length,
+			pendingCount: pendingCount.length,
+		})
+	} catch (error) {
+		return res.status(500).json({ message: err.message })
+	}
+}
+
+module.exports = { getProfile, updateProfile, getStatus }

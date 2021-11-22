@@ -1,14 +1,39 @@
-import React from "react"
+import React, { useEffect, useState } from "react"
 import { MainComponent } from ".."
 import { HistoryCard } from "../../Components"
 import "./donationhistory.css"
 
+import { useDispatch, useSelector } from "react-redux"
+import { getHistorys } from "./../../Actions/History"
+import CreateHistory from "./component/CreateHistory"
+
 const DonationHistory = () => {
+	const dispatch = useDispatch()
+	const historys = useSelector((state) => state.History)
+
+	const [isCreate, setCreate] = useState(false)
+
+	useEffect(() => {
+		dispatch(getHistorys())
+	}, [dispatch])
+
+	const changePopup = () => {
+		setCreate((prev) => !prev)
+	}
+
+	const toDate = (date) => {
+		return new Date(date).toDateString()
+	}
+
 	return (
 		<MainComponent>
+			{isCreate && <CreateHistory func={changePopup} />}
+
 			<header>
 				<h2>Donation history</h2>
-				<button className='button'>Add New</button>
+				<button className='button' onClick={changePopup}>
+					Add New
+				</button>
 			</header>
 			<hr />
 
@@ -23,7 +48,21 @@ const DonationHistory = () => {
 					</div>
 
 					{/* History Data */}
-					<HistoryCard date='2078/2/5' location='gadhawa' remarks='-' id='-' />
+					{historys?.map((history, index) => {
+						return (
+							<HistoryCard
+								key={index}
+								date={toDate(history?.donatedAt)}
+								location={history?.location}
+								remarks={history?.remarks}
+								id={history?._id}
+								func={changePopup}
+							/>
+						)
+					})}
+					{historys.length === 0 && (
+						<div className='message'>No Any Donation History Available</div>
+					)}
 				</div>
 			</div>
 		</MainComponent>

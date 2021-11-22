@@ -37,5 +37,16 @@ export const getProfile = () => API.post("/profile")
 export const updateProfile = (formData) =>
 	API.patch("/profile/update", formData)
 
+// Donation History
+export const getHistory = (id) => API.get(`/history/${id}`)
+export const getHistorys = () => API.post("/history")
+export const createHistory = (formData) => API.post("/history/create", formData)
+export const updateHistory = (formData, id) =>
+	API.patch(`/history/update/${id}`, formData)
+export const deleteHistory = (id) => API.delete(`/history/delete/${id}`)
+
 // blood management endpoints requests
 export const fetchData = (id) => API.post("/data/fetchData", id)
+
+// Status
+export const getStatus = () => API.post("/profile/status")
