@@ -48,7 +48,6 @@ const Dashboard = () => {
 									address={request.location}
 									requestname={request.name}
 									id={request._id}
-									edit
 								/>
 							)
 						})}

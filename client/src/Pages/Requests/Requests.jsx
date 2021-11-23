@@ -61,8 +61,7 @@ const Requests = () => {
 					<h2>Other Requests</h2>
 					<button
 						className='button button-center'
-						onClick={() => dispatch(setOtherRequest())}
-					>
+						onClick={() => dispatch(setOtherRequest())}>
 						Refresh
 					</button>
 				</header>
@@ -78,7 +77,6 @@ const Requests = () => {
 									address={request.location}
 									requestname={request.name}
 									id={request._id}
-									edit
 								/>
 							)
 						})}
