@@ -9,8 +9,7 @@ export const getHistorys = () => async (dispatch) => {
 
 		dispatch({ type: "GET_HISTORYS", payload: history })
 	} catch (e) {
-		const error = e.response?.data?.message
-		dispatch(displayMessage(error ? error : "Something wrong"))
+		console.log(e.message)
 	}
 }
 

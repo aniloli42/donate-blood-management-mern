@@ -13,7 +13,8 @@ API.interceptors.request.use((req) => {
 // Auth
 export const login = (formdata) => API.post("/auth/login", formdata)
 export const signup = (formdata) => API.post("/auth/signup", formdata)
-export const logout = () => API.delete("/auth/delete-token")
+export const logout = (data) => API.post("/auth/logout", data)
+export const getToken = (data) => API.post("/auth/token", data)
 
 // Modify
 export const changeEmail = (formData) =>

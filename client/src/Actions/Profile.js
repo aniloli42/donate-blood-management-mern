@@ -1,6 +1,6 @@
 import * as api from "./../API/API"
 import { displayMessage } from "./Message"
-import { logout } from "./Auth"
+import { generateToken } from "./Auth"
 
 export const setProfile = (history) => async (dispatch) => {
 	try {
@@ -11,16 +11,8 @@ export const setProfile = (history) => async (dispatch) => {
 			payload: profile,
 		})
 	} catch (err) {
-		dispatch(
-			displayMessage(
-				err?.response?.data?.message ? err.response.data : err.message
-			)
-		)
-		if (
-			err?.response !== undefined ||
-			err?.response?.statusText === "Forbidden"
-		)
-			return dispatch(logout(history))
+		console.log(err.message)
+		dispatch(generateToken(history))
 	}
 }
 

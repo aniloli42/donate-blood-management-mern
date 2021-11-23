@@ -12,6 +12,9 @@ const reducer = (state = {}, action) => {
 		case "GET_ALL_DATA":
 			return state
 
+		case "CLEAR_DATA":
+			return {}
+
 		default:
 			return state
 	}

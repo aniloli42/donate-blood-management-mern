@@ -11,6 +11,8 @@ const {
 	changePassword,
 	changeEmail,
 	deleteAccount,
+	token,
+	logout,
 } = require("../controllers/auth")
 
 // routes
@@ -20,5 +22,9 @@ router.patch("/change-password", verifyToken, changePassword)
 router.patch("/change-email", verifyToken, changeEmail)
 router.patch("/change-forget-password", changeForgetPassword)
 router.post("/delete-account", verifyToken, deleteAccount)
+router.post("/logout", verifyToken, logout)
+
+// for token
+router.post("/token", token)
 
 module.exports = router

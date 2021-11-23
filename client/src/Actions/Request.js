@@ -9,8 +9,7 @@ export const setOwnRequest = () => async (dispatch) => {
 
 		dispatch({ type: "SET_OWN_REQUEST", payload: request })
 	} catch (e) {
-		const error = e.response?.data?.message
-		dispatch(displayMessage(error ? error : "Something wrong"))
+		console.log(e.message)
 	}
 }
 
@@ -22,8 +21,7 @@ export const setOtherRequest = () => async (dispatch) => {
 
 		dispatch({ type: "SET_OTHER_REQUEST", payload: request })
 	} catch (e) {
-		const error = e.response?.data?.message
-		dispatch(displayMessage(error ? error : "Something wrong"))
+		console.log(e.message)
 	}
 }
 
@@ -35,8 +33,7 @@ export const setRecentRequest = () => async (dispatch) => {
 
 		dispatch({ type: "SET_RECENT_REQUEST", payload: request })
 	} catch (e) {
-		const error = e.response?.data?.message
-		dispatch(displayMessage(error ? error : "Something wrong"))
+		console.log(e.message)
 	}
 }
 

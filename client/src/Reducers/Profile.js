@@ -6,6 +6,9 @@ const Profile = (state = null, action) => {
 		case "CHANGE_PROFILE":
 			return { ...state, ...action.payload }
 
+		case "CLEAR_PROFILE":
+			return null
+
 		default:
 			return state
 	}

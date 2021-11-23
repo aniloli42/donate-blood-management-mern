@@ -5,9 +5,10 @@ import { setProfile } from "./Profile"
 export const login = (formData, history) => async (dispatch) => {
 	try {
 		const { data } = await api.login(formData)
-		const { token } = await data
+		const { token, refreshToken } = await data
 
 		localStorage.setItem("token", token)
+		localStorage.setItem("refreshToken", refreshToken)
 
 		dispatch({
 			type: "LOGIN",
@@ -27,9 +28,10 @@ export const login = (formData, history) => async (dispatch) => {
 export const signup = (formdata, history) => async (dispatch) => {
 	try {
 		const { data } = await api.signup(formdata)
-		const { token } = await data
+		const { token, refreshToken } = await data
 
 		localStorage.setItem("token", token)
+		localStorage.setItem("refreshToken", refreshToken)
 
 		dispatch({
 			type: "LOGIN",
@@ -46,13 +48,69 @@ export const signup = (formdata, history) => async (dispatch) => {
 	}
 }
 
-export const logout = (history) => {
-	localStorage.clear()
+export const logout = (history) => async (dispatch) => {
+	try {
+		const refreshToken = localStorage.getItem("refreshToken")
 
-	history.push("/login")
+		if (refreshToken) {
+			await api.logout({ refreshToken })
+		}
 
-	return {
-		type: "LOGOUT",
+		localStorage.clear()
+
+		history.push("/login")
+
+		dispatch({
+			type: "LOGOUT",
+		})
+
+		dispatch({
+			type: "CLEAR_DATA",
+		})
+
+		dispatch({
+			type: "CLEAR_HISTORYS",
+		})
+
+		dispatch({
+			type: "CLEAR_PROFILE",
+		})
+
+		dispatch({
+			type: "CLEAR_REQUEST",
+		})
+
+		dispatch({
+			type: "CLEAR_STATUS",
+		})
+	} catch (error) {
+		console.log(error.message)
+		history.push("/login")
+		localStorage.clear()
+
+		dispatch({
+			type: "LOGOUT",
+		})
+
+		dispatch({
+			type: "CLEAR_DATA",
+		})
+
+		dispatch({
+			type: "CLEAR_HISTORYS",
+		})
+
+		dispatch({
+			type: "CLEAR_PROFILE",
+		})
+
+		dispatch({
+			type: "CLEAR_REQUEST",
+		})
+
+		dispatch({
+			type: "CLEAR_STATUS",
+		})
 	}
 }
 
@@ -107,5 +165,26 @@ export const deleteAccount = (formData, history) => async (dispatch) => {
 		message === undefined
 			? dispatch(displayMessage(error.message))
 			: dispatch(displayMessage(message))
+	}
+}
+
+export const generateToken = (history) => async (dispatch) => {
+	try {
+		const refreshToken = localStorage.getItem("refreshToken")
+
+		if (!refreshToken) return dispatch(logout(history))
+
+		const { data } = await api.getToken({ refreshToken })
+		const { token } = await data
+
+		localStorage.setItem("token", token)
+	} catch (error) {
+		const message = error?.response?.data?.message
+
+		message === undefined
+			? dispatch(displayMessage(error.message))
+			: dispatch(displayMessage(message))
+
+		dispatch(logout(history))
 	}
 }

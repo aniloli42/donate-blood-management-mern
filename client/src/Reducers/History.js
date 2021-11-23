@@ -3,6 +3,9 @@ const reducer = (state = [], action) => {
 		case "GET_HISTORYS":
 			return [...action.payload]
 
+		case "CLEAR_HISTORYS":
+			return []
+
 		default:
 			return state
 	}

@@ -2,6 +2,7 @@ require("dotenv").config()
 const bcrypt = require("bcrypt")
 const jwt = require("jsonwebtoken")
 const User = require("../models/user")
+const Token = require("../models/token")
 
 const login = async (req, res) => {
 	try {
@@ -19,11 +20,18 @@ const login = async (req, res) => {
 			return res.status(400).json({ message: "Invalid Credentials." })
 		}
 
-		const token = jwt.sign({ id: user._id }, process.env.JWT_SECRET)
+		const token = jwt.sign({ id: user._id }, process.env.ACCESS_TOKEN_SECRET, {
+			expiresIn: "10m",
+		})
+
+		const refreshToken = generateRefreshToken({})
+
+		await storeToken({ refreshToken, id: user._id })
 
 		return res.status(200).json({
 			message: "Login Successful",
 			token,
+			refreshToken,
 		})
 	} catch (err) {
 		res.status(500).json({ message: err.message })
@@ -60,11 +68,17 @@ const signup = async (req, res) => {
 
 		const createdUser = await newUser.save()
 
-		const token = jwt.sign({ id: createdUser._id }, process.env.JWT_SECRET)
+		const token = jwt.sign({ id: createdUser._id }, process.env.JWT_SECRET, {
+			expiresIn: "10m",
+		})
+
+		const refreshToken = generateRefreshToken({ id: createdUser._id })
+
+		await storeToken({ refreshToken, id: createdUser._id })
 
 		return res.status(200).json({
-			message: "Login Successful",
 			token,
+			refreshToken,
 		})
 	} catch (err) {
 		res.status(500).json({ message: err.message })
@@ -149,8 +163,6 @@ const deleteAccount = async (req, res) => {
 	try {
 		const { password } = req.body
 
-		console.log(password)
-
 		const user = await User.findById(req.user.id)
 
 		if (!user)
@@ -171,6 +183,68 @@ const deleteAccount = async (req, res) => {
 	}
 }
 
+const token = async (req, res) => {
+	try {
+		const { refreshToken } = req.body
+
+		const result = await Token.findOne({ token: refreshToken })
+
+		console.log(result, refreshToken)
+
+		if (!result) return res.status(400).json({ message: "Invalid User" })
+
+		jwt.verify(refreshToken, process.env.REFRESH_TOKEN_SECRET, (err, user) => {
+			if (err) return res.status(403).json({ message: err.message })
+
+			const { id } = user
+
+			const token = jwt.sign({ id }, process.env.ACCESS_TOKEN_SECRET, {
+				expiresIn: "10m",
+			})
+
+			return res.status(200).json({ token })
+		})
+	} catch (err) {
+		return res.status(500).json({ message: err.message })
+	}
+}
+
+const logout = async (req, res) => {
+	try {
+		const { refreshToken } = req.body
+		const { id } = req.user
+
+		const token = await Token.findOne({ token: refreshToken, assign: id })
+
+		if (!token) return res.status(400).json({ message: "Invalid Token" })
+
+		await token.remove()
+
+		res.status(200).json({ message: "Logout Successfully" })
+	} catch (error) {
+		res.status(500).json({ message: error.message })
+	}
+}
+
+function generateRefreshToken(id) {
+	return jwt.sign(id, process.env.REFRESH_TOKEN_SECRET)
+}
+
+async function storeToken({ refreshToken, id }) {
+	try {
+		const newToken = new Token({
+			token: refreshToken,
+			assign: id,
+		})
+
+		await newToken.save()
+
+		return
+	} catch (error) {
+		return res.status(500).json({ message: error.message })
+	}
+}
+
 module.exports = {
 	login,
 	signup,
@@ -178,4 +252,6 @@ module.exports = {
 	changeForgetPassword,
 	deleteAccount,
 	changeEmail,
+	token,
+	logout,
 }

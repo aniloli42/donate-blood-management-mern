@@ -1,5 +1,4 @@
 import * as api from "./../API/API"
-import { displayMessage } from "./Message"
 
 export const getHistory = (id) => async (dispatch) => {
 	try {
@@ -7,8 +6,7 @@ export const getHistory = (id) => async (dispatch) => {
 		const { history } = await data
 		dispatch({ type: "GET_HISTORY", payload: history })
 	} catch (e) {
-		const error = e.response?.data?.message
-		dispatch(displayMessage(error ? error : "Something wrong"))
+		console.log(e.message)
 	}
 }
 
