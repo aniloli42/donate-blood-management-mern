@@ -68,9 +68,13 @@ const signup = async (req, res) => {
 
 		const createdUser = await newUser.save()
 
-		const token = jwt.sign({ id: createdUser._id }, process.env.JWT_SECRET, {
-			expiresIn: "10m",
-		})
+		const token = jwt.sign(
+			{ id: createdUser._id },
+			process.env.ACCESS_TOKEN_SECRET,
+			{
+				expiresIn: "10m",
+			},
+		)
 
 		const refreshToken = generateRefreshToken({ id: createdUser._id })
 
