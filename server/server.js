@@ -13,6 +13,8 @@ app.get("/", (req, res) => {
 	res.status(200).json({ message: "Welcome To Donate Blood Server" })
 })
 
+const port = process.env.PORT || 4001
+
 const url = process.env.DB_URL
 
 moongoose.connect(url, { useNewUrlParser: true, useUnifiedTopology: true })
@@ -39,6 +41,6 @@ app.use("/profile", profile)
 app.use("/history", history)
 app.use("/requests", requests)
 
-app.listen(process.env.PORT || 4001, () => {
+app.listen(port, () => {
 	console.log(`Server running on port ${port}`)
 })
