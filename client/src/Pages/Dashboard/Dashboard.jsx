@@ -10,13 +10,15 @@ import { getStatus } from "../../Actions/Status"
 const Dashboard = () => {
 	const dispatch = useDispatch()
 	const profile = useSelector((state) => state.Profile)
+	const Auth = useSelector((state) => state.Auth)
 	const status = useSelector((state) => state.Status)
 	const Request = useSelector((state) => state.Request)
 
 	useEffect(() => {
+		if (Auth === undefined || Auth.isAuth !== true) return
 		dispatch(getStatus())
 		dispatch(setRecentRequest())
-	}, [dispatch])
+	}, [Auth, dispatch])
 
 	return (
 		<MainComponent>
