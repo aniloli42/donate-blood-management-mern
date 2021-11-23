@@ -5,8 +5,6 @@ const moongoose = require("mongoose")
 
 require("dotenv").config()
 
-const port = 4001
-
 app.use(cors())
 app.use(express.json())
 app.use(express.urlencoded({ extended: true }))
@@ -41,6 +39,6 @@ app.use("/profile", profile)
 app.use("/history", history)
 app.use("/requests", requests)
 
-app.listen(port, () => {
+app.listen(process.env.PORT || 4001, () => {
 	console.log(`Server running on port ${port}`)
 })
