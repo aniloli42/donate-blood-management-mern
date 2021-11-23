@@ -44,6 +44,10 @@ button {
 	background-color: var(--background);
 }
 
+body {
+	background-color: var(--background);
+}
+
 @media (min-width: 1200px) {
 	#root {
 		display: grid;
