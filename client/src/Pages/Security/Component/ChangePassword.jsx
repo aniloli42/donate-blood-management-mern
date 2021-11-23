@@ -5,13 +5,10 @@ import { useHistory } from "react-router"
 import { displayMessage } from "./../../../Actions/Message"
 import { changePassword } from "./../../../Actions/Auth"
 import { passwordValidation } from "./../../../Validation/index"
-import { Loader } from "../../../Components"
 
 const ChangePassword = () => {
 	const dispatch = useDispatch()
 	const history = useHistory()
-
-	const [isLoading, setIsLoading] = useState(false)
 
 	const [formData, setFormData] = useState({
 		oldPassword: "",
@@ -28,19 +25,13 @@ const ChangePassword = () => {
 		})
 	}
 
-	const changeLoading = () => {
-		setIsLoading((prev) => !prev)
-	}
-
 	const handlePasswordChange = async (e) => {
 		e.preventDefault()
-		changeLoading()
 		if (
 			formData.oldPassword === "" ||
 			formData.newPassword === "" ||
 			formData.retypePassword === ""
 		) {
-			changeLoading()
 			return dispatch(displayMessage("Enter all Inputs"))
 		}
 
@@ -53,27 +44,23 @@ const ChangePassword = () => {
 			!retypePasswordValid.status ||
 			!newPasswordValid.status
 		) {
-			changeLoading()
 			return dispatch(displayMessage("Password atleast 8 characters"))
 		}
 
 		if (formData.newPassword !== formData.retypePassword) {
-			changeLoading()
 			return dispatch(
 				displayMessage("New Password and Retype Password Not Matched")
 			)
 		}
 
 		if (formData.newPassword === formData.oldPassword) {
-			changeLoading()
 			return dispatch(displayMessage("New Password and Old Password is Idle"))
 		}
 
 		try {
-			dispatch(changePassword(formData, setFormData, changeLoading))
+			dispatch(changePassword(formData, setFormData))
 		} catch (err) {
 			dispatch(displayMessage(err.message))
-			changeLoading()
 		}
 	}
 
@@ -112,10 +99,7 @@ const ChangePassword = () => {
 					/>
 				</div>
 				<div className='input-buttons'>
-					<button type='submit'>
-						{isLoading && <Loader />}
-						Change Password
-					</button>
+					<button type='submit'>Change Password</button>
 					<button onClick={() => history.push("/forget-password")}>
 						Forget Password?
 					</button>
