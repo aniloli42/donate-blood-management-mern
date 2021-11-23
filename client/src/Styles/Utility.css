@@ -44,3 +44,13 @@ hr {
 .button:focus-visible {
 	background-color: var(--button-hover);
 }
+
+.button-group {
+	display: inline-flex;
+	justify-content: center;
+	align-items: center;
+}
+
+.button-group > .button + .button {
+	margin-inline-start: 0.8em;
+}

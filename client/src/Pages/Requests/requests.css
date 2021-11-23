@@ -11,3 +11,9 @@ section:is(.other-requests, .own-requests) {
 	height: 255px;
 	overflow-x: auto;
 }
+
+.button-center.button-center {
+	display: flex;
+	justify-content: center;
+	align-items: center;
+}

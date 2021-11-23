@@ -12,8 +12,8 @@ export const getHistory = (id) => async (dispatch) => {
 	}
 }
 
-export const deleteHistory = () => {
+export const removeHistory = () => {
 	return {
-		type: "DELETE_HISTORY",
+		type: "REMOVE_HISTORY",
 	}
 }

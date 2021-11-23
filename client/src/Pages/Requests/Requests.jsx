@@ -1,79 +1,91 @@
-import React from "react"
+import React, { useEffect, useState } from "react"
+import { useDispatch, useSelector } from "react-redux"
 import { MainComponent } from ".."
+import { setOwnRequest, setOtherRequest } from "../../Actions/Request"
 import { RequestCard } from "../../Components"
+import CreateRequest from "./component/CreateRequest"
 import "./requests.css"
 
 const Requests = () => {
+	const dispatch = useDispatch()
+
+	const Request = useSelector((state) => state.Request)
+
+	const [popup, setPopup] = useState(false)
+
+	const changePopup = () => {
+		setPopup((prev) => !prev)
+	}
+
+	useEffect(() => {
+		dispatch(setOwnRequest())
+		dispatch(setOtherRequest())
+	}, [dispatch])
+
 	return (
 		<MainComponent>
+			{popup && <CreateRequest func={changePopup} />}
 			<h2>Requests</h2>
 			<section className='own-requests'>
 				<header>
 					<h2>Own Requests</h2>
-					<button className='button'>Add New</button>
+					<button className='button' onClick={changePopup}>
+						Add New
+					</button>
 				</header>
 				<hr />
 				<div className='requests-content own-requests-content'>
-					<RequestCard
-						bloodtype={"B+"}
-						address={"Dang"}
-						requestname='Shovit Banjade'
-						id={3}
-						edit
-					/>
-					<RequestCard
-						bloodtype={"O+"}
-						address={"butwal"}
-						requestname='Sanjay'
-						id={1}
-						edit
-					/>
+					{Request?.ownRequest !== 0 &&
+						Request?.ownRequest?.map((request, index) => {
+							return (
+								<RequestCard
+									key={index}
+									time={request.requestedAt}
+									bloodtype={request.bloodType}
+									address={request.location}
+									requestname={request.name}
+									id={request._id}
+									func={changePopup}
+									edit
+								/>
+							)
+						})}
+
+					{Request?.ownRequest?.length === 0 && (
+						<div className='message'>No Any Requests Done Yet.</div>
+					)}
 				</div>
 			</section>
-
 			<section className='other-requests'>
 				<header>
 					<h2>Other Requests</h2>
-					<button className='button'>View All</button>
+					<button
+						className='button button-center'
+						onClick={() => dispatch(setOtherRequest())}
+					>
+						Refresh
+					</button>
 				</header>
 				<hr />
 				<div className='requests-content other-requests-content'>
-					<RequestCard
-						bloodtype={"O+"}
-						address={"butwal"}
-						requestname='Sanjay'
-						id={1}
-					/>
-					<RequestCard
-						bloodtype={"B+"}
-						address={"Dang"}
-						requestname='Anil Oli'
-						id={2}
-					/>
-					<RequestCard
-						bloodtype={"O+"}
-						address={"butwal"}
-						requestname='Sanjay'
-						id={1}
-					/>
-					<RequestCard
-						bloodtype={"B+"}
-						address={"Dang"}
-						requestname='Anil Oli'
-						id={2}
-					/>
-					<RequestCard
-						bloodtype={"O+"}
-						address={"butwal"}
-						requestname='Sanjay'
-						id={1}
-					/>
-					<RequestCard
-						bloodtype={"B+"}
-						address={"Dang"}
-						requestname='Anil Oli'
-						id={2}
-					/>
+					{Request?.otherRequest !== 0 &&
+						Request?.otherRequest?.map((request, index) => {
+							return (
+								<RequestCard
+									key={index}
+									time={request.requestedAt}
+									bloodtype={request.bloodType}
+									address={request.location}
+									requestname={request.name}
+									id={request._id}
+									edit
+								/>
+							)
+						})}
+
+					{Request?.otherRequest?.length === 0 && (
+						<div className='message'>No Any Requests Found.</div>
+					)}
 				</div>
 			</section>
 		</MainComponent>

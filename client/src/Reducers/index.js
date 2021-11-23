@@ -6,6 +6,8 @@ import Profile from "./Profile"
 import History from "./History"
 import manageHistory from "./manageHistory"
 import Status from "./Status"
+import manageRequest from "./manageRequest"
+import Request from "./Request"
 
 const reducers = combineReducers({
 	Auth,
@@ -15,6 +17,8 @@ const reducers = combineReducers({
 	History,
 	manageHistory,
 	Status,
+	manageRequest,
+	Request,
 })
 
 export default reducers

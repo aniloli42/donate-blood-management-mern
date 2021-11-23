@@ -1,5 +1,4 @@
 require("dotenv").config()
-const User = require("../models/user")
 const History = require("../models/history")
 
 const getHistorys = async (req, res) => {

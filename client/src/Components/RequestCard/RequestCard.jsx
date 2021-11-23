@@ -1,10 +1,22 @@
 import React from "react"
+import moment from "moment"
+import { useDispatch } from "react-redux"
 import { ButtonGroup } from ".."
+import { getRequest } from "../../Actions/manageRequest"
+import { deleteRequest } from "../../Actions/Request"
 import "./requestcard.css"
 
-// import { Link } from "react-router-dom"
+const RequestCard = ({
+	bloodtype,
+	requestname,
+	time,
+	address,
+	id,
+	edit,
+	func,
+}) => {
+	const dispatch = useDispatch()
 
-const RequestCard = ({ bloodtype, requestname, address, id, edit }) => {
 	return (
 		<div className='recent-content' id={id}>
 			<div className='text-badge'>{bloodtype}</div>
@@ -13,7 +25,7 @@ const RequestCard = ({ bloodtype, requestname, address, id, edit }) => {
 				<small>(9806242024)</small>
 			</div>
 			<div className='request-address'>
-				{"2 min ago"} . ({address})
+				{moment(time).fromNow()} . ({address})
 			</div>
 			{!edit ? (
 				<a className='request-view' href={`tel:9806242024`}>
@@ -21,7 +33,15 @@ const RequestCard = ({ bloodtype, requestname, address, id, edit }) => {
 				</a>
 			) : (
 				<div className='request-view-group'>
-					<ButtonGroup />
+					<ButtonGroup
+						editFunc={() => {
+							dispatch(getRequest(id))
+							func()
+						}}
+						deleteFunc={() => {
+							dispatch(deleteRequest(id))
+						}}
+					/>
 				</div>
 			)}
 		</div>

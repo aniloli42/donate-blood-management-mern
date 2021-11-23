@@ -4,15 +4,18 @@ import { Badge, RequestCard } from "../../Components"
 import "./dashboard.css"
 import MainComponent from "../MainComponent/MainComponent"
 import { useDispatch, useSelector } from "react-redux"
+import { setRecentRequest } from "../../Actions/Request"
 import { getStatus } from "../../Actions/Status"
 
 const Dashboard = () => {
 	const dispatch = useDispatch()
 	const profile = useSelector((state) => state.Profile)
 	const status = useSelector((state) => state.Status)
+	const Request = useSelector((state) => state.Request)
 
 	useEffect(() => {
 		dispatch(getStatus())
+		dispatch(setRecentRequest())
 	}, [dispatch])
 
 	return (
@@ -20,10 +23,7 @@ const Dashboard = () => {
 			<h2>Dashboard</h2>
 
 			<div className='small-cards'>
-				<Badge
-					badgetitle='Blood Group'
-					badgetext={profile?.bloodType} /* {profile && profile.bloodType} */
-				/>
+				<Badge badgetitle='Blood Group' badgetext={profile?.bloodType} />
 				<Badge badgetitle='Total Donation' badgetext={status?.historyCount} />
 				<Badge badgetitle='Total Requests' badgetext={status?.requestCount} />
 				<Badge badgetitle='Pending Requests' badgetext={status?.pendingCount} />
@@ -38,12 +38,24 @@ const Dashboard = () => {
 				</header>
 
 				<div className='recent-contents'>
-					<RequestCard
-						bloodtype={"O+"}
-						address={"butwal"}
-						requestname='Sanjay'
-						id={1}
-					/>
+					{Request?.recentRequest !== 0 &&
+						Request?.recentRequest?.map((request, index) => {
+							return (
+								<RequestCard
+									key={index}
+									time={request.requestedAt}
+									bloodtype={request.bloodType}
+									address={request.location}
+									requestname={request.name}
+									id={request._id}
+									edit
+								/>
+							)
+						})}
+
+					{Request?.recentRequest?.length === 0 && (
+						<div className='message'>No Any Requests Found.</div>
+					)}
 				</div>
 			</article>
 		</MainComponent>

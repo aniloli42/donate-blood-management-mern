@@ -7,7 +7,7 @@ const reducer = (state = { status: false, history: {} }, action) => {
 				history: action.payload,
 			}
 
-		case "DELETE_HISTORY":
+		case "REMOVE_HISTORY":
 			return { status: false, history: {} }
 
 		default:

@@ -11,8 +11,16 @@ export const setProfile = (history) => async (dispatch) => {
 			payload: profile,
 		})
 	} catch (err) {
-		dispatch(displayMessage(err.message))
-		dispatch(logout(history))
+		dispatch(
+			displayMessage(
+				err?.response?.data?.message ? err.response.data : err.message
+			)
+		)
+		if (
+			err?.response !== undefined ||
+			err?.response?.statusText === "Forbidden"
+		)
+			return dispatch(logout(history))
 	}
 }
 

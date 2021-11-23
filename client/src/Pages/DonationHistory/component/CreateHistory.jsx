@@ -5,7 +5,7 @@ import Popup from "../../../Components/Popup/Popup"
 import { stringValidation } from "../../../Validation"
 import { displayMessage } from "../../../Actions/Message"
 import { createHistory, updateHistory } from "../../../Actions/History"
-import { deleteHistory } from "../../../Actions/manageHistory"
+import { removeHistory } from "../../../Actions/manageHistory"
 
 import { useDispatch, useSelector } from "react-redux"
 
@@ -42,7 +42,7 @@ const CreateHistory = ({ func }) => {
 		})
 	}
 
-	const handelHistoryCreate = async (e) => {
+	const handleHistoryCreate = async (e) => {
 		e.preventDefault()
 		try {
 			if (!stringValidation(formData.location))
@@ -56,7 +56,7 @@ const CreateHistory = ({ func }) => {
 		}
 	}
 
-	const handelHistoryUpdate = async (e) => {
+	const handleHistoryUpdate = async (e) => {
 		e.preventDefault()
 		try {
 			if (!stringValidation(formData.location))
@@ -74,7 +74,7 @@ const CreateHistory = ({ func }) => {
 		<Popup
 			title={history.status ? "Edit History" : "Create History"}
 			func={() => {
-				dispatch(deleteHistory())
+				dispatch(removeHistory())
 				func()
 			}}
 		>
@@ -107,7 +107,7 @@ const CreateHistory = ({ func }) => {
 						<button
 							type='submit'
 							className='button'
-							onClick={handelHistoryCreate}
+							onClick={handleHistoryCreate}
 						>
 							Create
 						</button>
@@ -117,7 +117,7 @@ const CreateHistory = ({ func }) => {
 							<button
 								type='submit'
 								className='button'
-								onClick={handelHistoryUpdate}
+								onClick={handleHistoryUpdate}
 							>
 								Update
 							</button>

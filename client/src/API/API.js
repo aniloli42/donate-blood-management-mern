@@ -45,8 +45,16 @@ export const updateHistory = (formData, id) =>
 	API.patch(`/history/update/${id}`, formData)
 export const deleteHistory = (id) => API.delete(`/history/delete/${id}`)
 
-// blood management endpoints requests
-export const fetchData = (id) => API.post("/data/fetchData", id)
+// Requests
+export const getRequest = (id) => API.get(`/requests/own/${id}`)
+export const getOwnRequest = () => API.post(`/requests/own`)
+export const getOtherRequest = () => API.post(`/requests/other`)
+export const getRecentRequest = () => API.post(`/requests/recent`)
+export const createRequest = (formData) =>
+	API.post(`/requests/create`, formData)
+export const updateRequest = (formData, id) =>
+	API.patch(`/requests/update/${id}`, formData)
+export const deleteRequest = (id) => API.delete(`/requests/delete/${id}`)
 
 // Status
 export const getStatus = () => API.post("/profile/status")
