@@ -74,28 +74,24 @@ export const changeEmail = (formData, func) => async (dispatch) => {
 	}
 }
 
-export const changePassword =
-	(formData, setFormData, changeLoading) => async (dispatch) => {
-		try {
-			const { data } = await api.changePassword(formData)
-			const { message } = await data
+export const changePassword = (formData, setFormData) => async (dispatch) => {
+	try {
+		const { data } = await api.changePassword(formData)
+		const { message } = await data
 
-			dispatch(displayMessage(message))
+		dispatch(displayMessage(message))
 
-			setFormData((prev) => {
-				return { ...prev, oldPassword: "", newPassword: "", retypePassword: "" }
-			})
+		setFormData((prev) => {
+			return { ...prev, oldPassword: "", newPassword: "", retypePassword: "" }
+		})
+	} catch (error) {
+		const message = error?.response?.data?.message
 
-			changeLoading()
-		} catch (error) {
-			changeLoading()
-			const message = error?.response?.data?.message
-
-			message === undefined
-				? dispatch(displayMessage(error.message))
-				: dispatch(displayMessage(message))
-		}
+		message === undefined
+			? dispatch(displayMessage(error.message))
+			: dispatch(displayMessage(message))
 	}
+}
 
 export const deleteAccount = (formData, history) => async (dispatch) => {
 	try {
