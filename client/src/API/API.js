@@ -1,22 +1,46 @@
 import axios from "axios"
+import jwt_decode from "jwt-decode"
+import dayjs from "dayjs"
+
 require("dotenv").config()
 
-const API = axios.create({ baseURL: process.env.REACT_APP_API_BASEURL })
+const baseURL = process.env.REACT_APP_API_BASEURL
 
-const intercept = API.interceptors.request.use((req) => {
-	if (localStorage.getItem("token")) {
-		req.headers.Authorization = `Bearer ${localStorage.getItem("token")}`
+const API = axios.create({ baseURL })
+
+API.interceptors.request.use(async (req) => {
+	const token = localStorage.getItem("token")
+
+	req.headers.Authorization = `Bearer ${token}`
+
+	const user = jwt_decode(token)
+	const isExpired = dayjs.unix(user.exp).diff(dayjs()) < 1
+
+	if (!isExpired) return req
+
+	const refreshToken = localStorage.getItem("refreshToken")
+
+	if (refreshToken) {
+		try {
+			const { data } = await axios.post(`${baseURL}/auth/token`, {
+				refreshToken,
+			})
+
+			const { token: newToken } = await data
+
+			localStorage.setItem("token", newToken)
+			req.headers.Authorization = `Bearer ${newToken}`
+		} catch (e) {
+			console.error("Invalid refreshToken")
+		}
 	}
 	return req
 })
-
-axios.interceptors.request.eject(intercept)
 
 // Auth
 export const login = (formdata) => API.post("/auth/login", formdata)
 export const signup = (formdata) => API.post("/auth/signup", formdata)
 export const logout = (data) => API.post("/auth/logout", data)
-export const getToken = (data) => API.post("/auth/token", data)
 
 // Modify
 export const changeEmail = (formData) =>

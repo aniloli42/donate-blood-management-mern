@@ -166,25 +166,3 @@ export const deleteAccount = (formData, history) => async (dispatch) => {
 			: dispatch(displayMessage(message))
 	}
 }
-
-export const generateToken = (history) => async (dispatch) => {
-	try {
-		const refreshToken = localStorage.getItem("refreshToken")
-
-		if (!refreshToken) return dispatch(logout(history))
-
-		const { data } = await api.getToken({ refreshToken })
-		const { token } = await data
-
-		localStorage.setItem("token", token)
-	} catch (error) {
-		const message = error?.response?.data?.message
-
-		message === undefined
-			? dispatch(displayMessage(error.message))
-			: dispatch(displayMessage(message))
-
-		if (error?.response?.status !== 403) return
-		dispatch(logout(history))
-	}
-}
