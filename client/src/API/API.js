@@ -11,6 +11,8 @@ const API = axios.create({ baseURL })
 API.interceptors.request.use(async (req) => {
 	const token = localStorage.getItem("token")
 
+	if (!token) return req
+
 	req.headers.Authorization = `Bearer ${token}`
 
 	const user = jwt_decode(token)
