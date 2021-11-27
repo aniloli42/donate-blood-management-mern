@@ -12,7 +12,6 @@ export const login = (formData, history) => async (dispatch) => {
 
 		dispatch({
 			type: "LOGIN",
-			payload: token,
 		})
 
 		history.push("/")
@@ -35,7 +34,6 @@ export const signup = (formdata, history) => async (dispatch) => {
 
 		dispatch({
 			type: "LOGIN",
-			payload: token,
 		})
 
 		history.push("/")

@@ -193,14 +193,14 @@ const token = async (req, res) => {
 
 		const result = await Token.findOne({ token: refreshToken })
 
-		console.log(result, refreshToken)
-
 		if (!result) return res.status(403).json({ message: "Invalid User" })
 
 		jwt.verify(refreshToken, process.env.REFRESH_TOKEN_SECRET, (err, user) => {
 			if (err) return res.status(403).json({ message: err.message })
 
 			const { id } = user
+
+			console.log(id, refreshToken)
 
 			const token = jwt.sign({ id }, process.env.ACCESS_TOKEN_SECRET, {
 				expiresIn: "10m",
