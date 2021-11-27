@@ -15,10 +15,6 @@ export const setProfile = (history) => async (dispatch) => {
 		console.log(err.message)
 
 		dispatch(generateToken(history))
-
-		if (err.response.status === 403) {
-			return dispatch(logout(history))
-		}
 	}
 }
 
