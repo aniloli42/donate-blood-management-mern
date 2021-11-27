@@ -85,6 +85,7 @@ export const logout = (history) => async (dispatch) => {
 		})
 	} catch (error) {
 		console.log(error.message)
+
 		history.push("/login")
 		localStorage.clear()
 
@@ -185,6 +186,7 @@ export const generateToken = (history) => async (dispatch) => {
 			? dispatch(displayMessage(error.message))
 			: dispatch(displayMessage(message))
 
+		if (error?.response?.status !== 403) return
 		dispatch(logout(history))
 	}
 }

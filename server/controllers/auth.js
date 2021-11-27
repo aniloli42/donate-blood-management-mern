@@ -195,7 +195,7 @@ const token = async (req, res) => {
 
 		console.log(result, refreshToken)
 
-		if (!result) return res.status(400).json({ message: "Invalid User" })
+		if (!result) return res.status(403).json({ message: "Invalid User" })
 
 		jwt.verify(refreshToken, process.env.REFRESH_TOKEN_SECRET, (err, user) => {
 			if (err) return res.status(403).json({ message: err.message })

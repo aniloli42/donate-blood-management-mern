@@ -1,6 +1,7 @@
 import * as api from "./../API/API"
 import { displayMessage } from "./Message"
 import { generateToken } from "./Auth"
+import { logout } from "./Auth"
 
 export const setProfile = (history) => async (dispatch) => {
 	try {
@@ -12,6 +13,10 @@ export const setProfile = (history) => async (dispatch) => {
 		})
 	} catch (err) {
 		console.log(err.message)
+
+		if (err.response.status !== 400 || err.response.status !== 500)
+			return dispatch(logout(history))
+
 		dispatch(generateToken(history))
 	}
 }
