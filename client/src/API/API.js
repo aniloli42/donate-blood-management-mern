@@ -34,6 +34,7 @@ API.interceptors.request.use(async (req) => {
 			req.headers.Authorization = `Bearer ${newToken}`
 		} catch (e) {
 			if (e?.response?.status !== 403) return
+			localStorage.clear()
 			window.location.replace("/login")
 		}
 	}
