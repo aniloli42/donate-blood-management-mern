@@ -14,11 +14,11 @@ export const setProfile = (history) => async (dispatch) => {
 	} catch (err) {
 		console.log(err.message)
 
+		dispatch(generateToken(history))
+
 		if (err.response.status === 403) {
 			return dispatch(logout(history))
 		}
-
-		dispatch(generateToken(history))
 	}
 }
 

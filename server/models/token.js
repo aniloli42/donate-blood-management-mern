@@ -10,6 +10,10 @@ const schema = moongoose.Schema({
 		type: moongoose.Schema.Types.ObjectId,
 		ref: "users",
 	},
+	createdAt: {
+		type: Date,
+		default: Date.now,
+	},
 })
 
 module.exports = moongoose.model("token", schema)
