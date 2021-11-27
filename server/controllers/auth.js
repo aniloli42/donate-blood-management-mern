@@ -189,7 +189,7 @@ const deleteAccount = async (req, res) => {
 
 const token = async (req, res) => {
 	try {
-		const { refreshToken } = req.body
+		const refreshToken = req.body
 
 		const result = await Token.findOne({ token: refreshToken })
 
