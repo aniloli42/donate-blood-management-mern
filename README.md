@@ -19,7 +19,6 @@ This project is made to help the blood requirement of emergency blood, then cert
     - [Donation History Page](#donation-history-page)
     - [Donation Requests Page](#donation-requests-page)
     - [Forget Password Page](#forget-password-page)
-  - [!Forget Password Image](#)
   - [Project Contributers](#project-contributers)
       - [Developer](#developer)
       - [Designer](#designer)
@@ -89,7 +88,7 @@ We decide to built the blood donation project for the project and for real cause
 
 ### Forget Password Page
 
-## ![Forget Password Image](./project_assets/project_forget.png)
+![Forget Password Image](./project_assets/project_forget.png)
 
 ## Project Contributers
 
