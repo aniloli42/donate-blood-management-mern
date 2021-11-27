@@ -200,7 +200,7 @@ const token = async (req, res) => {
 
 			const { id } = user
 
-			console.log(id, refreshToken)
+			console.log(req.body, user, id, refreshToken)
 
 			const token = jwt.sign({ id }, process.env.ACCESS_TOKEN_SECRET, {
 				expiresIn: "10m",
