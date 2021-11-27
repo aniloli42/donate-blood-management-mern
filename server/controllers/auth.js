@@ -231,7 +231,7 @@ const logout = async (req, res) => {
 }
 
 function generateRefreshToken(id) {
-	return jwt.sign(id, process.env.REFRESH_TOKEN_SECRET)
+	return jwt.sign({ id }, process.env.REFRESH_TOKEN_SECRET)
 }
 
 async function storeToken({ refreshToken, id }) {
