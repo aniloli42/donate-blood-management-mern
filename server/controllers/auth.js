@@ -189,7 +189,7 @@ const deleteAccount = async (req, res) => {
 
 const token = async (req, res) => {
 	try {
-		const refreshToken = req.body
+		const { refreshToken } = req.body
 
 		const result = await Token.findOne({ token: refreshToken })
 
@@ -200,7 +200,7 @@ const token = async (req, res) => {
 
 			const { id } = user
 
-			console.log(req.body, user, id, refreshToken)
+			console.log(user)
 
 			const token = jwt.sign({ id }, process.env.ACCESS_TOKEN_SECRET, {
 				expiresIn: "10m",
