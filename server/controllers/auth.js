@@ -24,7 +24,7 @@ const login = async (req, res) => {
 			expiresIn: "10m",
 		})
 
-		const refreshToken = generateRefreshToken({})
+		const refreshToken = generateRefreshToken({ id: user._id })
 
 		await storeToken({ refreshToken, id: user._id })
 
@@ -230,7 +230,7 @@ const logout = async (req, res) => {
 	}
 }
 
-function generateRefreshToken(id) {
+function generateRefreshToken({ id }) {
 	return jwt.sign({ id }, process.env.REFRESH_TOKEN_SECRET)
 }
 
