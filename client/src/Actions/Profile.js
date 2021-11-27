@@ -1,7 +1,6 @@
 import * as api from "./../API/API"
 import { displayMessage } from "./Message"
 import { generateToken } from "./Auth"
-import { logout } from "./Auth"
 
 export const setProfile = (history) => async (dispatch) => {
 	try {
