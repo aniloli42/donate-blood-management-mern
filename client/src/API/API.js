@@ -24,7 +24,7 @@ API.interceptors.request.use(async (req) => {
 
 	if (refreshToken) {
 		try {
-			const { data } = await axios.post(`${baseURL}/auth/token`, {
+			const { data } = await axios.post(`${baseURL}auth/token`, {
 				refreshToken,
 			})
 
@@ -33,7 +33,8 @@ API.interceptors.request.use(async (req) => {
 			localStorage.setItem("token", newToken)
 			req.headers.Authorization = `Bearer ${newToken}`
 		} catch (e) {
-			console.error("Invalid refreshToken")
+			if (e?.response?.status !== 403) return
+			window.location.replace("/login")
 		}
 	}
 	return req
