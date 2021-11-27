@@ -45,7 +45,7 @@ const createHistory = async (req, res) => {
 			const result = oldHistory.some(
 				(history) =>
 					new Date(history.donatedAt).getTime() ===
-					new Date(donatedAt).getTime()
+					new Date(donatedAt).getTime(),
 			)
 
 			if (result)
@@ -79,8 +79,6 @@ const updateHistory = async (req, res) => {
 
 		const history = await History.findOne({ _id: historyId, createdBy: id })
 
-		console.log(historyId, id, history)
-
 		if (!history)
 			return res.status(400).json({ message: "Invalid Update Request" })
 
@@ -101,8 +99,6 @@ const deleteHistory = async (req, res) => {
 	try {
 		const { id } = req.user
 		const { id: historyId } = req.params
-
-		console.log(historyId, req.params)
 
 		const history = await History.findOne({ _id: historyId, createdBy: id })
 
