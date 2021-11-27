@@ -8,8 +8,6 @@ function tokenVerify(req, res, next) {
 
 	const token = Header.split(" ")[1]
 
-	console.log("Token is: ", token)
-
 	jwt.verify(token, process.env.ACCESS_TOKEN_SECRET, (err, authData) => {
 		if (err) return res.status(400).json({ message: "Access denied" })
 		req.user = authData

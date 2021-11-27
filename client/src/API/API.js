@@ -3,12 +3,14 @@ require("dotenv").config()
 
 const API = axios.create({ baseURL: process.env.REACT_APP_API_BASEURL })
 
-API.interceptors.request.use((req) => {
+const intercept = API.interceptors.request.use((req) => {
 	if (localStorage.getItem("token")) {
 		req.headers.Authorization = `Bearer ${localStorage.getItem("token")}`
 	}
 	return req
 })
+
+axios.interceptors.request.eject(intercept)
 
 // Auth
 export const login = (formdata) => API.post("/auth/login", formdata)
