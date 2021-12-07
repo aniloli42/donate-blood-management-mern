@@ -1,13 +1,13 @@
 import React, { useState } from "react"
 import { useDispatch } from "react-redux"
-import { useHistory } from "react-router"
+import { useNavigate } from "react-router"
 import { passwordValidation } from "./../../Validation/index"
 import { displayMessage } from "./../../Actions/Message"
 import { deleteAccount } from "./../../Actions/Auth"
 
 const DeleteAccount = () => {
 	const dispatch = useDispatch()
-	const history = useHistory()
+	const history = useNavigate()
 	const [formData, setFormData] = useState({ password: "" })
 
 	const handleChange = (e) => {
@@ -39,18 +39,18 @@ const DeleteAccount = () => {
 	}
 
 	return (
-		<form method='post' onSubmit={handleDeleteAccount}>
-			<div className='input-group'>
+		<form method="post" onSubmit={handleDeleteAccount}>
+			<div className="input-group">
 				<label>Enter Password</label>
 				<input
-					type='password'
-					name='password'
+					type="password"
+					name="password"
 					value={formData.password}
 					onChange={handleChange}
 				/>
 			</div>
-			<div className='input-buttons'>
-				<button type='submit' className='button'>
+			<div className="input-buttons">
+				<button type="submit" className="button">
 					Delete Account
 				</button>
 			</div>

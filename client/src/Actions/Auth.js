@@ -14,7 +14,7 @@ export const login = (formData, history) => async (dispatch) => {
 			type: "LOGIN",
 		})
 
-		history.push("/")
+		history("/")
 	} catch (error) {
 		const message = error?.response?.data?.message
 
@@ -36,7 +36,7 @@ export const signup = (formdata, history) => async (dispatch) => {
 			type: "LOGIN",
 		})
 
-		history.push("/")
+		history("/")
 	} catch (error) {
 		const message = error?.response?.data?.message
 
@@ -56,7 +56,7 @@ export const logout = (history) => async (dispatch) => {
 
 		localStorage.clear()
 
-		history.push("/login")
+		history("/login")
 
 		dispatch({
 			type: "LOGOUT",
@@ -84,7 +84,7 @@ export const logout = (history) => async (dispatch) => {
 	} catch (error) {
 		console.log(error.message)
 
-		history.push("/login")
+		history("/login")
 		localStorage.clear()
 
 		dispatch({

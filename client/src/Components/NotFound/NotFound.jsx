@@ -1,23 +1,25 @@
 import React from "react"
-import { useHistory } from "react-router-dom"
-import "./notfound.css"
+import { useNavigate } from "react-router-dom"
+import styles from "./notfound.module.css"
 
 const NotFound = () => {
-  const history = useHistory()
+	const history = useNavigate()
 
-  const Back = () => {
-    history.push("/login")
-  }
+	const Back = () => {
+		history("/login")
+	}
 
-  return (
-    <>
-      <div className="error-container">
-        <div className="errorLabel">404</div>
-        <p>Page Not Found!</p>
-        <button onClick={Back}>GO HOME</button>
-      </div>
-    </>
-  )
+	return (
+		<>
+			<div className={styles.errorContainer}>
+				<div className={styles.errorBadge}>404</div>
+				<p className={styles.errorText}>Page Not Found!</p>
+				<button className={styles.backBtn} onClick={Back}>
+					GO HOME
+				</button>
+			</div>
+		</>
+	)
 }
 
 export default NotFound

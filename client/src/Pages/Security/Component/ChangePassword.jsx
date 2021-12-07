@@ -1,6 +1,6 @@
 import React, { useState } from "react"
 import { useDispatch } from "react-redux"
-import { useHistory } from "react-router"
+import { useNavigate } from "react-router"
 
 import { displayMessage } from "./../../../Actions/Message"
 import { changePassword } from "./../../../Actions/Auth"
@@ -8,7 +8,7 @@ import { passwordValidation } from "./../../../Validation/index"
 
 const ChangePassword = () => {
 	const dispatch = useDispatch()
-	const history = useHistory()
+	const history = useNavigate()
 
 	const [formData, setFormData] = useState({
 		oldPassword: "",
@@ -69,38 +69,38 @@ const ChangePassword = () => {
 			<h3>Change Password</h3>
 			<hr />
 			<form onSubmit={handlePasswordChange}>
-				<div className='input-group'>
-					<label htmlFor='oldPassword'>Old Password</label>
+				<div className="input-group">
+					<label htmlFor="oldPassword">Old Password</label>
 					<input
-						type='password'
+						type="password"
 						value={formData.oldPassword}
 						onChange={handleChange}
-						name='oldPassword'
+						name="oldPassword"
 					/>
 				</div>
 
-				<div className='input-group'>
-					<label htmlFor='newPassword'>New Password</label>
+				<div className="input-group">
+					<label htmlFor="newPassword">New Password</label>
 					<input
-						type='password'
+						type="password"
 						value={formData.newPassword}
 						onChange={handleChange}
-						name='newPassword'
+						name="newPassword"
 					/>
 				</div>
 
-				<div className='input-group'>
-					<label htmlFor='retypePassword'>Retype Password</label>
+				<div className="input-group">
+					<label htmlFor="retypePassword">Retype Password</label>
 					<input
-						type='password'
+						type="password"
 						value={formData.retypePassword}
 						onChange={handleChange}
-						name='retypePassword'
+						name="retypePassword"
 					/>
 				</div>
-				<div className='input-buttons'>
-					<button type='submit'>Change Password</button>
-					<button onClick={() => history.push("/forget-password")}>
+				<div className="input-buttons">
+					<button type="submit">Change Password</button>
+					<button onClick={() => history("/forget-password")}>
 						Forget Password?
 					</button>
 				</div>

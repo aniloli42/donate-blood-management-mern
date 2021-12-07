@@ -5,11 +5,11 @@ import { passwordValidation } from "../../../Validation"
 import { displayMessage } from "../../../Actions/Message"
 import { useDispatch } from "react-redux"
 import { changeForgetPassword } from "../../../API/API"
-import { useHistory } from "react-router"
+import { useNavigate } from "react-router"
 
 const ChangePassword = ({ email }) => {
 	const dispatch = useDispatch()
-	const history = useHistory()
+	const history = useNavigate()
 	const password = useRef(null)
 	const retypepassword = useRef(null)
 
@@ -58,7 +58,7 @@ const ChangePassword = ({ email }) => {
 
 			dispatch(displayMessage(message))
 
-			history.push("/login")
+			history("/login")
 		} catch (error) {
 			const message = error?.response?.data?.message
 
@@ -69,41 +69,41 @@ const ChangePassword = ({ email }) => {
 	}
 
 	return (
-		<div className='entry-form-div'>
-			<form className='entry-form' method='post' onSubmit={handlePassword}>
+		<div className="entry-form-div">
+			<form className="entry-form" method="post" onSubmit={handlePassword}>
 				<h2>Change Password</h2>
 
-				<div className='entry-elements'>
-					<label htmlFor='newpassword'>New Password</label>
-					<div className='group-entry-element'>
+				<div className="entry-elements">
+					<label htmlFor="newpassword">New Password</label>
+					<div className="group-entry-element">
 						<input
-							type='password'
-							name='newpassword'
+							type="password"
+							name="newpassword"
 							ref={password}
-							id='newpassword'
+							id="newpassword"
 							value={formData.newpassword}
 							onChange={updateFormData}
-							autoComplete='off'
+							autoComplete="off"
 						/>
-						<img src={show} alt='show hide icon' onClick={changePasswordType} />
+						<img src={show} alt="show hide icon" onClick={changePasswordType} />
 					</div>
 				</div>
 
-				<div className='entry-elements'>
-					<label htmlFor='retypepassword'>Retype Password</label>
+				<div className="entry-elements">
+					<label htmlFor="retypepassword">Retype Password</label>
 					<input
-						type='password'
-						name='retypepassword'
+						type="password"
+						name="retypepassword"
 						ref={retypepassword}
 						value={formData.retypepassword}
 						onChange={updateFormData}
-						id='retypepassword'
-						autoComplete='off'
+						id="retypepassword"
+						autoComplete="off"
 					/>
 				</div>
 
-				<div className='entry-button'>
-					<button type='submit'>Change Password</button>
+				<div className="entry-button">
+					<button type="submit">Change Password</button>
 				</div>
 			</form>
 		</div>

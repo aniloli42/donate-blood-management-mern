@@ -1,5 +1,5 @@
 import React from "react"
-import { Route, Switch } from "react-router-dom"
+import { Route, Routes } from "react-router-dom"
 import "./Styles/App.css"
 
 import {
@@ -20,20 +20,20 @@ function App() {
 	return (
 		<>
 			<MessageCard />
-			<Switch>
-				<Route exact path='/' component={Dashboard} />
-				<Route exact path='/profile' component={Profile} />
-				<Route exact path='/profile/:id' component={Profile} />
-				<Route exact path='/security' component={Security} />
-				<Route exact path='/requests' component={Requests} />
-				<Route exact path='/donation-history' component={DonationHistory} />
+			<Routes>
+				<Route exact path="/" element={<Dashboard />} />
+				<Route exact path="/profile" element={<Profile />} />
+				<Route exact path="/profile/:id" element={<Profile />} />
+				<Route exact path="/security" element={<Security />} />
+				<Route exact path="/requests" element={<Requests />} />
+				<Route exact path="/donation-history" element={<DonationHistory />} />
 
-				<Route exact path='/login' component={Login} />
-				<Route exact path='/signup' component={Signup} />
+				<Route exact path="/login" element={<Login />} />
+				<Route exact path="/signup" element={<Signup />} />
 
-				<Route exact path='/forget-password' component={ForgetPassword} />
-				<Route path='*' component={NotFound} />
-			</Switch>
+				<Route exact path="/forget-password" element={<ForgetPassword />} />
+				<Route path="*" element={<NotFound />} />
+			</Routes>
 		</>
 	)
 }

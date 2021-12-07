@@ -1,6 +1,6 @@
 import React, { useEffect } from "react"
 import "./maincomponent.css"
-import { useHistory } from "react-router-dom"
+import { useNavigate } from "react-router-dom"
 import { Header } from "../../Components"
 
 import { useDispatch } from "react-redux"
@@ -9,7 +9,7 @@ import { setProfile } from "./../../Actions/Profile"
 
 const MainComponent = ({ children }) => {
 	const dispatch = useDispatch()
-	const history = useHistory()
+	const history = useNavigate()
 
 	useEffect(() => {
 		const token = localStorage.getItem("token")
@@ -30,7 +30,7 @@ const MainComponent = ({ children }) => {
 	return (
 		<>
 			<Header />
-			<div className='main-component'>{children}</div>
+			<div className="main-component">{children}</div>
 		</>
 	)
 }
