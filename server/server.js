@@ -33,7 +33,7 @@ const auth = require("./routes/auth")
 const profile = require("./routes/profile")
 const history = require("./routes/history")
 const requests = require("./routes/requests")
-const { default: axios } = require("axios")
+const axios = require("axios")
 
 // routes
 app.use("/otp", otp)
