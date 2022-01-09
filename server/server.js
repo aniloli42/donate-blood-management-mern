@@ -58,4 +58,4 @@ const keepLive = async () => {
 
 setInterval(() => {
   keepLive()
-}, 1800000)
+}, 900000)
