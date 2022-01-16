@@ -1,11 +1,11 @@
-import React, { useState } from "react"
-import "./forget.css"
-import logo from "../../Assets/Images/blood.svg"
-import { Link } from "react-router-dom"
+import React, { useState } from 'react'
+import './forget.css'
+import logo from '../../Assets/Images/blood.png'
+import { Link } from 'react-router-dom'
 
-import Forget from "./Forget/Forget"
-import OTP from "./OTP/OTP"
-import ChangePassword from "./ChangePassword/ChangePassword"
+import Forget from './Forget/Forget'
+import OTP from './OTP/OTP'
+import ChangePassword from './ChangePassword/ChangePassword'
 
 const ForgetPassword = () => {
 	const [forget, setForget] = useState(true)
@@ -13,14 +13,14 @@ const ForgetPassword = () => {
 	const [password, setPassword] = useState(false)
 	const [emailId, setEmail] = useState(null)
 
-	const changeOtp = (email) => {
-		setForget((prev) => !prev)
-		setOtp((prev) => !prev)
+	const changeOtp = email => {
+		setForget(prev => !prev)
+		setOtp(prev => !prev)
 		setEmail(email)
 	}
 	const changePassword = () => {
-		setOtp((prev) => !prev)
-		setPassword((prev) => !prev)
+		setOtp(prev => !prev)
+		setPassword(prev => !prev)
 	}
 
 	return (

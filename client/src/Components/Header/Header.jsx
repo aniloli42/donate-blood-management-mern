@@ -1,8 +1,8 @@
-import React from "react"
-import { Link } from "react-router-dom"
-import { Hamburger, Sidebar } from ".."
-import logo from "../../Assets/Images/blood.svg"
-import "./header.css"
+import React from 'react'
+import { Link } from 'react-router-dom'
+import { Hamburger, Sidebar } from '..'
+import logo from '../../Assets/Images/blood.png'
+import './header.css'
 
 const Header = () => {
 	return (
