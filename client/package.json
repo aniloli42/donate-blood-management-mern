@@ -43,5 +43,10 @@
 			"last 1 firefox version",
 			"last 1 safari version"
 		]
+	},
+	"devDependencies": {
+		"immer": "^9.0.12",
+		"node-forge": "^1.2.1",
+		"postcss": "^8.4.5"
 	}
 }
