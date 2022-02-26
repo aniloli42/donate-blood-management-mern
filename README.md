@@ -2,6 +2,8 @@
 
 This project is made to help the blood requirement of emergency blood, then certain person can request for blood as help.
 
+View Live Website: [Click Here](https://donate-blood.netlify.app)
+
 ---
 
 ## Table of Content
