@@ -99,11 +99,3 @@ We decide to built the blood donation project for the project and for real cause
 #### Designer
 
 - Stuti Upreti: [Github](https://github.com/thestuti)
-
-#### Documentation By
-
-- Aashish Dhungana
-- Amit Shah
-- Anil Koirala
-- Durgesh Bishwokarma
-- Balkrishna Chaudhary
