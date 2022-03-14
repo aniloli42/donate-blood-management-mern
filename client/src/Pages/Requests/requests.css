@@ -1,19 +1,19 @@
 section header h2 {
-	font-size: 1.4rem;
-	color: var(--text-light);
+  font-size: 1.4rem;
+  color: var(--text-light);
 }
 
 section:is(.other-requests, .own-requests) {
-	margin-block: 50px;
+  margin-block: 50px;
 }
 
 .requests-content {
-	height: 255px;
-	overflow-x: auto;
+  height: 255px;
+  overflow-x: auto;
 }
 
 .button-center.button-center {
-	display: flex;
-	justify-content: center;
-	align-items: center;
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }

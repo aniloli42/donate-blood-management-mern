@@ -1,14 +1,14 @@
 .action-button {
-	padding: 0.2rem 0.5rem;
-	border-radius: 0.2rem;
-	margin-inline: 0.2rem;
+  padding: 0.2rem 0.5rem;
+  border-radius: 0.2rem;
+  margin-inline: 0.2rem;
 }
 
 .action-delete {
-	background-color: var(--light-red);
+  background-color: var(--light-red);
 }
 
 .action-delete:hover,
 .action-delete:focus-visible {
-	background-color: var(--dark-red);
+  background-color: var(--dark-red);
 }

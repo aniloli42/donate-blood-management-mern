@@ -19,7 +19,7 @@
 
 .hamburger-lines::before,
 .hamburger-lines::after {
-  content: "";
+  content: '';
   position: absolute;
   width: 30px;
   height: var(--line-height);

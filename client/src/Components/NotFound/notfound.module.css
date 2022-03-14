@@ -1,38 +1,38 @@
 .errorContainer {
-	width: 100vw;
-	max-width: 100%;
-	min-height: 100vh;
-	display: flex;
-	justify-content: center;
-	flex-direction: column;
-	align-items: center;
+  width: 100vw;
+  max-width: 100%;
+  min-height: 100vh;
+  display: flex;
+  justify-content: center;
+  flex-direction: column;
+  align-items: center;
 }
 
 .errorBadge {
-	padding: 1em;
-	border: 0.3em solid var(--dark-red);
-	border-radius: 50%;
-	color: var(--dark-red);
-	font-size: 1.5rem;
-	font-weight: bold;
+  padding: 1em;
+  border: 0.3em solid var(--dark-red);
+  border-radius: 50%;
+  color: var(--dark-red);
+  font-size: 1.5rem;
+  font-weight: bold;
 }
 
 .errorText {
-	color: var(--text-light);
-	font-size: 1.8rem;
-	margin-block: 0.5em 2em;
+  color: var(--text-light);
+  font-size: 1.8rem;
+  margin-block: 0.5em 2em;
 }
 
 .backBtn {
-	border: none;
-	outline: none;
-	padding: 0.5em 0.9em;
-	font-weight: 600;
-	transition: 0.25s ease-in-out;
+  border: none;
+  outline: none;
+  padding: 0.5em 0.9em;
+  font-weight: 600;
+  transition: 0.25s ease-in-out;
 }
 
 .backBtn:hover,
 .backBtn:focus-within {
-	background-color: var(--button-hover);
-	color: var(--text-light);
+  background-color: var(--button-hover);
+  color: var(--text-light);
 }

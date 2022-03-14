@@ -1,98 +1,98 @@
 section > h3 {
-	margin-block: 1.5rem 0.5rem;
-	color: var(--text-light);
-	font-size: var(--heading3);
-	font-weight: bold;
+  margin-block: 1.5rem 0.5rem;
+  color: var(--text-light);
+  font-size: var(--heading3);
+  font-weight: bold;
 }
 
 section hr {
-	margin-bottom: 0.8rem;
+  margin-bottom: 0.8rem;
 }
 
 .email-content {
-	color: var(--text-light);
-	display: flex;
-	align-items: center;
+  color: var(--text-light);
+  display: flex;
+  align-items: center;
 }
 
 .email-content > :nth-child(2) {
-	margin-left: auto;
-	margin-right: 1.5rem;
+  margin-left: auto;
+  margin-right: 1.5rem;
 }
 
 section button {
-	outline: none;
-	border: none;
-	font-weight: bold;
-	box-shadow: 0.1em 0.1em 0.5em var(--light-dark-blue);
-	border-radius: 0.3em;
-	background-color: var(--button-background);
+  outline: none;
+  border: none;
+  font-weight: bold;
+  box-shadow: 0.1em 0.1em 0.5em var(--light-dark-blue);
+  border-radius: 0.3em;
+  background-color: var(--button-background);
 }
 
 section button:hover,
 section button:focus-visible {
-	background-color: var(--button-hover);
+  background-color: var(--button-hover);
 }
 
 .email-content button {
-	width: 1.8rem;
-	height: 1.8rem;
+  width: 1.8rem;
+  height: 1.8rem;
 }
 
 .email-content button svg path {
-	fill: var(--light);
+  fill: var(--light);
 }
 
 section .input-group label {
-	color: var(--text-light);
+  color: var(--text-light);
 }
 
 .input-buttons > :first-child {
-	color: var(--text-light);
-	padding: 0.6em 1.5em;
-	margin-right: 1em;
-	display: flex;
-	align-items: center;
+  color: var(--text-light);
+  padding: 0.6em 1.5em;
+  margin-right: 1em;
+  display: flex;
+  align-items: center;
 }
 
 section .input-buttons > :last-child {
-	background-color: transparent;
-	color: var(--text-gray);
+  background-color: transparent;
+  color: var(--text-gray);
 }
 
 section .input-buttons > :last-child:hover,
 section .input-buttons > :last-child:focus-visible {
-	color: var(--light-red);
+  color: var(--light-red);
 }
 
 /* delete account */
 
 .delete-account-section > h3 {
-	color: var(--light-red);
+  color: var(--light-red);
 }
 
 .delete-account-section button {
-	padding: 0.7em 1.5em;
-	color: var(--text-light);
-	background-color: var(--dark-red);
+  padding: 0.7em 1.5em;
+  color: var(--text-light);
+  background-color: var(--dark-red);
 }
 
 @media (min-width: 600px) {
-	.email-content {
-		display: flex;
-		max-width: 650px;
-	}
+  .email-content {
+    display: flex;
+    max-width: 650px;
+  }
 
-	section .input-group {
-		display: grid;
-		grid-template-columns: 1fr 1fr;
-	}
+  section .input-group {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+  }
 
-	.input-group > :first-child {
-		margin-inline-end: 4em;
-	}
+  .input-group > :first-child {
+    margin-inline-end: 4em;
+  }
 
-	.input-buttons > :first-child {
-		margin-right: 2em;
-	}
+  .input-buttons > :first-child {
+    margin-right: 2em;
+  }
 }

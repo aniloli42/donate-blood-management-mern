@@ -1,27 +1,27 @@
 /* width */
 ::-webkit-scrollbar {
-	width: 10px;
-	margin-block: 0.8rem;
-	background-color: var(--background);
+  width: 10px;
+  margin-block: 0.8rem;
+  background-color: var(--background);
 }
 
 /* Track */
 ::-webkit-scrollbar-track {
-	background: var(--text-light);
-	margin-block: 0.3rem;
-	border-radius: 4px;
-	margin-inline: 1rem;
+  background: var(--text-light);
+  margin-block: 0.3rem;
+  border-radius: 4px;
+  margin-inline: 1rem;
 }
 
 /* Handle */
 ::-webkit-scrollbar-thumb {
-	margin-inline: 1rem;
-	border-radius: 4px;
+  margin-inline: 1rem;
+  border-radius: 4px;
 
-	background: var(--text-gray);
+  background: var(--text-gray);
 }
 
 /* Handle on hover */
 ::-webkit-scrollbar-thumb:hover {
-	background: var(--dark-blue);
+  background: var(--dark-blue);
 }

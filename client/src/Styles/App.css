@@ -1,58 +1,58 @@
-@import url("https://fonts.googleapis.com/css2?family=Poppins&display=swap");
+@import url('https://fonts.googleapis.com/css2?family=Poppins&display=swap');
 
-@import url("./scrollbar");
-@import url("./Variables");
-@import url("./Utility");
+@import url('./scrollbar');
+@import url('./Variables');
+@import url('./Utility');
 
 * {
-	margin: 0;
-	padding: 0;
-	box-sizing: border-box;
-	font-family: "Poppins", sans-serif;
-	letter-spacing: 0.5px;
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: 'Poppins', sans-serif;
+  letter-spacing: 0.5px;
 }
 
 :focus {
-	outline: none;
+  outline: none;
 }
 
 img {
-	display: flow-root;
-	max-width: 100%;
-	height: auto;
+  display: flow-root;
+  max-width: 100%;
+  height: auto;
 }
 
 a {
-	display: block;
-	color: #000;
-	text-decoration: none;
-	cursor: pointer;
+  display: block;
+  color: #000;
+  text-decoration: none;
+  cursor: pointer;
 }
 
 button {
-	cursor: pointer;
+  cursor: pointer;
 }
 
 #root {
-	display: flex;
-	position: absolute;
-	flex-direction: column;
-	width: 100%;
-	min-height: 100vh;
-	min-height: -webkit-fill-available;
+  display: flex;
+  position: absolute;
+  flex-direction: column;
+  width: 100%;
+  min-height: 100vh;
+  min-height: -webkit-fill-available;
 
-	background-color: var(--background);
+  background-color: var(--background);
 }
 
 body {
-	background-color: var(--background);
+  background-color: var(--background);
 }
 
 @media (min-width: 1200px) {
-	#root {
-		display: grid;
-		grid-template-columns: repeat(2, 1fr);
-		grid-template-rows: auto 1fr;
-		justify-items: start;
-	}
+  #root {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    grid-template-rows: auto 1fr;
+    justify-items: start;
+  }
 }

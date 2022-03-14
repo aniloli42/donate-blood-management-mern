@@ -1,194 +1,194 @@
 .user-entry {
-	margin-block-start: min(10vw, 5em);
-	width: 100%;
-	padding: 20px;
-	flex-direction: column;
-	padding-top: 0px;
-	display: flex;
-	justify-content: center;
-	align-items: center;
+  margin-block-start: min(10vw, 5em);
+  width: 100%;
+  padding: 20px;
+  flex-direction: column;
+  padding-top: 0px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
 
 .brand-logo {
-	display: flex;
-	align-items: baseline;
-	gap: 15px;
-	justify-content: center;
+  display: flex;
+  align-items: baseline;
+  gap: 15px;
+  justify-content: center;
 }
 
 .brand-logo img {
-	width: 20px;
-	height: 32px;
+  width: 20px;
+  height: 32px;
 }
 
 .brand-logo h1 {
-	color: var(--text-light);
-	font-weight: bold;
-	font-size: 2.5em;
+  color: var(--text-light);
+  font-weight: bold;
+  font-size: 2.5em;
 }
 
 .brand-slogon {
-	margin-top: 20px;
-	font-size: 18px;
-	text-align: center;
-	color: var(--text-gray);
+  margin-top: 20px;
+  font-size: 18px;
+  text-align: center;
+  color: var(--text-gray);
 }
 
 .entry-form-div {
-	width: 100%;
-	display: flex;
-	flex-direction: column;
-	align-items: center;
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
 }
 
 .entry-form {
-	margin-top: 40px;
-	display: block;
-	width: 100%;
-	background-color: var(--dark-blue);
-	padding: 40px 20px;
-	border-radius: 10px;
-	box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.4);
+  margin-top: 40px;
+  display: block;
+  width: 100%;
+  background-color: var(--dark-blue);
+  padding: 40px 20px;
+  border-radius: 10px;
+  box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.4);
 }
 
 .entry-form h2 {
-	text-align: center;
-	color: var(--text-light);
-	margin-bottom: 20px;
+  text-align: center;
+  color: var(--text-light);
+  margin-bottom: 20px;
 }
 
 .entry-elements {
-	display: flex;
-	flex-direction: column;
-	gap: 10px;
-	margin: 15px 0;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  margin: 15px 0;
 }
 
 .entry-elements label {
-	color: var(--text-light);
+  color: var(--text-light);
 }
 
-.entry-elements :is(input[type="text"], input[type="password"], select) {
-	height: 40px;
-	outline: none;
-	background-color: var(--light-blue);
-	border-radius: 5px;
-	font-size: 0.91em;
-	padding: 0px 10px;
-	border: none;
-	color: var(--text-light);
+.entry-elements :is(input[type='text'], input[type='password'], select) {
+  height: 40px;
+  outline: none;
+  background-color: var(--light-blue);
+  border-radius: 5px;
+  font-size: 0.91em;
+  padding: 0px 10px;
+  border: none;
+  color: var(--text-light);
 }
 
 .group-entry-element {
-	display: flex;
-	align-items: center;
-	background-color: var(--light-blue);
-	border-radius: 5px;
-	padding-right: 10px;
+  display: flex;
+  align-items: center;
+  background-color: var(--light-blue);
+  border-radius: 5px;
+  padding-right: 10px;
 }
 
-.group-entry-element :is(input[type="text"], input[type="password"]) {
-	width: 100%;
-	border: none;
+.group-entry-element :is(input[type='text'], input[type='password']) {
+  width: 100%;
+  border: none;
 }
 
 .group-entry-element img {
-	width: 20px;
-	height: 20px;
-	cursor: pointer;
+  width: 20px;
+  height: 20px;
+  cursor: pointer;
 }
 
 .entry-button {
-	display: flex;
-	align-items: center;
+  display: flex;
+  align-items: center;
 }
 
 .entry-button button {
-	cursor: pointer;
-	padding: 10px;
-	width: max-content;
-	font-weight: bold;
-	border-radius: 5px;
-	border: none;
-	margin-right: 20px;
-	background-color: var(--text-light);
-	color: var(--dark-blue);
+  cursor: pointer;
+  padding: 10px;
+  width: max-content;
+  font-weight: bold;
+  border-radius: 5px;
+  border: none;
+  margin-right: 20px;
+  background-color: var(--text-light);
+  color: var(--dark-blue);
 }
 
 .entry-button button:hover {
-	background-color: var(--button-background);
-	color: var(--text-light);
+  background-color: var(--button-background);
+  color: var(--text-light);
 }
 
 .entry-button a {
-	color: var(--text-gray);
-	font-size: 14px;
+  color: var(--text-gray);
+  font-size: 14px;
 }
 
 .entry-message {
-	margin-top: 20px;
-	display: flex;
-	font-size: 15px;
-	color: var(--text-light);
-	justify-content: center;
-	flex-wrap: wrap;
+  margin-top: 20px;
+  display: flex;
+  font-size: 15px;
+  color: var(--text-light);
+  justify-content: center;
+  flex-wrap: wrap;
 }
 
 .entry-message a {
-	margin-left: 5px;
-	color: var(--text-gray);
+  margin-left: 5px;
+  color: var(--text-gray);
 }
 
 .entry-message a:hover,
 .entry-button a:hover {
-	color: var(--text-light);
+  color: var(--text-light);
 }
 
 @media (min-width: 480px) {
-	.entry-form {
-		width: 400px;
-	}
+  .entry-form {
+    width: 400px;
+  }
 }
 
 @media (min-width: 1200px) {
-	.user-entry {
-		display: flex;
-		grid-column: 1/4;
-		flex-direction: row;
-		align-items: flex-start;
-		justify-content: space-around;
-	}
+  .user-entry {
+    display: flex;
+    grid-column: 1/4;
+    flex-direction: row;
+    align-items: flex-start;
+    justify-content: space-around;
+  }
 
-	.brand-logo {
-		justify-content: flex-start;
-	}
+  .brand-logo {
+    justify-content: flex-start;
+  }
 
-	.brand-logo h1 {
-		font-size: 3.5em;
-	}
+  .brand-logo h1 {
+    font-size: 3.5em;
+  }
 
-	.brand-logo img {
-		width: 30px;
-		height: 42px;
-	}
+  .brand-logo img {
+    width: 30px;
+    height: 42px;
+  }
 
-	.brand-showcase {
-		margin: 30px;
-	}
+  .brand-showcase {
+    margin: 30px;
+  }
 
-	.brand-showcase p {
-		max-width: 400px;
-		line-height: 1.6em;
-		font-size: 1.8em;
-		text-align: left;
-	}
+  .brand-showcase p {
+    max-width: 400px;
+    line-height: 1.6em;
+    font-size: 1.8em;
+    text-align: left;
+  }
 
-	.entry-form-div {
-		width: unset;
-		display: block;
-	}
+  .entry-form-div {
+    width: unset;
+    display: block;
+  }
 
-	.entry-form {
-		padding: 40px 30px;
-	}
+  .entry-form {
+    padding: 40px 30px;
+  }
 }

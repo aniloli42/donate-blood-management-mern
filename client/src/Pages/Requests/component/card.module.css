@@ -1,36 +1,36 @@
 .formGroup {
-	display: flex;
-	flex-direction: column;
-	width: 100%;
-	margin-block: 0.8rem;
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  margin-block: 0.8rem;
 }
 
 .input {
-	height: 40px;
-	padding-inline: 0.4em;
-	font-size: 1rem;
+  height: 40px;
+  padding-inline: 0.4em;
+  font-size: 1rem;
 }
 
 .label {
-	color: var(--text-gray);
-	font-style: 1.2rem;
-	margin-bottom: 0.3em;
+  color: var(--text-gray);
+  font-style: 1.2rem;
+  margin-bottom: 0.3em;
 }
 
 .buttonCircle {
-	border-radius: 50%;
-	width: 5px;
-	display: inline-flex;
-	justify-content: center;
-	align-items: center;
-	background-color: var(--light-red);
+  border-radius: 50%;
+  width: 5px;
+  display: inline-flex;
+  justify-content: center;
+  align-items: center;
+  background-color: var(--light-red);
 }
 
 .buttonCircle:hover {
-	background-color: var(--dark-red);
+  background-color: var(--dark-red);
 }
 
 .messageDone {
-	font-size: 0.85rem;
-	color: var(--text-gray);
+  font-size: 0.85rem;
+  color: var(--text-gray);
 }

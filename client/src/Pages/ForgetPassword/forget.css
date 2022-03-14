@@ -1,20 +1,20 @@
 a.backBtn {
-	color: var(--text-light);
-	display: flex;
-	justify-content: center;
-	margin-top: 1em;
-	width: max-content;
-	margin-inline: auto;
+  color: var(--text-light);
+  display: flex;
+  justify-content: center;
+  margin-top: 1em;
+  width: max-content;
+  margin-inline: auto;
 }
 
 a.backBtn:hover,
 a.backBtn:focus-visible {
-	text-decoration: underline;
+  text-decoration: underline;
 }
 
 @media (min-width: 1200px) {
-	a.backBtn {
-		justify-content: flex-start;
-		margin-inline: 0;
-	}
+  a.backBtn {
+    justify-content: flex-start;
+    margin-inline: 0;
+  }
 }

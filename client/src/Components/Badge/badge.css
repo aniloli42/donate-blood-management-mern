@@ -2,8 +2,8 @@
   display: grid;
   margin-block: 10px;
   grid-template-areas:
-    "badge heading"
-    "badge sub";
+    'badge heading'
+    'badge sub';
 
   grid-template-columns: max-content auto;
   background-color: var(--card-background);

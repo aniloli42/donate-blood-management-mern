@@ -1,31 +1,31 @@
 .main-component {
-	flex-grow: 1;
-	display: block;
-	margin: clamp(0.5em, calc(0.1em + 4vw), 1.5em);
+  flex-grow: 1;
+  display: block;
+  margin: clamp(0.5em, calc(0.1em + 4vw), 1.5em);
 }
 
 /* title of the section */
 .main-component > h2,
 .main-component > header h2 {
-	color: var(--light);
-	font-weight: bold;
-	margin-block-end: 1em;
-	font-size: var(--heading2);
-	--heading2: 1.2rem;
-	align-items: center;
+  color: var(--light);
+  font-weight: bold;
+  margin-block-end: 1em;
+  font-size: var(--heading2);
+  --heading2: 1.2rem;
+  align-items: center;
 }
 
 @media (min-width: 1200px) {
-	.main-component {
-		justify-self: stretch;
-		align-self: start;
-		grid-column: span 2;
-		margin-inline-start: 300px;
-		padding-inline-start: 20px;
-	}
+  .main-component {
+    justify-self: stretch;
+    align-self: start;
+    grid-column: span 2;
+    margin-inline-start: 300px;
+    padding-inline-start: 20px;
+  }
 
-	.main-component > h2,
-	.main-component header h2 {
-		--heading2: revert;
-	}
+  .main-component > h2,
+  .main-component header h2 {
+    --heading2: revert;
+  }
 }

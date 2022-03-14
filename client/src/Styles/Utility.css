@@ -1,56 +1,56 @@
 .input-group {
-	display: flex;
-	flex-direction: column;
-	max-width: 650px;
+  display: flex;
+  flex-direction: column;
+  max-width: 650px;
 }
 
 hr {
-	border: none;
-	background-color: var(--text-gray);
-	height: 1px;
+  border: none;
+  background-color: var(--text-gray);
+  height: 1px;
 }
 
 .input-group + .input-group {
-	margin-block: 0.8em;
+  margin-block: 0.8em;
 }
 
 .input-group > :first-child {
-	margin-block-end: 0.3rem;
+  margin-block-end: 0.3rem;
 }
 
 .input-group label {
-	color: var(--text-gray);
+  color: var(--text-gray);
 }
 
 .input-group input,
 .input-group select {
-	height: 2.5rem;
-	padding-inline: 10px;
-	font-size: 1.1rem;
+  height: 2.5rem;
+  padding-inline: 10px;
+  font-size: 1.1rem;
 }
 
 /* button */
 .button {
-	outline: none;
-	border: none;
-	padding: 0.8em 1.5em;
-	font-weight: bold;
-	background-color: var(--button-background);
-	color: #fff;
-	transition: all 0.2s linear;
+  outline: none;
+  border: none;
+  padding: 0.8em 1.5em;
+  font-weight: bold;
+  background-color: var(--button-background);
+  color: #fff;
+  transition: all 0.2s linear;
 }
 
 .button:hover,
 .button:focus-visible {
-	background-color: var(--button-hover);
+  background-color: var(--button-hover);
 }
 
 .button-group {
-	display: inline-flex;
-	justify-content: center;
-	align-items: center;
+  display: inline-flex;
+  justify-content: center;
+  align-items: center;
 }
 
 .button-group > .button + .button {
-	margin-inline-start: 0.8em;
+  margin-inline-start: 0.8em;
 }

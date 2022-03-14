@@ -45,6 +45,7 @@
     ]
   },
   "devDependencies": {
+    "autoprefixer": "^10.4.2",
     "immer": "^9.0.12",
     "mini-css-extract-plugin": "2.4.5",
     "node-forge": "^1.2.1",

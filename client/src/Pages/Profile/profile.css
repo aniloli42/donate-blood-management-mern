@@ -1,40 +1,40 @@
 .profile-container {
-	display: grid;
-	grid-gap: 20px;
+  display: grid;
+  grid-gap: 20px;
 }
 
 .input-group > p {
-	font-size: 1.4rem;
-	font-weight: 500;
-	color: var(--text-light);
+  font-size: 1.4rem;
+  font-weight: 500;
+  color: var(--text-light);
 }
 
 .input-buttons {
-	margin-top: 1.7em;
-	display: grid;
-	column-gap: 0.5em;
-	grid-template-columns: repeat(2, max-content);
+  margin-top: 1.7em;
+  display: grid;
+  column-gap: 0.5em;
+  grid-template-columns: repeat(2, max-content);
 }
 
 .profile-update,
 .profile-edit {
-	background-color: var(--button-background);
+  background-color: var(--button-background);
 }
 
 .profile-update:hover,
 .profile-update:focus,
 .profile-edit:hover,
 .profile-edit:focus-visible {
-	background-color: var(--button-hover);
+  background-color: var(--button-hover);
 }
 
 .cancel-update {
-	background-color: transparent;
-	color: var(--text-gray);
+  background-color: transparent;
+  color: var(--text-gray);
 }
 
 .cancel-update:hover,
 .cancel-update:focus-visible {
-	background: unset;
-	color: var(--light-red);
+  background: unset;
+  color: var(--light-red);
 }
