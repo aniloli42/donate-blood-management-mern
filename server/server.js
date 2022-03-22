@@ -10,7 +10,7 @@ app.use(express.json())
 app.use(express.urlencoded({ extended: true }))
 
 app.get('/', (req, res) => {
-	res.status(200).json({ message: 'Welcome To Donate Blood Server' })
+  res.status(200).json({ message: 'Welcome To Donate Blood Server' })
 })
 
 const port = process.env.PORT || 4001
@@ -19,12 +19,12 @@ const url = process.env.DB_URL
 
 moongoose.connect(url, { useNewUrlParser: true, useUnifiedTopology: true })
 
-moongoose.connection.on('error', err => {
-	console.log(err)
+moongoose.connection.on('error', (err) => {
+  console.log(err)
 })
 
 moongoose.connection.once('open', () => {
-	console.log('Connected to database')
+  console.log('Connected to database')
 })
 
 //  imports
@@ -43,9 +43,5 @@ app.use('/history', history)
 app.use('/requests', requests)
 
 app.listen(port, () => {
-	console.log(`Server running on port ${port}`)
+  console.log(`Server running on port ${port}`)
 })
-
-setInterval(() => {
-	keepLive()
-}, 900000)
