@@ -1,112 +1,125 @@
-import React, { useState } from "react"
-import { useDispatch } from "react-redux"
-import { useNavigate } from "react-router"
+import React, { useState } from "react";
+import { useDispatch } from "react-redux";
+import { useNavigate } from "react-router";
 
-import { displayMessage } from "./../../../Actions/Message"
-import { changePassword } from "./../../../Actions/Auth"
-import { passwordValidation } from "./../../../Validation/index"
+import { displayMessage } from "./../../../Actions/Message";
+import { changePassword } from "./../../../Actions/Auth";
+import { passwordValidation } from "./../../../Validation/index";
 
 const ChangePassword = () => {
-	const dispatch = useDispatch()
-	const history = useNavigate()
+  const dispatch = useDispatch();
+  const history = useNavigate();
 
-	const [formData, setFormData] = useState({
-		oldPassword: "",
-		newPassword: "",
-		retypePassword: "",
-	})
+  const [formData, setFormData] = useState({
+    oldPassword: "",
+    newPassword: "",
+    retypePassword: "",
+  });
+  const [submitting, setSubmitting] = useState(false);
 
-	const handleChange = (e) => {
-		setFormData((prev) => {
-			return {
-				...prev,
-				[e.target.name]: e.target.value,
-			}
-		})
-	}
+  const handleChange = (e) => {
+    setFormData((prev) => {
+      return {
+        ...prev,
+        [e.target.name]: e.target.value,
+      };
+    });
+  };
 
-	const handlePasswordChange = async (e) => {
-		e.preventDefault()
-		if (
-			formData.oldPassword === "" ||
-			formData.newPassword === "" ||
-			formData.retypePassword === ""
-		) {
-			return dispatch(displayMessage("Enter all Inputs"))
-		}
+  const handlePasswordChange = async (e) => {
+    e.preventDefault();
+    setSubmitting(true);
 
-		const oldPasswordValid = passwordValidation(formData.oldPassword)
-		const retypePasswordValid = passwordValidation(formData.retypePassword)
-		const newPasswordValid = passwordValidation(formData.newPassword)
+    if (
+      formData.oldPassword === "" ||
+      formData.newPassword === "" ||
+      formData.retypePassword === ""
+    ) {
+      setSubmitting(false);
+      return dispatch(displayMessage("Enter all Inputs"));
+    }
 
-		if (
-			!oldPasswordValid.status ||
-			!retypePasswordValid.status ||
-			!newPasswordValid.status
-		) {
-			return dispatch(displayMessage("Password atleast 8 characters"))
-		}
+    const oldPasswordValid = passwordValidation(formData.oldPassword);
+    const retypePasswordValid = passwordValidation(formData.retypePassword);
+    const newPasswordValid = passwordValidation(formData.newPassword);
 
-		if (formData.newPassword !== formData.retypePassword) {
-			return dispatch(
-				displayMessage("New Password and Retype Password Not Matched")
-			)
-		}
+    if (
+      !oldPasswordValid.status ||
+      !retypePasswordValid.status ||
+      !newPasswordValid.status
+    ) {
+      setSubmitting(false);
+      return dispatch(displayMessage("Password atleast 8 characters"));
+    }
 
-		if (formData.newPassword === formData.oldPassword) {
-			return dispatch(displayMessage("New Password and Old Password is Idle"))
-		}
+    if (formData.newPassword !== formData.retypePassword) {
+      setSubmitting(false);
+      return dispatch(
+        displayMessage("New Password and Retype Password Not Matched")
+      );
+    }
 
-		try {
-			dispatch(changePassword(formData, setFormData))
-		} catch (err) {
-			dispatch(displayMessage(err.message))
-		}
-	}
+    if (formData.newPassword === formData.oldPassword) {
+      setSubmitting(false);
+      return dispatch(displayMessage("New Password and Old Password is Idle"));
+    }
 
-	return (
-		<section>
-			<h3>Change Password</h3>
-			<hr />
-			<form onSubmit={handlePasswordChange}>
-				<div className="input-group">
-					<label htmlFor="oldPassword">Old Password</label>
-					<input
-						type="password"
-						value={formData.oldPassword}
-						onChange={handleChange}
-						name="oldPassword"
-					/>
-				</div>
+    try {
+      await dispatch(changePassword(formData, setFormData));
+      setSubmitting(false);
+    } catch (err) {
+      setSubmitting(false);
+      dispatch(displayMessage(err.message));
+    }
+  };
 
-				<div className="input-group">
-					<label htmlFor="newPassword">New Password</label>
-					<input
-						type="password"
-						value={formData.newPassword}
-						onChange={handleChange}
-						name="newPassword"
-					/>
-				</div>
+  return (
+    <section>
+      <h3>Change Password</h3>
+      <hr />
+      <form onSubmit={handlePasswordChange}>
+        <div className="input-group">
+          <label htmlFor="oldPassword">Old Password</label>
+          <input
+            type="password"
+            value={formData.oldPassword}
+            onChange={handleChange}
+            name="oldPassword"
+          />
+        </div>
 
-				<div className="input-group">
-					<label htmlFor="retypePassword">Retype Password</label>
-					<input
-						type="password"
-						value={formData.retypePassword}
-						onChange={handleChange}
-						name="retypePassword"
-					/>
-				</div>
-				<div className="input-buttons">
-					<button type="submit">Change Password</button>
-					<button onClick={() => history("/forget-password")}>
-						Forget Password?
-					</button>
-				</div>
-			</form>
-		</section>
-	)
-}
+        <div className="input-group">
+          <label htmlFor="newPassword">New Password</label>
+          <input
+            type="password"
+            value={formData.newPassword}
+            onChange={handleChange}
+            name="newPassword"
+          />
+        </div>
 
-export default ChangePassword
+        <div className="input-group">
+          <label htmlFor="retypePassword">Retype Password</label>
+          <input
+            type="password"
+            value={formData.retypePassword}
+            onChange={handleChange}
+            name="retypePassword"
+          />
+        </div>
+        <div className="input-buttons">
+          <div className="entry-button">
+            <button type="submit" disabled={submitting}>
+              Change Password
+            </button>
+          </div>
+          <button onClick={() => history("/forget-password")}>
+            Forget Password?
+          </button>
+        </div>
+      </form>
+    </section>
+  );
+};
+
+export default ChangePassword;

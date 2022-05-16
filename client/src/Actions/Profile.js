@@ -1,38 +1,43 @@
-import * as api from "./../API/API"
-import { displayMessage } from "./Message"
-import { logout } from "./Auth"
+import * as api from "./../API/API";
+import { displayMessage } from "./Message";
+import { logout } from "./Auth";
 
 export const setProfile = (history) => async (dispatch) => {
-	try {
-		const { data } = await api.getProfile()
-		const { profile } = await data
-		dispatch({
-			type: "SET_PROFILE",
-			payload: profile,
-		})
-	} catch (err) {
-		console.log(err.message)
+  try {
+    const { data } = await api.getProfile();
+    const { profile } = await data;
+    dispatch({
+      type: "SET_PROFILE",
+      payload: profile,
+    });
+  } catch (err) {
+    console.error(err.message);
 
-		if (err.response.status === 500) return
-		if (err.response.status !== 403) return
-		dispatch(logout(history))
-	}
-}
+    if (err?.response?.status === 500) return;
+    if (err?.response?.status !== 403) return;
+    dispatch(logout(history));
+  }
+};
 
-export const updateProfile = (formData, toggleEdit) => async (dispatch) => {
-	try {
-		const { data } = await api.updateProfile(formData)
-		const { message, profile } = await data
+export const updateProfile =
+  (formData, toggleEdit, setSubmitting) => async (dispatch) => {
+    try {
+      const { data } = await api.updateProfile(formData);
+      const { message, profile } = await data;
 
-		dispatch(displayMessage(message))
+      dispatch(displayMessage(message));
+      dispatch({
+        type: "SET_PROFILE",
+        payload: profile,
+      });
 
-		dispatch({
-			type: "SET_PROFILE",
-			payload: profile,
-		})
+      setSubmitting(false);
+      toggleEdit();
+    } catch (error) {
+      setSubmitting(false);
+      const message = error?.response?.data?.message ?? "Something Went Wrong!";
+      console.error(error.message);
 
-		toggleEdit()
-	} catch (err) {
-		dispatch(displayMessage(err.message))
-	}
-}
+      dispatch(displayMessage(message));
+    }
+  };

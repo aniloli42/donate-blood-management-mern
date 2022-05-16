@@ -1,113 +1,122 @@
-import React, { useRef, useState } from "react"
-import show from "../../../Assets/Images/eye.svg"
-import hide from "../../../Assets/Images/eye-off.svg"
-import { passwordValidation } from "../../../Validation"
-import { displayMessage } from "../../../Actions/Message"
-import { useDispatch } from "react-redux"
-import { changeForgetPassword } from "../../../API/API"
-import { useNavigate } from "react-router"
+import React, { useRef, useState } from "react";
+import show from "../../../Assets/Images/eye.svg";
+import hide from "../../../Assets/Images/eye-off.svg";
+import { passwordValidation } from "../../../Validation";
+import { displayMessage } from "../../../Actions/Message";
+import { useDispatch } from "react-redux";
+import { changeForgetPassword } from "../../../API/API";
+import { useNavigate } from "react-router";
 
 const ChangePassword = ({ email }) => {
-	const dispatch = useDispatch()
-	const history = useNavigate()
-	const password = useRef(null)
-	const retypepassword = useRef(null)
+  const dispatch = useDispatch();
+  const history = useNavigate();
+  const password = useRef(null);
+  const retypepassword = useRef(null);
+  const [submitting, setSubmitting] = useState(false);
 
-	const [formData, setFormData] = useState({
-		newpassword: "",
-		retypepassword: "",
-	})
+  const [formData, setFormData] = useState({
+    newpassword: "",
+    retypepassword: "",
+  });
 
-	const changePasswordType = (e) => {
-		if (password.current.type === "password") {
-			e.target.src = hide
-			password.current.type = "text"
-			retypepassword.current.type = "text"
-			return
-		}
+  const changePasswordType = (e) => {
+    if (password.current.type === "password") {
+      e.target.src = hide;
+      password.current.type = "text";
+      retypepassword.current.type = "text";
+      return;
+    }
+    e.target.src = show;
+    password.current.type = "password";
+    retypepassword.current.type = "password";
+    return;
+  };
 
-		e.target.src = show
-		password.current.type = "password"
-		retypepassword.current.type = "password"
-		return
-	}
+  const updateFormData = (e) => {
+    setFormData((prev) => {
+      return { ...prev, [e.target.name]: e.target.value };
+    });
+  };
 
-	const updateFormData = (e) => {
-		setFormData((prev) => {
-			return { ...prev, [e.target.name]: e.target.value }
-		})
-	}
+  const handlePassword = async (e) => {
+    e.preventDefault();
+    setSubmitting(true);
 
-	const handlePassword = async (e) => {
-		e.preventDefault()
+    if (formData.newpassword !== formData.retypepassword) {
+      setSubmitting(false);
+      dispatch(displayMessage("Password Not Matched"));
+      return;
+    }
 
-		if (formData.newpassword !== formData.retypepassword)
-			return dispatch(displayMessage("Password Not Matched"))
+    const isMatch = passwordValidation(formData.newpassword);
 
-		const isMatch = passwordValidation(formData.newpassword)
+    if (!isMatch.status) {
+      setSubmitting(false);
+      dispatch(displayMessage(isMatch.message));
+      return;
+    }
 
-		if (!isMatch.status) return dispatch(displayMessage(isMatch.message))
+    try {
+      const { data } = await changeForgetPassword({
+        password: formData.newpassword,
+        email,
+      });
 
-		try {
-			const { data } = await changeForgetPassword({
-				password: formData.newpassword,
-				email,
-			})
+      const { message } = await data;
 
-			const { message } = await data
+      setSubmitting(false);
+      dispatch(displayMessage(message));
+      history("/login");
+    } catch (error) {
+      const message = error?.response?.data?.message ?? "Something Went Wrong!";
 
-			dispatch(displayMessage(message))
+      setSubmitting(false);
+      dispatch(displayMessage(message));
+    }
+  };
 
-			history("/login")
-		} catch (error) {
-			const message = error?.response?.data?.message
+  return (
+    <div className="entry-form-div">
+      <form className="entry-form" method="post" onSubmit={handlePassword}>
+        <h2>Change Password</h2>
 
-			message === undefined
-				? dispatch(displayMessage(error.message))
-				: dispatch(displayMessage(message))
-		}
-	}
+        <div className="entry-elements">
+          <label htmlFor="newpassword">New Password</label>
+          <div className="group-entry-element">
+            <input
+              type="password"
+              name="newpassword"
+              ref={password}
+              id="newpassword"
+              value={formData.newpassword}
+              onChange={updateFormData}
+              autoComplete="off"
+            />
+            <img src={show} alt="show hide icon" onClick={changePasswordType} />
+          </div>
+        </div>
 
-	return (
-		<div className="entry-form-div">
-			<form className="entry-form" method="post" onSubmit={handlePassword}>
-				<h2>Change Password</h2>
+        <div className="entry-elements">
+          <label htmlFor="retypepassword">Retype Password</label>
+          <input
+            type="password"
+            name="retypepassword"
+            ref={retypepassword}
+            value={formData.retypepassword}
+            onChange={updateFormData}
+            id="retypepassword"
+            autoComplete="off"
+          />
+        </div>
 
-				<div className="entry-elements">
-					<label htmlFor="newpassword">New Password</label>
-					<div className="group-entry-element">
-						<input
-							type="password"
-							name="newpassword"
-							ref={password}
-							id="newpassword"
-							value={formData.newpassword}
-							onChange={updateFormData}
-							autoComplete="off"
-						/>
-						<img src={show} alt="show hide icon" onClick={changePasswordType} />
-					</div>
-				</div>
+        <div className="entry-button">
+          <button type="submit" disabled={submitting}>
+            Change Password
+          </button>
+        </div>
+      </form>
+    </div>
+  );
+};
 
-				<div className="entry-elements">
-					<label htmlFor="retypepassword">Retype Password</label>
-					<input
-						type="password"
-						name="retypepassword"
-						ref={retypepassword}
-						value={formData.retypepassword}
-						onChange={updateFormData}
-						id="retypepassword"
-						autoComplete="off"
-					/>
-				</div>
-
-				<div className="entry-button">
-					<button type="submit">Change Password</button>
-				</div>
-			</form>
-		</div>
-	)
-}
-
-export default ChangePassword
+export default ChangePassword;

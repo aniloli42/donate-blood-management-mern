@@ -12,6 +12,7 @@
 
 .sidebar-content {
   transform: translateX(-100%);
+  overflow-y: auto;
   transition: 0.3s ease;
   width: 300px;
   padding: 20px;

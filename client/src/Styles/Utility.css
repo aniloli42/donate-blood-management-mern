@@ -40,9 +40,38 @@ hr {
   transition: all 0.2s linear;
 }
 
-.button:hover,
-.button:focus-visible {
+.button-group .button:disabled {
   background-color: var(--button-hover);
+  color: var(--button-hover);
+  cursor: not-allowed;
+  position: relative;
+  transition: all 300ms ease;
+}
+
+.button-group .button:disabled::before {
+  content: "↻";
+  font-size: 1.11rem;
+  color: #fff;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  animation: rotate 1500ms ease-in-out infinite;
+}
+
+@keyframes rotate {
+  0% {
+    transform: translate(-50%, -50%) rotate(0deg);
+  }
+  100% {
+    transform: translate(-50%, -50%) rotate(360deg);
+  }
+}
+
+.button-group .button:not(button:disabled):hover,
+.button-group .button:not(button:disabled):focus-visible {
+  background-color: var(--button-hover);
+  color: var(--text-light);
 }
 
 .button-group {

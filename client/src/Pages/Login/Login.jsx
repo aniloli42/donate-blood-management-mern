@@ -15,7 +15,8 @@ let inputData = { email: "", password: "" };
 const Login = () => {
   const history = useNavigate();
   const dispatch = useDispatch();
-  const [formData, setformData] = useState(inputData);
+  const [formData, setFormData] = useState(inputData);
+  const [submitting, setSubmitting] = useState(false);
 
   useEffect(() => {
     const token = localStorage.getItem("token");
@@ -24,8 +25,8 @@ const Login = () => {
   });
 
   const updateFormData = (e) => {
-    setformData((prevformData) => {
-      return { ...prevformData, [e.target.name]: e.target.value };
+    setFormData((prevFormData) => {
+      return { ...prevFormData, [e.target.name]: e.target.value };
     });
   };
 
@@ -45,8 +46,7 @@ const Login = () => {
 
   const handleLogin = (e) => {
     e.preventDefault();
-
-    e?.preventDefault();
+    setSubmitting(true);
 
     if (
       formData.name === "" ||
@@ -55,80 +55,87 @@ const Login = () => {
       formData.temporaryAddress === "" ||
       formData.permanentAddress === ""
     ) {
-      return dispatch(displayMessage("All fields are required", true));
+      setSubmitting(false);
+      dispatch(displayMessage("All fields are required"));
+      return;
     }
 
     if (!emailValidation(formData.email)) {
-      return dispatch(displayMessage("Invalid Email", true));
+      setSubmitting(false);
+      dispatch(displayMessage("Invalid Email"));
+      return;
     }
 
     const isValidPassword = passwordValidation(formData.password);
 
-    if (!isValidPassword.status)
-      return dispatch(displayMessage(isValidPassword.message, true));
+    if (!isValidPassword.status) {
+      setSubmitting(false);
+      dispatch(displayMessage(isValidPassword.message));
+      return;
+    }
 
-    dispatch(login(formData, history));
+    dispatch(login(formData, history, setSubmitting));
   };
 
   return (
-    <div className='user-entry'>
+    <div className="user-entry">
       {/* Brand Showcase */}
 
-      <div className='brand-showcase'>
+      <div className="brand-showcase">
         {/* Brand Logo */}
-        <div className='brand-logo'>
-          <img src={logo} alt='' />
+        <div className="brand-logo">
+          <img src={logo} alt="" />
           <h1>DONATE</h1>
         </div>
-        <p className='brand-slogon'>
+        <p className="brand-slogon">
           Every drop of blood matters, if you can save life
         </p>
       </div>
-      <div className='entry-form-div'>
-        <form className='entry-form'>
+      <div className="entry-form-div">
+        <form className="entry-form">
           <h2>Login</h2>
-          <div className='entry-elements'>
-            <label htmlFor='email'>Email</label>
+          <div className="entry-elements">
+            <label htmlFor="email">Email</label>
             <input
-              type='text'
-              name='email'
+              type="text"
+              name="email"
               onChange={updateFormData}
               value={formData.email}
-              id='email'
-              autoComplete='off'
+              id="email"
+              autoComplete="off"
             />
           </div>
-          <div className='entry-elements'>
-            <label htmlFor='password'>Password</label>
-            <div className='group-entry-element'>
+          <div className="entry-elements">
+            <label htmlFor="password">Password</label>
+            <div className="group-entry-element">
               <input
-                type='password'
-                name='password'
+                type="password"
+                name="password"
                 onChange={updateFormData}
                 ref={password}
-                id='password'
+                id="password"
                 value={formData.password}
-                autoComplete='off'
+                autoComplete="off"
               />
               <img
                 src={show}
-                alt='show hide icon'
+                alt="show hide icon"
                 onClick={changePasswordType}
               />
             </div>
           </div>
 
-          <div className='entry-button'>
-            <button type='submit' onClick={handleLogin}>
+          <div className="entry-button">
+            <button type="submit" onClick={handleLogin} disabled={submitting}>
               LOGIN
             </button>
-            <Link to='/forget-password'>Forget Password?</Link>
+            <Link to="/forget-password">Forget Password?</Link>
           </div>
         </form>
 
-        <div className='entry-message'>
+        <div className="entry-message">
           <p>Don't have an account?</p>
-          <Link to='/signup'>Click Here</Link>
+          <Link to="/signup">Click Here</Link>
         </div>
       </div>
     </div>

@@ -1,61 +1,69 @@
-import React, { useState } from "react"
-import { useDispatch } from "react-redux"
-import { useNavigate } from "react-router"
-import { passwordValidation } from "./../../Validation/index"
-import { displayMessage } from "./../../Actions/Message"
-import { deleteAccount } from "./../../Actions/Auth"
+import React, { useState } from "react";
+import { useDispatch } from "react-redux";
+import { useNavigate } from "react-router";
+import { passwordValidation } from "./../../Validation/index";
+import { displayMessage } from "./../../Actions/Message";
+import { deleteAccount } from "./../../Actions/Auth";
 
 const DeleteAccount = () => {
-	const dispatch = useDispatch()
-	const history = useNavigate()
-	const [formData, setFormData] = useState({ password: "" })
+  const dispatch = useDispatch();
+  const history = useNavigate();
+  const [formData, setFormData] = useState({ password: "" });
+  const [submitting, setSubmitting] = useState(false);
 
-	const handleChange = (e) => {
-		setFormData((prev) => {
-			return {
-				...prev,
-				[e.target.name]: e.target.value,
-			}
-		})
-	}
+  const handleChange = (e) => {
+    setFormData((prev) => {
+      return {
+        ...prev,
+        [e.target.name]: e.target.value,
+      };
+    });
+  };
 
-	const handleDeleteAccount = async (e) => {
-		e.preventDefault()
-		try {
-			if (formData.password === "") {
-				return dispatch(displayMessage("Enter Password"))
-			}
+  const handleDeleteAccount = async (e) => {
+    e.preventDefault();
+    setSubmitting(true);
 
-			const validPassword = passwordValidation(formData.password)
+    try {
+      if (formData.password === "") {
+        setSubmitting(false);
 
-			if (!validPassword.status) {
-				return dispatch(displayMessage(validPassword.message))
-			}
+        return dispatch(displayMessage("Enter Password"));
+      }
 
-			return dispatch(deleteAccount(formData, history))
-		} catch (err) {
-			dispatch(displayMessage(err.message))
-		}
-	}
+      const validPassword = passwordValidation(formData.password);
 
-	return (
-		<form method="post" onSubmit={handleDeleteAccount}>
-			<div className="input-group">
-				<label>Enter Password</label>
-				<input
-					type="password"
-					name="password"
-					value={formData.password}
-					onChange={handleChange}
-				/>
-			</div>
-			<div className="input-buttons">
-				<button type="submit" className="button">
-					Delete Account
-				</button>
-			</div>
-		</form>
-	)
-}
+      if (!validPassword.status) {
+        setSubmitting(false);
+        return dispatch(displayMessage(validPassword.message));
+      }
 
-export default DeleteAccount
+      await dispatch(deleteAccount(formData, history));
+      setSubmitting(false);
+    } catch (err) {
+      setSubmitting(false);
+      dispatch(displayMessage(err.message));
+    }
+  };
+
+  return (
+    <form method="post" onSubmit={handleDeleteAccount}>
+      <div className="input-group">
+        <label>Enter Password</label>
+        <input
+          type="password"
+          name="password"
+          value={formData.password}
+          onChange={handleChange}
+        />
+      </div>
+      <div className="button-group">
+        <button type="submit" className="button" disabled={submitting}>
+          Delete Account
+        </button>
+      </div>
+    </form>
+  );
+};
+
+export default DeleteAccount;

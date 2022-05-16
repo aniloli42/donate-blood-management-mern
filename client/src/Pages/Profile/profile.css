@@ -38,3 +38,36 @@
   background: unset;
   color: var(--light-red);
 }
+
+.profile-update:disabled {
+  background-color: var(--light-dark-blue);
+  color: var(--light-dark-blue);
+  cursor: not-allowed;
+  position: relative;
+  transition: all 300ms ease;
+}
+
+.profile-update:disabled::before {
+  content: "↻";
+  font-size: 1.11rem;
+  color: #fff;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  animation: rotate 1500ms ease-in-out infinite;
+}
+
+@keyframes rotate {
+  0% {
+    transform: translate(-50%, -50%) rotate(0deg);
+  }
+  100% {
+    transform: translate(-50%, -50%) rotate(360deg);
+  }
+}
+
+.profile-update:not(button:disabled):hover {
+  background-color: var(--light-dark-blue);
+  color: var(--text-light);
+}

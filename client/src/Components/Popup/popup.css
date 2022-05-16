@@ -1,17 +1,17 @@
 .popup-container {
   display: flex;
-  position: absolute;
-  top: 0;
-  left: 0;
-  z-index: 4;
+  position: fixed;
+  inset: 0;
+  z-index: 10;
   width: 100%;
-  height: -webkit-fill-available;
   justify-content: center;
-  align-items: center;
+  align-items: flex-start;
+  overflow-y: auto;
   background-color: rgba(0, 0, 0, 0.2);
 }
 
 .popup-content {
+  margin-block: 2em;
   padding: 1.25rem;
   background-color: var(--card-button-background);
   color: var(--text-light);

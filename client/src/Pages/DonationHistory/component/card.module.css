@@ -13,6 +13,6 @@
 
 .label {
   color: var(--text-gray);
-  font-style: 1.2rem;
+  font-size: 1rem;
   margin-bottom: 0.3em;
 }

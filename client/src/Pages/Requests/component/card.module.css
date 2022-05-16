@@ -18,7 +18,7 @@
 }
 
 .buttonCircle {
-  border-radius: 50%;
+  border-radius: 0.5em;
   width: 5px;
   display: inline-flex;
   justify-content: center;
