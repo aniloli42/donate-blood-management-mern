@@ -1,21 +1,21 @@
 import React from 'react'
 import { Route, Routes } from 'react-router-dom'
-import './Styles/App.css'
+import './styles/App.css'
 
 import {
-	Dashboard,
-	DonationHistory,
-	ForgetPassword,
-	Login,
-	Profile,
-	Requests,
-	Security,
-	Signup,
-} from './Pages'
+    Dashboard,
+    DonationHistory,
+    ForgetPassword,
+    Login,
+    Profile,
+    Requests,
+    Security,
+    Signup
+} from './pages'
 
 import { useSelector } from 'react-redux'
-import { Loader, MessageCard } from './Components'
-import NotFound from './Components/NotFound/NotFound'
+import { Loader, MessageCard } from './components'
+import NotFound from './components/NotFound/NotFound'
 
 function App() {
 	const { status: loaderStatus } = useSelector((state) => state.Loader)
