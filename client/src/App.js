@@ -66,7 +66,6 @@ function App() {
 							display: 'flex',
 							justifyContent: 'center',
 							alignItems: 'center',
-							// rotate: '45deg',
 						}}
 					>
 						!
@@ -78,8 +77,10 @@ function App() {
 			<MessageCard />
 			<Routes>
 				<Route exact path='/' element={<Dashboard />} />
-				<Route exact path='/profile' element={<Profile />} />
-				<Route exact path='/profile/:id' element={<Profile />} />
+				<Route path='/profile'>
+					<Route index element={<Profile />} />
+					<Route path=':id' element={<Profile />} />
+				</Route>
 				<Route exact path='/security' element={<Security />} />
 				<Route exact path='/requests' element={<Requests />} />
 				<Route
