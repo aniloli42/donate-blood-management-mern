@@ -10,4 +10,6 @@ RUN pnpm i
 
 COPY . .
 
+EXPOSE 5000
+
 CMD [ "node","server.js" ]
