@@ -1,4 +1,3 @@
-require("dotenv").config();
 const Requests = require("../models/requests");
 
 const getRequest = async (req, res) => {

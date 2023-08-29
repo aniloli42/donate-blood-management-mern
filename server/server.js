@@ -1,9 +1,8 @@
+require("dotenv/config");
 const express = require("express");
 const app = express();
 const cors = require("cors");
-const moongoose = require("mongoose");
-
-require("dotenv").config();
+const { dbConnection } = require("./connection/db");
 
 app.use(cors());
 app.use(express.json());
@@ -15,17 +14,7 @@ app.get("/", (req, res) => {
 
 const port = process.env.PORT ?? 5000;
 
-const url = process.env.DB_URL;
-
-moongoose.connect(url, { useNewUrlParser: true, useUnifiedTopology: true });
-
-moongoose.connection.on("error", (err) => {
-  console.log(err);
-});
-
-moongoose.connection.once("open", () => {
-  console.log("Connected to database");
-});
+dbConnection();
 
 //  imports
 const otp = require("./routes/otp");
@@ -33,7 +22,6 @@ const auth = require("./routes/auth");
 const profile = require("./routes/profile");
 const history = require("./routes/history");
 const requests = require("./routes/requests");
-const axios = require("axios");
 
 // routes
 app.use("/otp", otp);

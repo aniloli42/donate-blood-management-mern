@@ -1,5 +1,4 @@
-require("dotenv").config({ path: "../.env" })
-const nodemailer = require("nodemailer")
+const nodemailer = require("nodemailer");
 
 async function sendMail({ from, to, subject, text, html }) {
   try {
@@ -12,7 +11,7 @@ async function sendMail({ from, to, subject, text, html }) {
         clientSecret: process.env.CLIENT_SECRET,
         refreshToken: process.env.GMAIL_REFRESH_TOKEN,
       },
-    })
+    });
 
     const mailOptions = {
       from,
@@ -20,13 +19,13 @@ async function sendMail({ from, to, subject, text, html }) {
       subject,
       text,
       html,
-    }
+    };
 
-    const result = await transport.sendMail(mailOptions)
-    return result
+    const result = await transport.sendMail(mailOptions);
+    return result;
   } catch (error) {
-    return error
+    return error;
   }
 }
 
-module.exports = sendMail
+module.exports = sendMail;
