@@ -13,7 +13,7 @@ app.get("/", (req, res) => {
   res.status(200).json({ message: "Welcome To Donate Blood Server" });
 });
 
-const port = process.env.PORT || 5000;
+const port = process.env.PORT ?? 5000;
 
 const url = process.env.DB_URL;
 
