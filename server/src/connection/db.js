@@ -2,7 +2,7 @@ const moongoose = require("mongoose");
 const url = process.env.DB_URL;
 
 const dbConnection = () => {
-  moongoose.set("strictQuery", true);
+  moongoose.set("strict", true);
   moongoose.connect(url, { useNewUrlParser: true, useUnifiedTopology: true });
 
   moongoose.connection.on("error", (err) => console.log(err));

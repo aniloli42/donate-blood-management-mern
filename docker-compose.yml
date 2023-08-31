@@ -1,0 +1,34 @@
+services:
+  web:
+    container_name: donate_web
+    build:
+      context: ./client
+      dockerfile: Dockerfile
+    environment:
+      - VITE_API_BASEURL=${VITE_API_BASEURL}
+    ports:
+      - 80:5173
+    volumes:
+      - ./client/src:/app/src
+    depends_on:
+      - backend
+
+  backend:
+    container_name: donate_backend
+    build:
+      context: ./server
+      dockerfile: Dockerfile
+    environment:
+      - PORT=${PORT}
+      - DB_URL=${DB_URL}
+      - ACCESS_TOKEN_SECRET=${ACCESS_TOKEN_SECRET}
+      - REFRESH_TOKEN_SECRET=${REFRESH_TOKEN_SECRET}
+      - USER_EMAIL=${USER_EMAIL}
+      - CLIENT_ID=${CLIENT_ID}
+      - CLIENT_SECRET=${CLIENT_SECRET}
+      - GMAIL_REFRESH_TOKEN=${GMAIL_REFRESH_TOKEN}
+      - DOMAIN=${DOMAIN}
+    ports:
+      - 5000:5000
+    volumes:
+      - ./server/src:/server/src
