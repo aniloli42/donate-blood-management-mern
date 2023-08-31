@@ -5,13 +5,13 @@ services:
       context: ./client
       dockerfile: Dockerfile
     environment:
-      - VITE_API_BASEURL=${VITE_API_BASEURL}
+      - REACT_APP_API_BASEURL=${REACT_APP_API_BASEURL}
     ports:
-      - 80:5173
+      - 80:3000
     volumes:
       - ./client/src:/app/src
     depends_on:
-      - backend
+      - donate_backend
 
   donate_backend:
     container_name: donate_backend
