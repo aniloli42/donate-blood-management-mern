@@ -1,5 +1,5 @@
 services:
-  web:
+  donate_web:
     container_name: donate_web
     build:
       context: ./client
@@ -13,7 +13,7 @@ services:
     depends_on:
       - backend
 
-  backend:
+  donate_backend:
     container_name: donate_backend
     build:
       context: ./server
