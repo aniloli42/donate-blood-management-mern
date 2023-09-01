@@ -13,7 +13,6 @@ This project is made to help the blood requirement of emergency blood, then cert
   - [Project Contributers](#project-contributers)
     - [Developer](#developer)
     - [Designer](#designer)
-    - [Documentation By](#documentation-by)
 
 ---
 
