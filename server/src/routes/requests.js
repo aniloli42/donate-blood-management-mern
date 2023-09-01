@@ -8,7 +8,7 @@ const {
   otherRequest,
   updateRequest,
   deleteRequest,
-  recentRequest,
+  recentRequest
 } = require('../controllers/requests')
 
 const fetchUser = require('../middleware/fetchUser')

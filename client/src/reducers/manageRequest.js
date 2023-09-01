@@ -4,7 +4,7 @@ const reducer = (state = { status: false, request: {} }, action) => {
       return {
         ...state,
         status: true,
-        request: action.payload,
+        request: action.payload
       }
 
     case 'REMOVE_REQUEST':

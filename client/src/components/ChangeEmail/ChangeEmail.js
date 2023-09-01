@@ -15,7 +15,7 @@ const ChangeEmail = ({ func }) => {
     setFormData(prev => {
       return {
         ...prev,
-        [e.target.name]: e.target.value,
+        [e.target.name]: e.target.value
       }
     })
   }

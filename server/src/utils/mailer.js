@@ -9,8 +9,8 @@ async function sendMail({ from, to, subject, text, html }) {
         user: process.env.USER_EMAIL,
         clientId: process.env.CLIENT_ID,
         clientSecret: process.env.CLIENT_SECRET,
-        refreshToken: process.env.GMAIL_REFRESH_TOKEN,
-      },
+        refreshToken: process.env.GMAIL_REFRESH_TOKEN
+      }
     })
 
     const mailOptions = {
@@ -18,7 +18,7 @@ async function sendMail({ from, to, subject, text, html }) {
       to,
       subject,
       text,
-      html,
+      html
     }
 
     const result = await transport.sendMail(mailOptions)

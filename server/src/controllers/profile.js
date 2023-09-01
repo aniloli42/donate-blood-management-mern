@@ -35,9 +35,9 @@ const updateProfile = async (req, res) => {
         bloodType: changedUser.bloodType,
         temporaryAddress: changedUser.temporaryAddress,
         permanentAddress: changedUser.permanentAddress,
-        email: changedUser.email,
+        email: changedUser.email
       },
-      message: 'Profile Updated',
+      message: 'Profile Updated'
     })
   } catch (error) {
     return res.status(500).json({ message: err.message })
@@ -57,7 +57,7 @@ const getStatus = async (req, res) => {
     res.json({
       historyCount: historyCount.length,
       requestCount: requestCount.length,
-      pendingCount: pendingCount.length,
+      pendingCount: pendingCount.length
     })
   } catch (error) {
     return res.status(500).json({ message: err.message })

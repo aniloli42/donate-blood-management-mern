@@ -10,7 +10,7 @@ import {
   Profile,
   Requests,
   Security,
-  Signup,
+  Signup
 } from './pages'
 
 import { useSelector } from 'react-redux'

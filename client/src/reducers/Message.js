@@ -4,7 +4,7 @@ const reducer = (state = { message: null, status: false }, action) => {
       return {
         ...state,
         message: action.payload.message,
-        status: action.payload.status,
+        status: action.payload.status
       }
 
     case 'CLEAR_MESSAGE':

@@ -3,32 +3,32 @@ const moongoose = require('mongoose')
 const Schema = moongoose.Schema({
   name: {
     type: String,
-    required: true,
+    required: true
   },
   bloodType: {
     type: String,
-    required: true,
+    required: true
   },
   location: {
     type: String,
-    required: true,
+    required: true
   },
   phone: {
     type: Number,
-    required: true,
+    required: true
   },
   requestedAt: {
     type: Date,
-    default: Date.now,
+    default: Date.now
   },
   createdBy: {
     type: moongoose.Schema.Types.ObjectId,
-    ref: 'users',
+    ref: 'users'
   },
   status: {
     type: Boolean,
-    default: false,
-  },
+    default: false
+  }
 })
 
 module.exports = moongoose.model('requests', Schema)

@@ -12,7 +12,7 @@ const {
   changeEmail,
   deleteAccount,
   token,
-  logout,
+  logout
 } = require('../controllers/auth')
 
 // routes

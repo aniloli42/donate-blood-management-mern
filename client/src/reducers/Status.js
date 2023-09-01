@@ -1,6 +1,6 @@
 const reducer = (
   state = { historyCount: 0, requestCount: 0, pendingCount: 0 },
-  action,
+  action
 ) => {
   switch (action.type) {
     case 'SET_STATUS':

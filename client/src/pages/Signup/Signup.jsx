@@ -11,7 +11,7 @@ import {
   emailValidation,
   nameValidation,
   passwordValidation,
-  stringValidation,
+  stringValidation
 } from '../../validation'
 
 import { displayMessage } from '../../actions/Message'
@@ -22,7 +22,7 @@ const inputData = {
   bloodType: 'O+',
   temporaryAddress: '',
   permanentAddress: '',
-  password: '',
+  password: ''
 }
 
 const Signup = () => {

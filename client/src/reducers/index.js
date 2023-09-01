@@ -20,7 +20,7 @@ const reducers = combineReducers({
   Status,
   manageRequest,
   Request,
-  Loader,
+  Loader
 })
 
 export default reducers

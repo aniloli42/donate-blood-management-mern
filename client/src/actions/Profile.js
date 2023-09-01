@@ -8,7 +8,7 @@ export const setProfile = history => async dispatch => {
     const { profile } = await data
     dispatch({
       type: 'SET_PROFILE',
-      payload: profile,
+      payload: profile
     })
   } catch (err) {
     console.error(err.message)
@@ -28,7 +28,7 @@ export const updateProfile =
       dispatch(displayMessage(message))
       dispatch({
         type: 'SET_PROFILE',
-        payload: profile,
+        payload: profile
       })
 
       setSubmitting(false)

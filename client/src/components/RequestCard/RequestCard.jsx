@@ -16,7 +16,7 @@ const RequestCard = ({ request, changePopup, edit }) => {
     bloodType,
     location,
     name: requestName,
-    phone,
+    phone
   } = request
 
   const editHandler = () => {

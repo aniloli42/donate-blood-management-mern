@@ -6,7 +6,7 @@ const reducer = (state = { status: false }, { type, payload }) => {
       handleOverflow(!payload)
       return {
         ...state,
-        status: payload,
+        status: payload
       }
 
     default:

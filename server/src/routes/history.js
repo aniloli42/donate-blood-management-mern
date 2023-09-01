@@ -9,7 +9,7 @@ const {
   getHistorys,
   createHistory,
   updateHistory,
-  deleteHistory,
+  deleteHistory
 } = require('./../controllers/history')
 
 router.get('/:id', verifyToken, fetchUser, getHistory)

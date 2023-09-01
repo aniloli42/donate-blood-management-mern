@@ -15,7 +15,7 @@ const sendOTP = async (req, res) => {
     const newOTP = new OTP({
       email,
       otp,
-      expiredAt: new Date().getTime() + 300000,
+      expiredAt: new Date().getTime() + 300000
     })
 
     await newOTP.save()

@@ -29,7 +29,7 @@ export const signup = (formData, history, setSubmitting) => async dispatch => {
     localStorage.setItem('refreshToken', refreshToken)
 
     dispatch({
-      type: 'LOGIN',
+      type: 'LOGIN'
     })
     setSubmitting(false)
 

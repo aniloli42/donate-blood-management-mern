@@ -25,7 +25,7 @@ const createRequest = async (req, res) => {
       location,
       bloodType,
       phone,
-      createdBy: id,
+      createdBy: id
     })
 
     await newRequest.save()
@@ -40,7 +40,7 @@ const ownRequest = async (req, res) => {
     const { id } = req.user
 
     const request = await Requests.find({ createdBy: id, status: false }).sort({
-      requestedAt: -1,
+      requestedAt: -1
     })
 
     if (request.length === 0)
@@ -58,9 +58,9 @@ const otherRequest = async (req, res) => {
 
     const request = await Requests.find({
       createdBy: { $ne: id },
-      status: false,
+      status: false
     }).sort({
-      requestedAt: -1,
+      requestedAt: -1
     })
 
     if (request.length === 0)
@@ -116,11 +116,11 @@ const recentRequest = async (req, res) => {
 
     const request = await Requests.find({
       createdBy: { $ne: id },
-      status: false,
+      status: false
     })
       .limit(3)
       .sort({
-        requestedAt: -1,
+        requestedAt: -1
       })
 
     if (request.length === 0)
@@ -139,5 +139,5 @@ module.exports = {
   otherRequest,
   updateRequest,
   deleteRequest,
-  recentRequest,
+  recentRequest
 }

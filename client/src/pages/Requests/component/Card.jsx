@@ -10,7 +10,7 @@ const Card = ({
   handleChange,
   input,
   select,
-  options,
+  options
 }) => {
   return (
     <>

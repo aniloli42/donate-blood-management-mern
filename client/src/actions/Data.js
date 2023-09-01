@@ -6,7 +6,7 @@ export const fetchData = id => async dispatch => {
 
     dispatch({
       type: 'FETCH_DATA',
-      payload: data,
+      payload: data
     })
   } catch (e) {
     console.log(e.message)

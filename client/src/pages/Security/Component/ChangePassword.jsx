@@ -13,7 +13,7 @@ const ChangePassword = () => {
   const [formData, setFormData] = useState({
     oldPassword: '',
     newPassword: '',
-    retypePassword: '',
+    retypePassword: ''
   })
   const [submitting, setSubmitting] = useState(false)
 
@@ -21,7 +21,7 @@ const ChangePassword = () => {
     setFormData(prev => {
       return {
         ...prev,
-        [e.target.name]: e.target.value,
+        [e.target.name]: e.target.value
       }
     })
   }
@@ -55,7 +55,7 @@ const ChangePassword = () => {
     if (formData.newPassword !== formData.retypePassword) {
       setSubmitting(false)
       return dispatch(
-        displayMessage('New Password and Retype Password Not Matched'),
+        displayMessage('New Password and Retype Password Not Matched')
       )
     }
 

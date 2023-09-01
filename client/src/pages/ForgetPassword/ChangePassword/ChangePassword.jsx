@@ -16,7 +16,7 @@ const ChangePassword = ({ email }) => {
 
   const [formData, setFormData] = useState({
     newpassword: '',
-    retypepassword: '',
+    retypepassword: ''
   })
 
   const changePasswordType = e => {
@@ -59,7 +59,7 @@ const ChangePassword = ({ email }) => {
     try {
       const { data } = await changeForgetPassword({
         password: formData.newpassword,
-        email,
+        email
       })
 
       const { message } = await data

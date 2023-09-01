@@ -16,7 +16,7 @@ const CreateHistory = ({ func }) => {
   const [formData, setFormData] = useState({
     donatedAt: '',
     location: '',
-    remarks: '',
+    remarks: ''
   })
   const [submitting, setSubmitting] = useState(false)
 
@@ -29,7 +29,7 @@ const CreateHistory = ({ func }) => {
     setFormData(prev => {
       return {
         ...prev,
-        ...history.history,
+        ...history.history
       }
     })
   }, [history])
@@ -38,7 +38,7 @@ const CreateHistory = ({ func }) => {
     setFormData(prev => {
       return {
         ...prev,
-        [e.target.name]: e.target.value,
+        [e.target.name]: e.target.value
       }
     })
   }
@@ -59,7 +59,7 @@ const CreateHistory = ({ func }) => {
         () => {
           setSubmitting(false)
           func()
-        },
+        }
       )
     } catch (error) {
       setSubmitting(false)
@@ -81,7 +81,7 @@ const CreateHistory = ({ func }) => {
       const donatedAt = new Date(formData.donatedAt).toISOString()
 
       dispatch(
-        updateHistory({ ...formData, donatedAt: donatedAt }, formData._id),
+        updateHistory({ ...formData, donatedAt: donatedAt }, formData._id)
       ).then(() => {
         setSubmitting(true)
         func()

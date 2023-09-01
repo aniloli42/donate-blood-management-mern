@@ -18,7 +18,7 @@ const CreateRequest = ({ func }) => {
     name: '',
     bloodType: 'O+',
     location: '',
-    phone: '',
+    phone: ''
   })
   const [submitting, setSubmitting] = useState(false)
 
@@ -30,7 +30,7 @@ const CreateRequest = ({ func }) => {
     setFormData(prev => {
       return {
         ...prev,
-        ...request,
+        ...request
       }
     })
   }, [Request])
@@ -39,7 +39,7 @@ const CreateRequest = ({ func }) => {
     setFormData(prev => {
       return {
         ...prev,
-        [e.target.name]: e.target.value,
+        [e.target.name]: e.target.value
       }
     })
   }
@@ -118,7 +118,7 @@ const CreateRequest = ({ func }) => {
       formData.phone = parseInt(formData.phone)
 
       await dispatch(
-        updateRequest({ ...Request?.request, status: true }, formData._id),
+        updateRequest({ ...Request?.request, status: true }, formData._id)
       )
       setSubmitting(false)
       func()

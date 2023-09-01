@@ -21,8 +21,8 @@ const MainComponent = ({ children }) => {
     dispatch({
       type: 'LOGIN',
       payload: {
-        token: localStorage.getItem('token'),
-      },
+        token: localStorage.getItem('token')
+      }
     })
     dispatch(setProfile(history))
   }, [dispatch, history])

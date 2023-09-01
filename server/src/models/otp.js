@@ -3,16 +3,16 @@ const moongoose = require('mongoose')
 const Schema = moongoose.Schema({
   email: {
     type: String,
-    required: true,
+    required: true
   },
   otp: {
     type: Number,
-    required: true,
+    required: true
   },
   expiredAt: {
     type: Date,
-    required: true,
-  },
+    required: true
+  }
 })
 
 module.exports = moongoose.model('otp', Schema)

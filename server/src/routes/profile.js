@@ -7,7 +7,7 @@ const verifyToken = require('../middleware/tokenVerify')
 const {
   getProfile,
   updateProfile,
-  getStatus,
+  getStatus
 } = require('./../controllers/profile')
 
 router.get('/', verifyToken, getProfile)

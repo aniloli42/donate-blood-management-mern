@@ -12,6 +12,6 @@ export const getRequest = id => async dispatch => {
 
 export const removeRequest = () => {
   return {
-    type: 'REMOVE_REQUEST',
+    type: 'REMOVE_REQUEST'
   }
 }

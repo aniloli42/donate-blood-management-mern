@@ -20,7 +20,7 @@ const login = async (req, res) => {
     }
 
     const token = jwt.sign({ id: user._id }, process.env.ACCESS_TOKEN_SECRET, {
-      expiresIn: '10m',
+      expiresIn: '10m'
     })
 
     const refreshToken = generateRefreshToken({ id: user._id })
@@ -30,7 +30,7 @@ const login = async (req, res) => {
     return res.status(200).json({
       message: 'Login Successful',
       token,
-      refreshToken,
+      refreshToken
     })
   } catch (err) {
     res.status(500).json({ message: err.message })
@@ -44,7 +44,7 @@ const signup = async (req, res) => {
     bloodType,
     temporaryAddress,
     permanentAddress,
-    password,
+    password
   } = req.body
 
   try {
@@ -62,7 +62,7 @@ const signup = async (req, res) => {
       bloodType,
       temporaryAddress,
       permanentAddress,
-      password: hashedPassword,
+      password: hashedPassword
     })
 
     const createdUser = await newUser.save()
@@ -71,8 +71,8 @@ const signup = async (req, res) => {
       { id: createdUser._id },
       process.env.ACCESS_TOKEN_SECRET,
       {
-        expiresIn: '10m',
-      },
+        expiresIn: '10m'
+      }
     )
 
     const refreshToken = generateRefreshToken({ id: createdUser._id })
@@ -81,7 +81,7 @@ const signup = async (req, res) => {
 
     return res.status(200).json({
       token,
-      refreshToken,
+      refreshToken
     })
   } catch (err) {
     res.status(500).json({ message: err.message })
@@ -170,7 +170,7 @@ const deleteAccount = async (req, res) => {
 
     if (!user)
       return res.status(400).json({
-        message: 'User does not exists',
+        message: 'User does not exists'
       })
 
     const isMatched = await bcrypt.compare(password, user.password)
@@ -200,7 +200,7 @@ const token = async (req, res) => {
       const { id } = user
 
       const token = jwt.sign({ id }, process.env.ACCESS_TOKEN_SECRET, {
-        expiresIn: '10m',
+        expiresIn: '10m'
       })
 
       return res.status(200).json({ token })
@@ -235,7 +235,7 @@ async function storeToken({ refreshToken, id }) {
   try {
     const newToken = new Token({
       token: refreshToken,
-      assign: id,
+      assign: id
     })
 
     await newToken.save()
@@ -254,5 +254,5 @@ module.exports = {
   deleteAccount,
   changeEmail,
   token,
-  logout,
+  logout
 }

@@ -5,7 +5,7 @@ const getHistorys = async (req, res) => {
     const { id } = req.user
 
     const history = await History.find({ createdBy: id }).sort({
-      donatedAt: -1,
+      donatedAt: -1
     })
 
     if (!history)
@@ -44,12 +44,12 @@ const createHistory = async (req, res) => {
       const result = oldHistory.some(
         history =>
           new Date(history.donatedAt).getTime() ===
-          new Date(donatedAt).getTime(),
+          new Date(donatedAt).getTime()
       )
 
       if (result)
         return res.status(400).json({
-          message: 'Invalid History',
+          message: 'Invalid History'
         })
     }
 
@@ -57,13 +57,13 @@ const createHistory = async (req, res) => {
       donatedAt,
       location,
       remarks,
-      createdBy: id,
+      createdBy: id
     })
 
     const createdHistory = await history.save()
 
     res.status(200).json({
-      message: 'Successfully Created History',
+      message: 'Successfully Created History'
     })
   } catch (error) {
     res.status(500).json({ message: error.message })
@@ -116,5 +116,5 @@ module.exports = {
   getHistorys,
   createHistory,
   updateHistory,
-  deleteHistory,
+  deleteHistory
 }

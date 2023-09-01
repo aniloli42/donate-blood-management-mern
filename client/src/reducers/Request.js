@@ -1,24 +1,24 @@
 const reducer = (
   state = { ownRequest: [], otherRequest: [], recentRequest: [] },
-  action,
+  action
 ) => {
   switch (action.type) {
     case 'SET_OWN_REQUEST':
       return {
         ...state,
-        ownRequest: [...action.payload],
+        ownRequest: [...action.payload]
       }
 
     case 'SET_OTHER_REQUEST':
       return {
         ...state,
-        otherRequest: [...action.payload],
+        otherRequest: [...action.payload]
       }
 
     case 'SET_RECENT_REQUEST':
       return {
         ...state,
-        recentRequest: [...action.payload],
+        recentRequest: [...action.payload]
       }
 
     case 'CLEAR_REQUEST':

@@ -20,9 +20,9 @@ API.interceptors.request.use(async req => {
   if (refreshToken) {
     try {
       const {
-        data: { token: newToken },
+        data: { token: newToken }
       } = await axios.post(`${baseURL}/auth/token`, {
-        refreshToken,
+        refreshToken
       })
 
       localStorage.setItem('token', newToken)

@@ -4,24 +4,24 @@ const schema = mongoose.Schema({
   donatedAt: {
     type: Date,
     required: true,
-    default: Date.now,
+    default: Date.now
   },
   location: {
     type: String,
-    required: true,
+    required: true
   },
   remarks: {
-    type: String,
+    type: String
   },
   createdBy: {
     type: mongoose.Schema.Types.ObjectId,
-    ref: 'users',
+    ref: 'users'
   },
   status: {
     type: Boolean,
     required: true,
-    default: false,
-  },
+    default: false
+  }
 })
 
 module.exports = mongoose.model('histories', schema)

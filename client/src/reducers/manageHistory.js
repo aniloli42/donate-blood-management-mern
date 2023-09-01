@@ -4,7 +4,7 @@ const reducer = (state = { status: false, history: {} }, action) => {
       return {
         ...state,
         status: true,
-        history: action.payload,
+        history: action.payload
       }
 
     case 'REMOVE_HISTORY':
