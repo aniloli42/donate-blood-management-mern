@@ -1,28 +1,26 @@
-import React, { useEffect, useState } from "react";
-import { useDispatch, useSelector } from "react-redux";
-import { MainComponent } from "..";
-import { setOtherRequest, setOwnRequest } from "../../actions/Request";
-import { RequestCard } from "../../components";
-import handleOverflow from "../../utils/hideOverFlow";
-import CreateRequest from "./component/CreateRequest";
-import "./requests.css";
+import React, { useEffect, useState } from 'react'
+import { useDispatch, useSelector } from 'react-redux'
+import { MainComponent } from '..'
+import { setOtherRequest, setOwnRequest } from '../../actions/Request'
+import { RequestCard } from '../../components'
+import handleOverflow from '../../utils/hideOverFlow'
+import CreateRequest from './component/CreateRequest'
+import './requests.css'
 
 const Requests = () => {
-  const dispatch = useDispatch();
-
-  const Request = useSelector((state) => state.Request);
-
-  const [popup, setPopup] = useState(false);
+  const dispatch = useDispatch()
+  const requests = useSelector(state => state.Request)
+  const [popup, setPopup] = useState(false)
 
   const changePopup = () => {
-    setPopup((prev) => !prev);
-    handleOverflow(!popup);
-  };
+    setPopup(prev => !prev)
+    handleOverflow(!popup)
+  }
 
   useEffect(() => {
-    dispatch(setOwnRequest());
-    dispatch(setOtherRequest());
-  }, [dispatch]);
+    dispatch(setOwnRequest())
+    dispatch(setOtherRequest())
+  }, [dispatch])
 
   return (
     <MainComponent>
@@ -37,23 +35,19 @@ const Requests = () => {
         </header>
         <hr />
         <div className="requests-content own-requests-content">
-          {Request?.ownRequest !== 0 &&
-            Request?.ownRequest?.map((request, index) => {
+          {requests?.ownRequest !== 0 &&
+            requests?.ownRequest?.map(request => {
               return (
                 <RequestCard
-                  key={index}
-                  time={request.requestedAt}
-                  bloodtype={request.bloodType}
-                  address={request.location}
-                  requestname={request.name}
-                  id={request._id}
-                  func={changePopup}
+                  key={request._id}
+                  request={request}
+                  changePopup={changePopup}
                   edit
                 />
-              );
+              )
             })}
 
-          {Request?.ownRequest?.length === 0 && (
+          {!requests?.ownRequest?.length && (
             <div className="message">No Any Requests Done Yet.</div>
           )}
         </div>
@@ -70,27 +64,23 @@ const Requests = () => {
         </header>
         <hr />
         <div className="requests-content other-requests-content">
-          {Request?.otherRequest !== 0 &&
-            Request?.otherRequest?.map((request, index) => {
-              return (
-                <RequestCard
-                  key={index}
-                  time={request.requestedAt}
-                  bloodtype={request.bloodType}
-                  address={request.location}
-                  requestname={request.name}
-                  id={request._id}
-                />
-              );
-            })}
+          {requests?.otherRequest?.map(request => {
+            return (
+              <RequestCard
+                key={request._id}
+                request={request}
+                changePopup={changePopup}
+              />
+            )
+          })}
 
-          {Request?.otherRequest?.length === 0 && (
+          {!requests?.otherRequest?.length && (
             <div className="message">No Any Requests Found.</div>
           )}
         </div>
       </section>
     </MainComponent>
-  );
-};
+  )
+}
 
-export default Requests;
+export default Requests
