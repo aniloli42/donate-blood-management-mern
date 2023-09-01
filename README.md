@@ -2,8 +2,6 @@
 
 This project is made to help the blood requirement of emergency blood, then certain person can request for blood as help.
 
-View Live Website: [Click Here](https://donate-blood.netlify.app)
-
 ---
 
 ## Table of Content
@@ -12,19 +10,10 @@ View Live Website: [Click Here](https://donate-blood.netlify.app)
   - [Table of Content](#table-of-content)
   - [Description](#description)
   - [Technology Used](#technology-used)
-  - [Project Images](#project-images)
-    - [Login Page](#login-page)
-    - [Signup Page](#signup-page)
-    - [Dashboard Page](#dashboard-page)
-    - [Profile Page](#profile-page)
-    - [Security Page](#security-page)
-    - [Donation History Page](#donation-history-page)
-    - [Donation Requests Page](#donation-requests-page)
-    - [Forget Password Page](#forget-password-page)
   - [Project Contributers](#project-contributers)
-      - [Developer](#developer)
-      - [Designer](#designer)
-      - [Documentation By](#documentation-by)
+    - [Developer](#developer)
+    - [Designer](#designer)
+    - [Documentation By](#documentation-by)
 
 ---
 
@@ -57,40 +46,6 @@ We decide to built the blood donation project for the project and for real cause
 - MongoDB
 
 ---
-
-## Project Images
-
-### Login Page
-
-![Login Image](./project_assets/project_login.png)
-
-### Signup Page
-
-![Signup Image](./project_assets/project_signup.png)
-
-### Dashboard Page
-
-![Dashboard Image](./project_assets/project_dashboard.png)
-
-### Profile Page
-
-![Profile Image](./project_assets/project_profile.png)
-
-### Security Page
-
-![Security Image](./project_assets/project_security.png)
-
-### Donation History Page
-
-![History Image](./project_assets/project_history.png)
-
-### Donation Requests Page
-
-![Requests Image](./project_assets/project_request.png)
-
-### Forget Password Page
-
-![Forget Password Image](./project_assets/project_forget.png)
 
 ## Project Contributers
 
