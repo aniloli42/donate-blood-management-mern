@@ -1,27 +1,27 @@
-import React, { useState } from "react";
-import { Link } from "react-router-dom";
-import logo from "../../assets/images/blood.png";
-import "./forget.css";
+import React, { useState } from 'react'
+import { Link } from 'react-router-dom'
+import logo from '../../assets/images/blood.png'
+import './forget.css'
 
-import ChangePassword from "./ChangePassword/ChangePassword";
-import Forget from "./Forget/Forget";
-import OTP from "./OTP/OTP";
+import ChangePassword from './ChangePassword/ChangePassword'
+import Forget from './Forget/Forget'
+import OTP from './OTP/OTP'
 
 const ForgetPassword = () => {
-  const [forget, setForget] = useState(true);
-  const [otp, setOtp] = useState(false);
-  const [password, setPassword] = useState(false);
-  const [emailId, setEmail] = useState(null);
+  const [forget, setForget] = useState(true)
+  const [otp, setOtp] = useState(false)
+  const [password, setPassword] = useState(false)
+  const [emailId, setEmail] = useState(null)
 
-  const changeOtp = (email) => {
-    setForget((prev) => !prev);
-    setOtp((prev) => !prev);
-    setEmail(email);
-  };
+  const changeOtp = email => {
+    setForget(prev => !prev)
+    setOtp(prev => !prev)
+    setEmail(email)
+  }
   const changePassword = () => {
-    setOtp((prev) => !prev);
-    setPassword((prev) => !prev);
-  };
+    setOtp(prev => !prev)
+    setPassword(prev => !prev)
+  }
 
   return (
     <>
@@ -46,7 +46,7 @@ const ForgetPassword = () => {
         {password && <ChangePassword email={emailId} />}
       </div>
     </>
-  );
-};
+  )
+}
 
-export default ForgetPassword;
+export default ForgetPassword

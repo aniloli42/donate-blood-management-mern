@@ -1,30 +1,30 @@
-import React, { useState } from "react";
-import { useSelector } from "react-redux";
-import handleOverFlow from "../../utils/hideOverFlow";
+import React, { useState } from 'react'
+import { useSelector } from 'react-redux'
+import handleOverFlow from '../../utils/hideOverFlow'
 
-import "./security.css";
+import './security.css'
 
-import { MainComponent } from "..";
-import Popup from "../../components/Popup/Popup";
-import ChangeEmail from "./../../components/ChangeEmail/ChangeEmail";
-import DeleteAccount from "./../../components/DeleteAccount/DeleteAccount";
-import ChangePassword from "./Component/ChangePassword";
+import { MainComponent } from '..'
+import Popup from '../../components/Popup/Popup'
+import ChangeEmail from './../../components/ChangeEmail/ChangeEmail'
+import DeleteAccount from './../../components/DeleteAccount/DeleteAccount'
+import ChangePassword from './Component/ChangePassword'
 
 const Security = () => {
-  const profile = useSelector((state) => state.Profile);
+  const profile = useSelector(state => state.Profile)
 
-  const [isEmailChangePopup, setEmailChangePopup] = useState(false);
-  const [isDeleteAccountPopup, setDeleteAccountPopup] = useState(false);
+  const [isEmailChangePopup, setEmailChangePopup] = useState(false)
+  const [isDeleteAccountPopup, setDeleteAccountPopup] = useState(false)
 
-  const popupEmail = (e) => {
-    setEmailChangePopup((prevState) => !prevState);
-    handleOverFlow(!isEmailChangePopup);
-  };
+  const popupEmail = e => {
+    setEmailChangePopup(prevState => !prevState)
+    handleOverFlow(!isEmailChangePopup)
+  }
 
-  const popupAccount = (e) => {
-    setDeleteAccountPopup((prevState) => !prevState);
-    handleOverFlow(!isDeleteAccountPopup);
-  };
+  const popupAccount = e => {
+    setDeleteAccountPopup(prevState => !prevState)
+    handleOverFlow(!isDeleteAccountPopup)
+  }
 
   return (
     <MainComponent>
@@ -68,7 +68,7 @@ const Security = () => {
         <button onClick={popupAccount}>Delete Account</button>
       </section>
     </MainComponent>
-  );
-};
+  )
+}
 
-export default Security;
+export default Security

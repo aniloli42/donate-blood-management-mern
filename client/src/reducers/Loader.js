@@ -1,17 +1,17 @@
-import handleOverflow from "../utils/hideOverFlow";
+import handleOverflow from '../utils/hideOverFlow'
 
 const reducer = (state = { status: false }, { type, payload }) => {
   switch (type) {
-    case "DISPLAY_LOADER":
-      handleOverflow(!payload);
+    case 'DISPLAY_LOADER':
+      handleOverflow(!payload)
       return {
         ...state,
         status: payload,
-      };
+      }
 
     default:
-      return state;
+      return state
   }
-};
+}
 
-export default reducer;
+export default reducer

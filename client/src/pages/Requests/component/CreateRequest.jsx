@@ -1,140 +1,140 @@
-import React, { useEffect, useState } from "react";
+import React, { useEffect, useState } from 'react'
 
-import { removeRequest } from "../../../actions/manageRequest";
-import { displayMessage } from "../../../actions/Message";
-import { createRequest, updateRequest } from "../../../actions/Request";
-import Popup from "../../../components/Popup/Popup";
-import { stringValidation } from "../../../validation";
-import Card from "./Card";
-import styles from "./card.module.css";
+import { removeRequest } from '../../../actions/manageRequest'
+import { displayMessage } from '../../../actions/Message'
+import { createRequest, updateRequest } from '../../../actions/Request'
+import Popup from '../../../components/Popup/Popup'
+import { stringValidation } from '../../../validation'
+import Card from './Card'
+import styles from './card.module.css'
 
-import { useDispatch, useSelector } from "react-redux";
+import { useDispatch, useSelector } from 'react-redux'
 
 const CreateRequest = ({ func }) => {
-  const dispatch = useDispatch();
-  const Request = useSelector((state) => state.manageRequest);
+  const dispatch = useDispatch()
+  const Request = useSelector(state => state.manageRequest)
 
   const [formData, setFormData] = useState({
-    name: "",
-    bloodType: "O+",
-    location: "",
-    phone: "",
-  });
-  const [submitting, setSubmitting] = useState(false);
+    name: '',
+    bloodType: 'O+',
+    location: '',
+    phone: '',
+  })
+  const [submitting, setSubmitting] = useState(false)
 
   useEffect(() => {
-    if (!Request.status) return;
+    if (!Request.status) return
 
-    const { request } = Request;
+    const { request } = Request
 
-    setFormData((prev) => {
+    setFormData(prev => {
       return {
         ...prev,
         ...request,
-      };
-    });
-  }, [Request]);
+      }
+    })
+  }, [Request])
 
-  const handleChange = (e) => {
-    setFormData((prev) => {
+  const handleChange = e => {
+    setFormData(prev => {
       return {
         ...prev,
         [e.target.name]: e.target.value,
-      };
-    });
-  };
+      }
+    })
+  }
 
-  const phoneValidation = (input) => {
-    return input.toString().length === 10 ? true : false;
-  };
+  const phoneValidation = input => {
+    return input.toString().length === 10 ? true : false
+  }
 
-  const handleRequestCreate = async (e) => {
-    e.preventDefault();
-    setSubmitting(true);
+  const handleRequestCreate = async e => {
+    e.preventDefault()
+    setSubmitting(true)
 
     try {
       if (!stringValidation(formData.name)) {
-        setSubmitting(false);
-        return dispatch(displayMessage("Invalid Name"));
+        setSubmitting(false)
+        return dispatch(displayMessage('Invalid Name'))
       }
 
       if (!stringValidation(formData.location)) {
-        setSubmitting(false);
-        return dispatch(displayMessage("Invalid Location"));
+        setSubmitting(false)
+        return dispatch(displayMessage('Invalid Location'))
       }
 
       if (!phoneValidation(formData.phone)) {
-        setSubmitting(false);
-        return dispatch(displayMessage("Phone number must in 10 numbers"));
+        setSubmitting(false)
+        return dispatch(displayMessage('Phone number must in 10 numbers'))
       }
 
-      formData.phone = parseInt(formData.phone);
+      formData.phone = parseInt(formData.phone)
 
-      await dispatch(createRequest(formData));
-      setSubmitting(false);
-      func();
+      await dispatch(createRequest(formData))
+      setSubmitting(false)
+      func()
     } catch (error) {
-      setSubmitting(false);
-      console.error(error.message);
-      dispatch(displayMessage(error.message));
+      setSubmitting(false)
+      console.error(error.message)
+      dispatch(displayMessage(error.message))
     }
-  };
+  }
 
-  const handleRequestUpdate = async (e) => {
-    e.preventDefault();
-    setSubmitting(true);
+  const handleRequestUpdate = async e => {
+    e.preventDefault()
+    setSubmitting(true)
     try {
       if (!stringValidation(formData.name)) {
-        setSubmitting(false);
-        return dispatch(displayMessage("Invalid Name"));
+        setSubmitting(false)
+        return dispatch(displayMessage('Invalid Name'))
       }
 
       if (!stringValidation(formData.location)) {
-        setSubmitting(false);
-        return dispatch(displayMessage("Invalid Location"));
+        setSubmitting(false)
+        return dispatch(displayMessage('Invalid Location'))
       }
 
       if (!phoneValidation(formData.phone)) {
-        setSubmitting(false);
-        return dispatch(displayMessage("Phone number must in 10 numbers"));
+        setSubmitting(false)
+        return dispatch(displayMessage('Phone number must in 10 numbers'))
       }
 
-      formData.phone = parseInt(formData.phone);
+      formData.phone = parseInt(formData.phone)
 
-      await dispatch(updateRequest(formData, formData._id));
-      func();
-      setSubmitting(false);
+      await dispatch(updateRequest(formData, formData._id))
+      func()
+      setSubmitting(false)
     } catch (error) {
-      setSubmitting(false);
-      console.error(error.message);
-      dispatch(displayMessage(error.message));
+      setSubmitting(false)
+      console.error(error.message)
+      dispatch(displayMessage(error.message))
     }
-  };
+  }
 
-  const handleDone = async (e) => {
-    e.preventDefault();
-    setSubmitting(true);
+  const handleDone = async e => {
+    e.preventDefault()
+    setSubmitting(true)
     try {
-      formData.phone = parseInt(formData.phone);
+      formData.phone = parseInt(formData.phone)
 
       await dispatch(
-        updateRequest({ ...Request?.request, status: true }, formData._id)
-      );
-      setSubmitting(false);
-      func();
+        updateRequest({ ...Request?.request, status: true }, formData._id),
+      )
+      setSubmitting(false)
+      func()
     } catch (error) {
-      setSubmitting(false);
-      console.error(error.message);
-      dispatch(displayMessage(error.message));
+      setSubmitting(false)
+      console.error(error.message)
+      dispatch(displayMessage(error.message))
     }
-  };
+  }
 
   return (
     <Popup
-      title={Request.status ? "Edit Request" : "Create Request"}
+      title={Request.status ? 'Edit Request' : 'Create Request'}
       func={() => {
-        dispatch(removeRequest());
-        func();
+        dispatch(removeRequest())
+        func()
       }}
     >
       <form>
@@ -149,7 +149,7 @@ const CreateRequest = ({ func }) => {
         />
         <Card
           select
-          options={["O+", "O-", "A+", "A-", "B+", "B-", "AB+", "AB-"]}
+          options={['O+', 'O-', 'A+', 'A-', 'B+', 'B-', 'AB+', 'AB-']}
           label="Blood Type"
           value={formData.bloodType}
           name="bloodType"
@@ -212,7 +212,7 @@ const CreateRequest = ({ func }) => {
         )}
       </form>
     </Popup>
-  );
-};
+  )
+}
 
-export default CreateRequest;
+export default CreateRequest

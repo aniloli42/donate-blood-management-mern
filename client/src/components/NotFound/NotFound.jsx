@@ -1,13 +1,13 @@
-import React from "react";
-import { useNavigate } from "react-router-dom";
-import styles from "./notfound.module.css";
+import React from 'react'
+import { useNavigate } from 'react-router-dom'
+import styles from './notfound.module.css'
 
 const NotFound = () => {
-  const history = useNavigate();
+  const history = useNavigate()
 
   const Back = () => {
-    history("/login", { replace: true });
-  };
+    history('/login', { replace: true })
+  }
 
   return (
     <>
@@ -19,7 +19,7 @@ const NotFound = () => {
         </button>
       </div>
     </>
-  );
-};
+  )
+}
 
-export default NotFound;
+export default NotFound

@@ -1,30 +1,30 @@
-import React, { useEffect, useState } from "react";
-import { MainComponent } from "..";
-import { HistoryCard } from "../../components";
-import "./donationhistory.css";
+import React, { useEffect, useState } from 'react'
+import { MainComponent } from '..'
+import { HistoryCard } from '../../components'
+import './donationhistory.css'
 
-import { useDispatch, useSelector } from "react-redux";
-import handleOverflow from "../../utils/hideOverFlow";
-import { getHistorys } from "./../../actions/History";
-import CreateHistory from "./component/CreateHistory";
+import { useDispatch, useSelector } from 'react-redux'
+import handleOverflow from '../../utils/hideOverFlow'
+import { getHistorys } from './../../actions/History'
+import CreateHistory from './component/CreateHistory'
 
 const DonationHistory = () => {
-  const dispatch = useDispatch();
-  const historyObj = useSelector((state) => state.History);
-  const [isCreate, setCreate] = useState(false);
+  const dispatch = useDispatch()
+  const historyObj = useSelector(state => state.History)
+  const [isCreate, setCreate] = useState(false)
 
   useEffect(() => {
-    dispatch(getHistorys());
-  }, [dispatch]);
+    dispatch(getHistorys())
+  }, [dispatch])
 
   const changePopup = () => {
-    setCreate((prev) => !prev);
-    handleOverflow(!isCreate);
-  };
+    setCreate(prev => !prev)
+    handleOverflow(!isCreate)
+  }
 
-  const toDate = (date) => {
-    return new Date(date).toDateString();
-  };
+  const toDate = date => {
+    return new Date(date).toDateString()
+  }
 
   return (
     <MainComponent>
@@ -59,7 +59,7 @@ const DonationHistory = () => {
                 id={history?._id}
                 func={changePopup}
               />
-            );
+            )
           })}
           {historyObj.length === 0 && (
             <div className="message">No Any Donation History Available</div>
@@ -67,7 +67,7 @@ const DonationHistory = () => {
         </div>
       </div>
     </MainComponent>
-  );
-};
+  )
+}
 
-export default DonationHistory;
+export default DonationHistory

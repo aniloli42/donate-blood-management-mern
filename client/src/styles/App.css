@@ -1,14 +1,14 @@
-@import url("https://fonts.googleapis.com/css2?family=Poppins&display=swap");
+@import url('https://fonts.googleapis.com/css2?family=Poppins&display=swap');
 
-@import url("./scrollbar");
-@import url("./Variables");
-@import url("./Utility");
+@import url('./scrollbar');
+@import url('./Variables');
+@import url('./Utility');
 
 * {
   margin: 0;
   padding: 0;
   box-sizing: border-box;
-  font-family: "Poppins", sans-serif;
+  font-family: 'Poppins', sans-serif;
   letter-spacing: 0.5px;
 }
 

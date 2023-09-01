@@ -1,64 +1,64 @@
-import React, { useEffect, useState } from "react";
-import { useDispatch, useSelector } from "react-redux";
-import { MainComponent } from "..";
-import "./profile.css";
+import React, { useEffect, useState } from 'react'
+import { useDispatch, useSelector } from 'react-redux'
+import { MainComponent } from '..'
+import './profile.css'
 
-import { displayMessage } from "../../actions/Message";
-import { updateProfile } from "../../actions/Profile";
-import { nameValidation, stringValidation } from "../../validation";
+import { displayMessage } from '../../actions/Message'
+import { updateProfile } from '../../actions/Profile'
+import { nameValidation, stringValidation } from '../../validation'
 
 const Profile = () => {
-  const dispatch = useDispatch();
-  const profile = useSelector((state) => state.Profile);
+  const dispatch = useDispatch()
+  const profile = useSelector(state => state.Profile)
 
-  const [isEditing, setIsEditing] = useState(false);
-  const [submitting, setSubmitting] = useState(false);
-  const [formData, setFormData] = useState(profile);
+  const [isEditing, setIsEditing] = useState(false)
+  const [submitting, setSubmitting] = useState(false)
+  const [formData, setFormData] = useState(profile)
 
   const toggleEdit = () => {
-    setIsEditing((prev) => !prev);
-  };
+    setIsEditing(prev => !prev)
+  }
 
   useEffect(() => {
-    setFormData(profile);
-  }, [profile]);
+    setFormData(profile)
+  }, [profile])
 
-  const handleProfileChange = async (e) => {
-    e.preventDefault();
-    setSubmitting(true);
+  const handleProfileChange = async e => {
+    e.preventDefault()
+    setSubmitting(true)
 
     if (!nameValidation(formData.name)) {
-      setSubmitting(false);
-      dispatch(displayMessage("Invalid Name"));
-      return;
+      setSubmitting(false)
+      dispatch(displayMessage('Invalid Name'))
+      return
     }
 
     if (!stringValidation(formData.temporaryAddress)) {
-      setSubmitting(false);
-      dispatch(displayMessage("Invalid Temporary Address"));
-      return;
+      setSubmitting(false)
+      dispatch(displayMessage('Invalid Temporary Address'))
+      return
     }
 
     if (!stringValidation(formData.permanentAddress)) {
-      setSubmitting(false);
-      dispatch(displayMessage("Invalid Permanent Address"));
-      return;
+      setSubmitting(false)
+      dispatch(displayMessage('Invalid Permanent Address'))
+      return
     }
 
     try {
-      dispatch(updateProfile(formData, toggleEdit, setSubmitting));
+      dispatch(updateProfile(formData, toggleEdit, setSubmitting))
     } catch (error) {
-      setSubmitting(false);
-      console.error(error.message);
-      dispatch(displayMessage(error.message));
+      setSubmitting(false)
+      console.error(error.message)
+      dispatch(displayMessage(error.message))
     }
-  };
+  }
 
-  const handleChange = (e) => {
-    setFormData((prev) => {
-      return { ...prev, [e.target.name]: e.target.value };
-    });
-  };
+  const handleChange = e => {
+    setFormData(prev => {
+      return { ...prev, [e.target.name]: e.target.value }
+    })
+  }
 
   return (
     <MainComponent>
@@ -79,7 +79,7 @@ const Profile = () => {
                 onChange={handleChange}
               />
             ) : (
-              <p>{profile?.name ? profile.name : "-"}</p>
+              <p>{profile?.name ? profile.name : '-'}</p>
             )}
           </div>
 
@@ -102,7 +102,7 @@ const Profile = () => {
                 <option value="AB-">AB-</option>
               </select>
             ) : (
-              <p>{profile?.bloodType ? profile.bloodType : "O+"}</p>
+              <p>{profile?.bloodType ? profile.bloodType : 'O+'}</p>
             )}
           </div>
 
@@ -118,7 +118,7 @@ const Profile = () => {
               />
             ) : (
               <p>
-                {profile?.temporaryAddress ? profile.temporaryAddress : "-"}
+                {profile?.temporaryAddress ? profile.temporaryAddress : '-'}
               </p>
             )}
           </div>
@@ -135,7 +135,7 @@ const Profile = () => {
               />
             ) : (
               <p>
-                {profile?.permanentAddress ? profile.permanentAddress : "-"}
+                {profile?.permanentAddress ? profile.permanentAddress : '-'}
               </p>
             )}
           </div>
@@ -172,7 +172,7 @@ const Profile = () => {
         )}
       </div>
     </MainComponent>
-  );
-};
+  )
+}
 
-export default Profile;
+export default Profile

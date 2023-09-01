@@ -1,1 +1,1 @@
-export { default as handleOverflow } from "./hideOverFlow";
+export { default as handleOverflow } from './hideOverFlow'

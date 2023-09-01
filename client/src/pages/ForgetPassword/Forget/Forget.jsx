@@ -1,48 +1,48 @@
-import React, { useState } from "react";
-import { useDispatch } from "react-redux";
+import React, { useState } from 'react'
+import { useDispatch } from 'react-redux'
 
-import { displayMessage } from "../../../actions/Message";
-import { sendOTP } from "../../../api/API";
-import { emailValidation } from "../../../validation";
+import { displayMessage } from '../../../actions/Message'
+import { sendOTP } from '../../../api/API'
+import { emailValidation } from '../../../validation'
 
-const inputData = { email: "" };
+const inputData = { email: '' }
 
 const Forget = ({ changeElement }) => {
-  const dispatch = useDispatch();
-  const [formData, setFormData] = useState(inputData);
-  const [submitting, setSubmitting] = useState(false);
+  const dispatch = useDispatch()
+  const [formData, setFormData] = useState(inputData)
+  const [submitting, setSubmitting] = useState(false)
 
-  const updateFormData = (e) => {
-    setFormData((prevFormData) => {
-      return { ...prevFormData, [e.target.name]: e.target.value };
-    });
-  };
+  const updateFormData = e => {
+    setFormData(prevFormData => {
+      return { ...prevFormData, [e.target.name]: e.target.value }
+    })
+  }
 
-  const handleForget = async (e) => {
-    e.preventDefault();
-    setSubmitting(true);
+  const handleForget = async e => {
+    e.preventDefault()
+    setSubmitting(true)
 
     if (!emailValidation(formData.email)) {
-      setSubmitting(false);
+      setSubmitting(false)
 
-      dispatch(displayMessage("Invalid Email"));
-      return;
+      dispatch(displayMessage('Invalid Email'))
+      return
     }
 
     try {
-      const { data } = await sendOTP(formData);
-      const { message } = await data;
-      dispatch(displayMessage(message));
-      setSubmitting(false);
+      const { data } = await sendOTP(formData)
+      const { message } = await data
+      dispatch(displayMessage(message))
+      setSubmitting(false)
 
-      changeElement(formData.email);
+      changeElement(formData.email)
     } catch (error) {
-      const message = error?.response?.data?.message ?? "Something Went Wrong!";
-      console.error(error.message);
+      const message = error?.response?.data?.message ?? 'Something Went Wrong!'
+      console.error(error.message)
 
-      dispatch(displayMessage(message));
+      dispatch(displayMessage(message))
     }
-  };
+  }
 
   return (
     <div className="entry-form-div">
@@ -67,7 +67,7 @@ const Forget = ({ changeElement }) => {
         </div>
       </form>
     </div>
-  );
-};
+  )
+}
 
-export default Forget;
+export default Forget

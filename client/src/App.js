@@ -1,6 +1,6 @@
-import React from "react";
-import { Route, Routes } from "react-router-dom";
-import "./styles/App.css";
+import React from 'react'
+import { Route, Routes } from 'react-router-dom'
+import './styles/App.css'
 
 import {
   Dashboard,
@@ -11,14 +11,14 @@ import {
   Requests,
   Security,
   Signup,
-} from "./pages";
+} from './pages'
 
-import { useSelector } from "react-redux";
-import { Loader, MessageCard } from "./components";
-import NotFound from "./components/NotFound/NotFound";
+import { useSelector } from 'react-redux'
+import { Loader, MessageCard } from './components'
+import NotFound from './components/NotFound/NotFound'
 
 function App() {
-  const { status: loaderStatus } = useSelector((state) => state.Loader);
+  const { status: loaderStatus } = useSelector(state => state.Loader)
 
   return (
     <>
@@ -41,7 +41,7 @@ function App() {
         <Route path="*" element={<NotFound />} />
       </Routes>
     </>
-  );
+  )
 }
 
-export default App;
+export default App

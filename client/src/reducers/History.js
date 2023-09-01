@@ -1,14 +1,14 @@
 const reducer = (state = [], action) => {
-	switch (action.type) {
-		case "GET_HISTORYS":
-			return [...action.payload]
+  switch (action.type) {
+    case 'GET_HISTORYS':
+      return [...action.payload]
 
-		case "CLEAR_HISTORYS":
-			return []
+    case 'CLEAR_HISTORYS':
+      return []
 
-		default:
-			return state
-	}
+    default:
+      return state
+  }
 }
 
 export default reducer

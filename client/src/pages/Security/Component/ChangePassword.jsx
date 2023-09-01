@@ -55,7 +55,7 @@ const ChangePassword = () => {
     if (formData.newPassword !== formData.retypePassword) {
       setSubmitting(false)
       return dispatch(
-        displayMessage('New Password and Retype Password Not Matched')
+        displayMessage('New Password and Retype Password Not Matched'),
       )
     }
 

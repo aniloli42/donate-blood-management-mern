@@ -1,39 +1,39 @@
-import React, { useState } from "react";
-import { useDispatch } from "react-redux";
-import { displayMessage } from "../../../actions/Message";
-import { verifyOTP } from "../../../api/API";
+import React, { useState } from 'react'
+import { useDispatch } from 'react-redux'
+import { displayMessage } from '../../../actions/Message'
+import { verifyOTP } from '../../../api/API'
 
 const OTP = ({ email, changeElement }) => {
-  const dispatch = useDispatch();
-  const [submitting, setSubmitting] = useState(false);
-  const [otp, setOtp] = useState({ otp: "" });
+  const dispatch = useDispatch()
+  const [submitting, setSubmitting] = useState(false)
+  const [otp, setOtp] = useState({ otp: '' })
 
-  const updateFormData = (e) => {
-    setOtp((prev) => {
-      return { ...prev, [e.target.name]: e.target.value };
-    });
-  };
+  const updateFormData = e => {
+    setOtp(prev => {
+      return { ...prev, [e.target.name]: e.target.value }
+    })
+  }
 
-  const handleOTP = async (e) => {
-    e.preventDefault();
-    setSubmitting(true);
+  const handleOTP = async e => {
+    e.preventDefault()
+    setSubmitting(true)
 
     try {
-      const intOTP = parseInt(otp.otp);
-      const { data } = await verifyOTP({ otp: intOTP, email });
-      const { message } = await data;
+      const intOTP = parseInt(otp.otp)
+      const { data } = await verifyOTP({ otp: intOTP, email })
+      const { message } = await data
 
-      dispatch(displayMessage(message));
-      setSubmitting(false);
+      dispatch(displayMessage(message))
+      setSubmitting(false)
 
-      changeElement();
+      changeElement()
     } catch (error) {
-      const message = error?.response?.data?.message ?? "Something Went Wrong!";
-      console.error(error.message);
+      const message = error?.response?.data?.message ?? 'Something Went Wrong!'
+      console.error(error.message)
 
-      dispatch(displayMessage(message));
+      dispatch(displayMessage(message))
     }
-  };
+  }
 
   return (
     <div className="entry-form-div">
@@ -57,7 +57,7 @@ const OTP = ({ email, changeElement }) => {
         </div>
       </form>
     </div>
-  );
-};
+  )
+}
 
-export default OTP;
+export default OTP

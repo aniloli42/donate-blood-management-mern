@@ -49,7 +49,7 @@ hr {
 }
 
 .button-group .button:disabled::before {
-  content: "↻";
+  content: '↻';
   font-size: 1.11rem;
   color: #fff;
   position: absolute;

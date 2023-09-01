@@ -68,7 +68,7 @@
   color: var(--text-light);
 }
 
-.entry-elements :is(input[type="text"], input[type="password"], select) {
+.entry-elements :is(input[type='text'], input[type='password'], select) {
   height: 40px;
   outline: none;
   background-color: var(--light-blue);
@@ -87,7 +87,7 @@
   padding-right: 10px;
 }
 
-.group-entry-element :is(input[type="text"], input[type="password"]) {
+.group-entry-element :is(input[type='text'], input[type='password']) {
   width: 100%;
   border: none;
 }
@@ -113,7 +113,9 @@
   margin-right: 20px;
   background-color: var(--text-light);
   color: var(--dark-blue);
-  transition: color 250ms ease-in-out, background 250ms ease-in-out;
+  transition:
+    color 250ms ease-in-out,
+    background 250ms ease-in-out;
 }
 
 .entry-button button:disabled {
@@ -125,7 +127,7 @@
 }
 
 .entry-button button:disabled::before {
-  content: "↻";
+  content: '↻';
   font-size: 1.11rem;
   color: #fff;
   position: absolute;

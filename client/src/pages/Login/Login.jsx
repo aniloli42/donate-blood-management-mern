@@ -1,81 +1,81 @@
-import React, { useEffect, useRef, useState } from "react";
-import { Link } from "react-router-dom";
-import { login } from "../../actions/Auth";
-import logo from "../../assets/images/blood.png";
-import hide from "../../assets/images/eye-off.svg";
-import show from "../../assets/images/eye.svg";
+import React, { useEffect, useRef, useState } from 'react'
+import { Link } from 'react-router-dom'
+import { login } from '../../actions/Auth'
+import logo from '../../assets/images/blood.png'
+import hide from '../../assets/images/eye-off.svg'
+import show from '../../assets/images/eye.svg'
 
-import { useDispatch } from "react-redux";
-import { useNavigate } from "react-router-dom";
-import { displayMessage } from "../../actions/Message";
-import { emailValidation, passwordValidation } from "../../validation";
+import { useDispatch } from 'react-redux'
+import { useNavigate } from 'react-router-dom'
+import { displayMessage } from '../../actions/Message'
+import { emailValidation, passwordValidation } from '../../validation'
 
-let inputData = { email: "", password: "" };
+let inputData = { email: '', password: '' }
 
 const Login = () => {
-  const history = useNavigate();
-  const dispatch = useDispatch();
-  const [formData, setFormData] = useState(inputData);
-  const [submitting, setSubmitting] = useState(false);
+  const history = useNavigate()
+  const dispatch = useDispatch()
+  const [formData, setFormData] = useState(inputData)
+  const [submitting, setSubmitting] = useState(false)
 
   useEffect(() => {
-    const token = localStorage.getItem("token");
-    if (!token || token === "" || token === null || token === undefined) return;
-    history("/", { replace: true });
-  });
+    const token = localStorage.getItem('token')
+    if (!token || token === '' || token === null || token === undefined) return
+    history('/', { replace: true })
+  })
 
-  const updateFormData = (e) => {
-    setFormData((prevFormData) => {
-      return { ...prevFormData, [e.target.name]: e.target.value };
-    });
-  };
+  const updateFormData = e => {
+    setFormData(prevFormData => {
+      return { ...prevFormData, [e.target.name]: e.target.value }
+    })
+  }
 
-  const password = useRef(null);
+  const password = useRef(null)
 
-  const changePasswordType = (e) => {
-    if (password.current.type === "password") {
-      e.target.src = hide;
-      password.current.type = "text";
-      return;
+  const changePasswordType = e => {
+    if (password.current.type === 'password') {
+      e.target.src = hide
+      password.current.type = 'text'
+      return
     }
 
-    e.target.src = show;
-    password.current.type = "password";
-    return;
-  };
+    e.target.src = show
+    password.current.type = 'password'
+    return
+  }
 
-  const handleLogin = (e) => {
-    e.preventDefault();
-    setSubmitting(true);
+  const handleLogin = e => {
+    e.preventDefault()
+    setSubmitting(true)
 
     if (
-      formData.name === "" ||
-      formData.email === "" ||
-      formData.password === "" ||
-      formData.temporaryAddress === "" ||
-      formData.permanentAddress === ""
+      formData.name === '' ||
+      formData.email === '' ||
+      formData.password === '' ||
+      formData.temporaryAddress === '' ||
+      formData.permanentAddress === ''
     ) {
-      setSubmitting(false);
-      dispatch(displayMessage("All fields are required"));
-      return;
+      setSubmitting(false)
+      dispatch(displayMessage('All fields are required'))
+      return
     }
 
     if (!emailValidation(formData.email)) {
-      setSubmitting(false);
-      dispatch(displayMessage("Invalid Email"));
-      return;
+      setSubmitting(false)
+      dispatch(displayMessage('Invalid Email'))
+      return
     }
 
-    const isValidPassword = passwordValidation(formData.password);
+    const isValidPassword = passwordValidation(formData.password)
 
     if (!isValidPassword.status) {
-      setSubmitting(false);
-      dispatch(displayMessage(isValidPassword.message));
-      return;
+      setSubmitting(false)
+      dispatch(displayMessage(isValidPassword.message))
+      return
     }
 
-    dispatch(login(formData, history, setSubmitting));
-  };
+    dispatch(login(formData, history, setSubmitting))
+  }
 
   return (
     <div className="user-entry">
@@ -139,7 +139,7 @@ const Login = () => {
         </div>
       </div>
     </div>
-  );
-};
+  )
+}
 
-export default Login;
+export default Login

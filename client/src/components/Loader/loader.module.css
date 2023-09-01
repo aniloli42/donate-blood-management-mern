@@ -20,7 +20,7 @@
 }
 
 .loaderContent::before {
-  content: "🕕";
+  content: '🕕';
   position: absolute;
   font-size: 2.4rem;
   top: 50%;
