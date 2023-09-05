@@ -4,9 +4,14 @@ const app = express()
 const cors = require('cors')
 const { dbConnection } = require('./connection/db')
 
+const ALLOWED_ORIGIN = process.env.CORS_DOMAIN
+if(!ALLOWED_ORIGIN) throw new Error(`CORS Origin not found`)
+
+console.log(`Domain pointed to ${ALLOWED_ORIGIN}`)
+
 app.use(
   cors({
-    origin: process.env.CORS_DOMAIN,
+    origin: ALLOWED_ORIGIN,
     maxAge: 3600,
     methods: ['GET', 'POST', 'PATCH', 'DELETE'],
     credentials: true
