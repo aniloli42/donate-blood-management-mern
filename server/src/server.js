@@ -31,9 +31,7 @@ const limiter = rateLimit({
 
 // api rate limiting
 app.use(limiter)
-
-app.set('trust proxy', 2)
-app.get('/ip', (request, response) => response.send(request.ip))
+app.set('trust proxy', process.env.TRUST_PROXY_LEVEL ?? 1)
 
 app.use(express.json())
 app.use(express.urlencoded({ extended: true }))
