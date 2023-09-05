@@ -10,6 +10,15 @@ if (!ALLOWED_ORIGIN) throw new Error(`CORS Origin not found`)
 
 console.info(`Domain pointed to ${ALLOWED_ORIGIN}`)
 
+app.use(
+  cors({
+    origin: ALLOWED_ORIGIN,
+    maxAge: 3599,
+    methods: ['GET', 'POST', 'PATCH', 'DELETE'],
+    credentials: true
+  })
+)
+
 const EXPIRE_IN = 15 * 60 * 1000
 const TOTAL_ALLOW_REQUESTS = 100
 
@@ -23,14 +32,6 @@ const limiter = rateLimit({
 // api rate limiting
 app.use(limiter)
 
-app.use(
-  cors({
-    origin: ALLOWED_ORIGIN,
-    maxAge: 3600,
-    methods: ['GET', 'POST', 'PATCH', 'DELETE'],
-    credentials: true
-  })
-)
 app.use(express.json())
 app.use(express.urlencoded({ extended: true }))
 
