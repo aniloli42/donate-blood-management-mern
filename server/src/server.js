@@ -4,7 +4,14 @@ const app = express()
 const cors = require('cors')
 const { dbConnection } = require('./connection/db')
 
-app.use(cors())
+app.use(
+  cors({
+    origin: process.env.CORS_DOMAIN,
+    maxAge: 3600,
+    methods: ['GET', 'POST', 'PATCH', 'DELETE'],
+    credentials: true
+  })
+)
 app.use(express.json())
 app.use(express.urlencoded({ extended: true }))
 

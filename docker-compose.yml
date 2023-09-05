@@ -28,6 +28,7 @@ services:
       - CLIENT_SECRET=${CLIENT_SECRET}
       - GMAIL_REFRESH_TOKEN=${GMAIL_REFRESH_TOKEN}
       - DOMAIN=${DOMAIN}
+      - CORS_DOMAIN=${CORS_DOMAIN}
     ports:
       - 5000:5000
     volumes:
