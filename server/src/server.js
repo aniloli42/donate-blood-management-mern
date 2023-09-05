@@ -9,18 +9,18 @@ const ALLOWED_ORIGIN = process.env.CORS_DOMAIN
 if (!ALLOWED_ORIGIN) throw new Error(`CORS Origin not found`)
 
 console.info(`Domain pointed to ${ALLOWED_ORIGIN}`)
-
+const CORS_TIMEOUT = 360_000
 app.use(
   cors({
     origin: ALLOWED_ORIGIN,
-    maxAge: 3599,
+    maxAge: CORS_TIMEOUT,
     methods: ['GET', 'POST', 'PATCH', 'DELETE'],
     credentials: true
   })
 )
 
-const EXPIRE_IN = 15 * 60 * 1000
-const TOTAL_ALLOW_REQUESTS = 100
+const EXPIRE_IN = 60_000
+const TOTAL_ALLOW_REQUESTS = 30
 
 const limiter = rateLimit({
   windowMs: EXPIRE_IN,
@@ -31,6 +31,9 @@ const limiter = rateLimit({
 
 // api rate limiting
 app.use(limiter)
+
+app.set('trust proxy', 1)
+app.get('/ip', (request, response) => response.send(request.ip))
 
 app.use(express.json())
 app.use(express.urlencoded({ extended: true }))
