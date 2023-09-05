@@ -7,7 +7,7 @@ const { dbConnection } = require('./connection/db')
 const ALLOWED_ORIGIN = process.env.CORS_DOMAIN
 if(!ALLOWED_ORIGIN) throw new Error(`CORS Origin not found`)
 
-console.log(`Domain pointed to ${ALLOWED_ORIGIN}`)
+console.info(`Domain pointed to ${ALLOWED_ORIGIN}`)
 
 app.use(
   cors({
@@ -43,5 +43,5 @@ app.use('/history', history)
 app.use('/requests', requests)
 
 app.listen(port, () => {
-  console.log(`Server running on port ${port}`)
+  console.info(`Server running on port ${port}`)
 })
