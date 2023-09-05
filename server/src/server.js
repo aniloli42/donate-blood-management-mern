@@ -3,11 +3,25 @@ const express = require('express')
 const app = express()
 const cors = require('cors')
 const { dbConnection } = require('./connection/db')
+const { rateLimit } = require('express-rate-limit')
 
 const ALLOWED_ORIGIN = process.env.CORS_DOMAIN
-if(!ALLOWED_ORIGIN) throw new Error(`CORS Origin not found`)
+if (!ALLOWED_ORIGIN) throw new Error(`CORS Origin not found`)
 
 console.info(`Domain pointed to ${ALLOWED_ORIGIN}`)
+
+const EXPIRE_IN = 15 * 60 * 1000
+const TOTAL_ALLOW_REQUESTS = 100
+
+const limiter = rateLimit({
+  windowMs: EXPIRE_IN,
+  max: TOTAL_ALLOW_REQUESTS,
+  standardHeaders: 'draft-7',
+  legacyHeaders: false
+})
+
+// api rate limiting
+app.use(limiter)
 
 app.use(
   cors({
