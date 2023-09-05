@@ -2,7 +2,7 @@ FROM node:19-alpine3.18
 
 WORKDIR /server
 
-COPY package.json .
+COPY package.json pnpm-lock.yaml ./
 
 RUN npm i -g pnpm
 

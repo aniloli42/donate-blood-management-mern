@@ -29,6 +29,7 @@ services:
       - GMAIL_REFRESH_TOKEN=${GMAIL_REFRESH_TOKEN}
       - DOMAIN=${DOMAIN}
       - CORS_DOMAIN=${CORS_DOMAIN}
+      - NODE_ENV=${NODE_ENV}
     ports:
       - 5000:5000
     volumes:
