@@ -103,7 +103,7 @@ const deleteHistory = async (req, res) => {
 
     if (!history) return res.status(400).json({ message: 'Invalid Request' })
 
-    await history.remove()
+    await History.deleteOne({ _id: history._id })
 
     res.status(200).json({ message: 'Successfully Deleted' })
   } catch (error) {
