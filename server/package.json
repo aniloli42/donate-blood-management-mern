@@ -1,12 +1,8 @@
 {
-  "name": "server",
+  "name": "donate-server",
   "version": "1.0.0",
   "description": "",
   "main": "src/server.js",
-  "engines": {
-    "npm": "^8.x",
-    "node": "^16.x"
-  },
   "scripts": {
     "start": "node src/server.js",
     "dev": "node --watch src/server.js"
@@ -25,9 +21,5 @@
     "mongoose": "^7.5.0",
     "nodemailer": "^6.9.4",
     "semver": "^7.5.4"
-  },
-  "devDependencies": {
-    "concurrently": "^6.5.1",
-    "nodemon": "^3.0.1"
   }
 }
