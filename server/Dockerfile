@@ -4,7 +4,7 @@ ENV PNPM_HOME="/pnpm"
 ENV PATH="$PNPM_HOME:$PATH"
 RUN corepack enable
 WORKDIR /server
-COPY . .
+COPY package.json pnpm-lock.yaml ./ 
 
 
 FROM base AS prod-deps
@@ -13,6 +13,7 @@ RUN --mount=type=cache,id=pnpm,target=/pnpm/store pnpm install --prod --frozen-l
 
 FROM base
 COPY --from=prod-deps /server/node_modules /server/node_modules
+COPY . /server/
 EXPOSE 5000
 CMD [ "pnpm","start" ]
 
