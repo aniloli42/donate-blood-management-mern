@@ -19,12 +19,12 @@ app.use(
   })
 )
 
-const EXPIRE_IN = 60_000
-const TOTAL_ALLOW_REQUESTS = 30
+const RESET_LIMIT_TIMER = +process.env.RESET_LIMIT_TIMER ?? 60_000
+const LIMITED_REQUEST_ALLOWED = +process.env.LIMITED_REQUEST_ALLOWED ?? 60
 
 const limiter = rateLimit({
-  windowMs: EXPIRE_IN,
-  max: TOTAL_ALLOW_REQUESTS,
+  windowMs: RESET_LIMIT_TIMER,
+  max: LIMITED_REQUEST_ALLOWED,
   standardHeaders: 'draft-7',
   legacyHeaders: false
 })
