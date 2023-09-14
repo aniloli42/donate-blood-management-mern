@@ -1,3 +1,5 @@
+![Donate Image](./client/public/donate-og.png)
+
 # Blood Donation MERN App
 
 This project was made to help the blood requirement of emergency blood, then certain person can request for blood as help.
