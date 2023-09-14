@@ -1,6 +1,6 @@
 # Blood Donation MERN App
 
-This project is made to help the blood requirement of emergency blood, then certain person can request for blood as help.
+This project was made to help the blood requirement of emergency blood, then certain person can request for blood as help.
 
 ---
 
@@ -18,9 +18,9 @@ This project is made to help the blood requirement of emergency blood, then cert
 
 ## Description
 
-Blood Donation project will be made for the college project of Crimson Techincal College, Butwal, Nepal. In this period of time [2021 Novemeber], We are student of 5th semester. This project is minor project for us.
+Blood Donation project made for the college project of Crimson Techincal College, Butwal, Nepal. On November 2021, We were student of 5th semester. This project is minor project for us.
 
-We decide to built the blood donation project for the project and for real cause also.
+We decided to build the blood donation project for the project.
 
 ---
 
@@ -50,7 +50,7 @@ We decide to built the blood donation project for the project and for real cause
 
 #### Developer
 
-- Anil Oli: [Github](https://github.com/aniloli42) [Linkedin](https://linkedin.com/in/aniloli) [Facebook](https://facebook.com/anil.oli.4231)
+- Anil Oli: [Github](https://github.com/aniloli42) [Linkedin](https://linkedin.com/in/aniloli)
 
 #### Designer
 
