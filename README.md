@@ -18,7 +18,7 @@ This project was made to help the blood requirement of emergency blood, then cer
 
 ## Description
 
-Blood Donation project made for the college project of Crimson Techincal College, Butwal, Nepal. On November 2021, We were student of 5th semester. This project is minor project for us.
+Blood Donation project made for the college project of Crimson Techincal College, Butwal, Nepal. In November 2021, We were student of 5th semester. This project is minor project for us.
 
 We decided to build the blood donation project for the project.
 
