@@ -2,6 +2,8 @@ require('dotenv/config')
 const express = require('express')
 const app = express()
 const cors = require('cors')
+const helmet = require('helmet')
+const compression = require('compression')
 const { dbConnection } = require('./connection/db')
 const { rateLimit } = require('express-rate-limit')
 
@@ -18,6 +20,9 @@ app.use(
     credentials: true
   })
 )
+
+app.use(helmet())
+app.use(compression())
 
 const RESET_LIMIT_TIMER = +process.env.RESET_LIMIT_TIMER ?? 60_000
 const LIMITED_REQUEST_ALLOWED = +process.env.LIMITED_REQUEST_ALLOWED ?? 60
