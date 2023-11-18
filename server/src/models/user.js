@@ -1,6 +1,6 @@
-const moongoose = require('mongoose')
+import mongoose from 'mongoose'
 
-const schema = moongoose.Schema({
+const schema = mongoose.Schema({
   name: {
     type: String,
     required: true
@@ -28,4 +28,4 @@ const schema = moongoose.Schema({
   }
 })
 
-module.exports = moongoose.model('users', schema)
+export default mongoose.model('users', schema)

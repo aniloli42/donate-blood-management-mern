@@ -1,21 +1,20 @@
-const express = require('express')
+import express from 'express'
+import fetchUser from '../middleware/fetchUser.js'
+import verifyToken from '../middleware/tokenVerify.js'
+import {
+  createHistory,
+  deleteHistory,
+  getHistories,
+  getHistory,
+  updateHistory
+} from './../controllers/history.js'
+
 const router = express.Router()
 
-const verifyToken = require('../middleware/tokenVerify')
-const fetchUser = require('../middleware/fetchUser')
-
-const {
-  getHistory,
-  getHistorys,
-  createHistory,
-  updateHistory,
-  deleteHistory
-} = require('./../controllers/history')
-
 router.get('/:id', verifyToken, fetchUser, getHistory)
-router.get('/', verifyToken, fetchUser, getHistorys)
+router.get('/', verifyToken, fetchUser, getHistories)
 router.post('/create', verifyToken, fetchUser, createHistory)
 router.patch('/update/:id', verifyToken, fetchUser, updateHistory)
 router.delete('/delete/:id', verifyToken, fetchUser, deleteHistory)
 
-module.exports = router
+export default router

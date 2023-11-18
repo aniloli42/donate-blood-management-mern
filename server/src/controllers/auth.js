@@ -1,7 +1,7 @@
-const bcrypt = require('bcrypt')
-const jwt = require('jsonwebtoken')
-const User = require('../models/user')
-const Token = require('../models/token')
+import bcrypt from 'bcrypt'
+import jwt from 'jsonwebtoken'
+import User from '../models/user.js'
+import Token from '../models/token.js'
 
 const login = async (req, res) => {
   try {
@@ -246,7 +246,7 @@ async function storeToken({ refreshToken, id }) {
   }
 }
 
-module.exports = {
+export {
   login,
   signup,
   changePassword,

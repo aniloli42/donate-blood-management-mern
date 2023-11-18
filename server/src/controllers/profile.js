@@ -1,6 +1,6 @@
-const User = require('../models/user')
-const History = require('./../models/history.js')
-const Requests = require('./../models/requests.js')
+import User from '../models/user.js'
+import History from './../models/history.js'
+import Request from './../models/requests.js'
 
 const getProfile = async (req, res) => {
   try {
@@ -50,9 +50,9 @@ const getStatus = async (req, res) => {
 
     const historyCount = await History.find({ createdBy: id })
 
-    const requestCount = await Requests.find({ createdBy: id })
+    const requestCount = await Request.find({ createdBy: id })
 
-    const pendingCount = await Requests.find({ createdBy: id, status: false })
+    const pendingCount = await Request.find({ createdBy: id, status: false })
 
     res.json({
       historyCount: historyCount.length,
@@ -64,4 +64,4 @@ const getStatus = async (req, res) => {
   }
 }
 
-module.exports = { getProfile, updateProfile, getStatus }
+export { getProfile, updateProfile, getStatus }

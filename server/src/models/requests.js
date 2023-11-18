@@ -1,6 +1,6 @@
-const moongoose = require('mongoose')
+import mongoose from 'mongoose'
 
-const Schema = moongoose.Schema({
+const Schema = mongoose.Schema({
   name: {
     type: String,
     required: true
@@ -22,7 +22,7 @@ const Schema = moongoose.Schema({
     default: Date.now
   },
   createdBy: {
-    type: moongoose.Schema.Types.ObjectId,
+    type: mongoose.Schema.Types.ObjectId,
     ref: 'users'
   },
   status: {
@@ -31,4 +31,4 @@ const Schema = moongoose.Schema({
   }
 })
 
-module.exports = moongoose.model('requests', Schema)
+export default mongoose.model('requests', Schema)

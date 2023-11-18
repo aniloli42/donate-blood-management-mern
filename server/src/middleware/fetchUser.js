@@ -1,4 +1,4 @@
-const User = require('./../models/user')
+import User from './../models/user.js'
 
 async function fetchUser(req, res, next) {
   try {
@@ -16,4 +16,4 @@ async function fetchUser(req, res, next) {
   }
 }
 
-module.exports = fetchUser
+export default fetchUser
