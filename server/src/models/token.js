@@ -1,13 +1,13 @@
-const moongoose = require('mongoose')
+import mongoose from 'mongoose'
 
-const schema = moongoose.Schema({
+const schema = mongoose.Schema({
   token: {
     type: String,
     required: true,
     unqiue: true
   },
   assign: {
-    type: moongoose.Schema.Types.ObjectId,
+    type: mongoose.Schema.Types.ObjectId,
     ref: 'users'
   },
   createdAt: {
@@ -16,4 +16,4 @@ const schema = moongoose.Schema({
   }
 })
 
-module.exports = moongoose.model('token', schema)
+export default mongoose.model('token', schema)

@@ -1,6 +1,6 @@
-const History = require('../models/history')
+import History from '../models/history.js'
 
-const getHistorys = async (req, res) => {
+const getHistories = async (req, res) => {
   try {
     const { id } = req.user
 
@@ -111,10 +111,4 @@ const deleteHistory = async (req, res) => {
   }
 }
 
-module.exports = {
-  getHistory,
-  getHistorys,
-  createHistory,
-  updateHistory,
-  deleteHistory
-}
+export { getHistory, getHistories, createHistory, updateHistory, deleteHistory }

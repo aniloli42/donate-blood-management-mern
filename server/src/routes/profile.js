@@ -1,19 +1,16 @@
-const express = require('express')
-const fetchUser = require('../middleware/fetchUser')
-const router = express.Router()
-
-const verifyToken = require('../middleware/tokenVerify')
-
-const {
+import express from 'express'
+import fetchUser from '../middleware/fetchUser.js'
+import verifyToken from '../middleware/tokenVerify.js'
+import {
   getProfile,
-  updateProfile,
-  getStatus
-} = require('./../controllers/profile')
+  getStatus,
+  updateProfile
+} from './../controllers/profile.js'
+
+const router = express.Router()
 
 router.get('/', verifyToken, getProfile)
 router.get('/status', verifyToken, fetchUser, getStatus)
-
-// updateing
 router.patch('/update', verifyToken, updateProfile)
 
-module.exports = router
+export default router

@@ -1,19 +1,17 @@
-const express = require('express')
-const router = express.Router()
-
-const {
-  getRequest,
+import express from 'express'
+import {
   createRequest,
-  ownRequest,
-  otherRequest,
-  updateRequest,
   deleteRequest,
-  recentRequest
-} = require('../controllers/requests')
+  getRequest,
+  otherRequest,
+  ownRequest,
+  recentRequest,
+  updateRequest
+} from '../controllers/requests.js'
+import fetchUser from '../middleware/fetchUser.js'
+import tokenVerify from '../middleware/tokenVerify.js'
 
-const fetchUser = require('../middleware/fetchUser')
-const tokenVerify = require('../middleware/tokenVerify')
-
+const router = express.Router()
 /*========
 	routes
 ========*/
@@ -25,4 +23,4 @@ router.post('/create', tokenVerify, fetchUser, createRequest)
 router.patch('/update/:id', tokenVerify, fetchUser, updateRequest)
 router.delete('/delete/:id', tokenVerify, fetchUser, deleteRequest)
 
-module.exports = router
+export default router

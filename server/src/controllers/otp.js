@@ -1,6 +1,6 @@
-const User = require('./../models/user.js')
-const OTP = require('./../models/otp.js')
-const sendMail = require('./../utils/sendOTP.js')
+import User from './../models/user.js'
+import OTP from './../models/otp.js'
+import sendMail from './../utils/sendOTP.js'
 
 const sendOTP = async (req, res) => {
   try {
@@ -61,4 +61,4 @@ function OTPGENERATOR() {
   return Math.ceil(Math.random() * (99999 - 10000) + 10000)
 }
 
-module.exports = { sendOTP, verifyOTP }
+export { sendOTP, verifyOTP }

@@ -1,4 +1,4 @@
-const mongoose = require('mongoose')
+import mongoose from 'mongoose'
 
 const schema = mongoose.Schema({
   donatedAt: {
@@ -24,4 +24,4 @@ const schema = mongoose.Schema({
   }
 })
 
-module.exports = mongoose.model('histories', schema)
+export default mongoose.model('histories', schema)

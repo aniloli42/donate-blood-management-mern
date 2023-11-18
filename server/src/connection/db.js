@@ -1,12 +1,12 @@
-const moongoose = require('mongoose')
+import mongoose from 'mongoose'
+
 const url = process.env.DB_URL
 
 const dbConnection = () => {
-  moongoose.set('strict', true)
-  moongoose.connect(url, { useNewUrlParser: true, useUnifiedTopology: true })
-
-  moongoose.connection.on('error', err => console.log(err))
-  moongoose.connection.once('open', () => console.log('Connected to database'))
+  console.log('Connecting To Database....')
+  mongoose.connect(url)
+  mongoose.connection.on('error', err => console.log(err.message))
+  mongoose.connection.once('open', () => console.log('Connected to database'))
 }
 
-module.exports = { dbConnection }
+export { dbConnection }

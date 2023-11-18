@@ -1,4 +1,4 @@
-const sendMail = require('./mailer.js')
+import sendMail from './mailer.js'
 
 const brand = '🩸Donate Blood Project <donateblood.project@gmail.com>'
 
@@ -30,4 +30,4 @@ async function sendForgetPasswordOTP({ user, email, otp }) {
   }
 }
 
-module.exports = sendForgetPasswordOTP
+export default sendForgetPasswordOTP

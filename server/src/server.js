@@ -1,16 +1,22 @@
-require('dotenv/config')
-const express = require('express')
-const app = express()
-const cors = require('cors')
-const helmet = require('helmet')
-const compression = require('compression')
-const { dbConnection } = require('./connection/db')
-const { rateLimit } = require('express-rate-limit')
+import compression from 'compression'
+import cors from 'cors'
+import 'dotenv/config'
+import express from 'express'
+import { rateLimit } from 'express-rate-limit'
+import helmet from 'helmet'
+import { dbConnection } from './connection/db.js'
+import auth from './routes/auth.js'
+import history from './routes/history.js'
+import otp from './routes/otp.js'
+import profile from './routes/profile.js'
+import requests from './routes/requests.js'
 
 const ALLOWED_ORIGIN = process.env.CORS_DOMAIN
 if (!ALLOWED_ORIGIN) throw new Error(`CORS Origin not found`)
-
 console.info(`Domain pointed to ${ALLOWED_ORIGIN}`)
+
+const app = express()
+
 const CORS_TIMEOUT = 360_000
 app.use(
   cors({
@@ -48,13 +54,6 @@ app.get('/', (req, res) => {
 const port = process.env.PORT ?? 5000
 
 dbConnection()
-
-//  imports
-const otp = require('./routes/otp')
-const auth = require('./routes/auth')
-const profile = require('./routes/profile')
-const history = require('./routes/history')
-const requests = require('./routes/requests')
 
 // routes
 app.use('/otp', otp)

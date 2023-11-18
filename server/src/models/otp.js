@@ -1,6 +1,6 @@
-const moongoose = require('mongoose')
+import mongoose from 'mongoose'
 
-const Schema = moongoose.Schema({
+const Schema = mongoose.Schema({
   email: {
     type: String,
     required: true
@@ -15,4 +15,4 @@ const Schema = moongoose.Schema({
   }
 })
 
-module.exports = moongoose.model('otp', Schema)
+export default mongoose.model('otp', Schema)

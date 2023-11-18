@@ -1,11 +1,11 @@
-const Requests = require('../models/requests')
+import Request from '../models/requests.js'
 
 const getRequest = async (req, res) => {
   try {
     const { id: requestId } = req.params
     const { id } = req.user
 
-    const request = await Requests.findOne({ _id: requestId, createdBy: id })
+    const request = await Request.findOne({ _id: requestId, createdBy: id })
 
     if (!request) return res.status(400).json({ message: 'Invalid Request' })
 
@@ -20,7 +20,7 @@ const createRequest = async (req, res) => {
     const { name, location, bloodType, phone } = req.body
     const { id } = req.user
 
-    const newRequest = new Requests({
+    const newRequest = new Request({
       name,
       location,
       bloodType,
@@ -39,7 +39,7 @@ const ownRequest = async (req, res) => {
   try {
     const { id } = req.user
 
-    const request = await Requests.find({ createdBy: id, status: false }).sort({
+    const request = await Request.find({ createdBy: id, status: false }).sort({
       requestedAt: -1
     })
 
@@ -52,13 +52,18 @@ const ownRequest = async (req, res) => {
   }
 }
 
+const DAY_IN_MILLISECONDS = 86400_000
+
 const otherRequest = async (req, res) => {
   try {
     const { id } = req.user
 
-    const request = await Requests.find({
+    const request = await Request.find({
       createdBy: { $ne: id },
-      status: false
+      status: false,
+      requestedAt: {
+        $gt: new Date(new Date().getTime() - DAY_IN_MILLISECONDS)
+      }
     }).sort({
       requestedAt: -1
     })
@@ -77,7 +82,7 @@ const updateRequest = async (req, res) => {
     const { _id, name, location, bloodType, phone, status } = req.body
     const { id } = req.user
 
-    const updateRequest = await Requests.findOne({ _id, createdBy: id })
+    const updateRequest = await Request.findOne({ _id, createdBy: id })
 
     if (!updateRequest)
       return res.status(400).json({ message: 'Invalid Request Update' })
@@ -99,7 +104,7 @@ const deleteRequest = async (req, res) => {
     const { id: requestId } = req.params
     const { id } = req.user
 
-    const request = await Requests.findOne({ _id: requestId, createdBy: id })
+    const request = await Request.findOne({ _id: requestId, createdBy: id })
 
     if (!request) return res.status(400).json({ message: 'Invalid Request' })
     await request.remove()
@@ -114,9 +119,12 @@ const recentRequest = async (req, res) => {
   try {
     const { id } = req.user
 
-    const request = await Requests.find({
+    const request = await Request.find({
       createdBy: { $ne: id },
-      status: false
+      status: false,
+      requestedAt: {
+        $gt: new Date(new Date().getTime() - DAY_IN_MILLISECONDS)
+      }
     })
       .limit(3)
       .sort({
@@ -132,7 +140,7 @@ const recentRequest = async (req, res) => {
   }
 }
 
-module.exports = {
+export {
   getRequest,
   createRequest,
   ownRequest,
